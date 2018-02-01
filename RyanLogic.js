@@ -1,3 +1,5 @@
+// Main Logic for Individual Calculator coded by Ryan Whitney
+
 var prem = 134,
 fpl18O8 = 4320,
 fpl18 = new Array();
