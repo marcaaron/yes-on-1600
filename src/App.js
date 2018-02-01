@@ -11,6 +11,7 @@ class App extends Component {
 			index: -1,
 			vars:[],
 			range:50,
+			options:['<10',"10-24","25-99","100-999",">1000"],
 		}
 		this.handleUserType = this.handleUserType.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,8 +50,6 @@ class App extends Component {
 	handleSubmit(e){
 		e.preventDefault();
 		let vars = [...this.state.vars];
-
-		// Added this for range sliders and other none text based inputs in the case that a user does NOTHING and thus there is no 'change'. If there is no value in vars for the current index then handleSubmit should create the value otherwise our handleChange will have added it already and we don't need to push a duplicate value to vars.
 
 		if(typeof this.state.vars[this.state.index]==='undefined'){
 			const input = e.nativeEvent.target[0].value;
@@ -131,12 +130,13 @@ class App extends Component {
 				<form onSubmit={this.handleSubmit}>
 					<p className="card-text">Total Number of Employees:</p>
 					<select onChange={this.handleChange} className="select-box" required>
-							{/* These are tricky because if a user moves forward then back the option will no longer be selected... solution? */}
-							<option value="<10">&lt; 10</option>
-							<option value="10-24">10-24</option>
-							<option value="25-99">25-99</option>
-							<option value="100-999">100-999</option>
-							<option value=">1000">&gt; 1000</option>
+						{this.state.options.map((item, index)=>{
+							if(item===this.state.vars[this.state.index]){
+								return <option key={index} selected="selected" value={item}>{item}</option>
+							}else{
+								return <option key={index} value={item}>{item}</option>
+							}
+						})}
 					</select>
 					<button type="submit">Next &gt;&gt;</button>
 				</form>
