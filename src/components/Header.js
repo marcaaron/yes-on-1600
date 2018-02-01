@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import './Header.css';
+import '../css/Header.css';
 
 class Header extends Component {
 	render() {
 		return (
 			<header>
-				<a href='/'>
+				<i onClick={this.props.handleBackBtn} className="fa fa-3x fa-chevron-circle-left"></i>
+				<div>
 					<span className="header-text">YES! ON I-1600</span><br/>
 					<span className="header-sub-text">COST CALCULATOR</span>
-				</a>
+				</div>
+				<i onClick={this.props.handleFwdBtn} className="fa fa-3x fa-chevron-circle-right"></i>
 			</header>
 		);
 	}
