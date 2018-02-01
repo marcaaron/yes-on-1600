@@ -7,38 +7,28 @@ class App extends Component {
 	constructor(){
 		super();
 		this.state = {
-			user: null,
+			userType: '',
 			index: 0,
 			vars:[],
 			range:50,
-			futureCost:0,
-			colorBarRed:0,
 		}
-		this.handleUser = this.handleUser.bind(this);
+		this.handleUserType = this.handleUserType.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleRange = this.handleRange.bind(this);
 	}
 
-	handleUser(e){
+	handleUserType(e){
 		e.preventDefault();
-		this.setState({user:e.target.value});
+		this.setState({userType:e.target.value});
 	}
 
 	handleSubmit(e){
 		e.preventDefault();
-		const event = e.nativeEvent;
-		let vars = [...this.state.vars]
-		let data = event.target[0].value;
-		vars.push(data);
-		let index = this.state.index;
-		index++;
+		const input = e.nativeEvent.target[0].value;
+		const vars = [...this.state.vars, input]
+		const index = this.state.index +1;
 		this.setState({index,vars});
 		e.target.reset();
-	}
-	componentDidMount(){
-		console.log('');
-		console.log(`%cFormFaction`, 'background:black; padding:10px; color:#00fffa');
-		console.log('');
 	}
 
 	handleRange(e){
@@ -47,6 +37,7 @@ class App extends Component {
 	}
 
     render() {
+			console.log('state =', this.state)
 		const individualQuestions =[
 			<div className="card">
 				<form onSubmit={this.handleSubmit}>
@@ -125,40 +116,40 @@ class App extends Component {
 		  		/>
 				<div className='header-gap'></div>
 
-			{this.state.user===null &&
+			{this.state.userType==='' &&
 			<div className="card">
 					<button
-						onClick={this.handleUser}
+						onClick={this.handleUserType}
 						type="submit"
 						value="business">I'm a Business Owner
 					</button>
 
 					<button
-						onClick={this.handleUser}
+						onClick={this.handleUserType}
 						type="submit"
 						value="individual">I'm an Individual
 					</button>
 			</div>}
 
-		{this.state.user==='business' &&
+		{this.state.userType==='business' &&
 			businessQuestions[this.state.index]
 		}
 
-		{this.state.user==='individual' &&
+		{this.state.userType==='individual' &&
 			individualQuestions[this.state.index]
 		}
 
-		{this.state.user==='business' && typeof businessQuestions[this.state.index]==='undefined' &&
+		{this.state.userType==='business' && typeof businessQuestions[this.state.index]==='undefined' &&
 			<Results
-				user={this.state.user}
+				user={this.state.userType}
 				vars={this.state.vars}
 				range={this.state.range}>
 			</Results>
 		}
 
-		{this.state.user==='individual' && typeof individualQuestions[this.state.index]==='undefined' &&
+		{this.state.userType==='individual' && typeof individualQuestions[this.state.index]==='undefined' &&
 			<Results
-				user={this.state.user}
+				user={this.state.userType}
 				vars={this.state.vars}
 				range={this.state.range}>
 			</Results>
