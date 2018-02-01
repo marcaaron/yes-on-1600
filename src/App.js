@@ -37,7 +37,6 @@ class App extends Component {
 	}
 
     render() {
-			console.log('state =', this.state)
 		const individualQuestions =[
 			<div className="card">
 				<form onSubmit={this.handleSubmit}>
@@ -109,8 +108,8 @@ class App extends Component {
 			</div>
 		];
     	return (
-      		<div className="app-container">
-		  		<Header/>
+      	<div className="app-container">
+		  	<Header/>
 				<div className='header-gap'></div>
 
 			{this.state.userType==='' &&
@@ -138,18 +137,15 @@ class App extends Component {
 
 		{this.state.userType==='business' && typeof businessQuestions[this.state.index]==='undefined' &&
 			<Results
-				user={this.state.userType}
+				userType={this.state.userType}
 				vars={this.state.vars}
-				range={this.state.range}>
-			</Results>
+				range={this.state.range}/>
 		}
 
 		{this.state.userType==='individual' && typeof individualQuestions[this.state.index]==='undefined' &&
 			<Results
-				user={this.state.userType}
-				vars={this.state.vars}
-				range={this.state.range}>
-			</Results>
+				userType={this.state.userType}
+				vars={this.state.vars}/>
 		}
 	{/* <!-- End App Container	 --> */}
 	</div>
