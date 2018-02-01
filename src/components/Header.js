@@ -6,8 +6,8 @@ class Header extends Component {
 		return (
 			<header>
 				<a href='/'>
-				<span className="header-text">{this.props.headOne}</span><br/>
-				<span className="header-sub-text">{this.props.headTwo}</span>
+					<span className="header-text">YES! ON I-1600</span><br/>
+					<span className="header-sub-text">COST CALCULATOR</span>
 				</a>
 			</header>
 		);

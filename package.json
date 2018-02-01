@@ -2,7 +2,7 @@
   "name": "form-faction",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "http://marcaaron.github.io/ww-calc-2.0",
+  "homepage": "http://marcaaron.github.io/ww-calc-2.0",
   "dependencies": {
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
@@ -15,7 +15,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-	"predeploy": "npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   }
 }

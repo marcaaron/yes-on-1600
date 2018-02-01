@@ -110,10 +110,7 @@ class App extends Component {
 		];
     	return (
       		<div className="app-container">
-		  		<Header
-			  		headOne="YES! ON I-1600"
-			  		headTwo="COST CALCULATOR"
-		  		/>
+		  		<Header/>
 				<div className='header-gap'></div>
 
 			{this.state.userType==='' &&
