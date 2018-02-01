@@ -1,0 +1,29 @@
+a{
+	text-decoration: none;
+	text-align: center;
+}
+header{
+	background: rgb(71,71,71);
+	height:7em;
+	width:100%;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	flex: 0 1 auto;
+	position:fixed;
+	top:0;
+	box-shadow: 0px 1px 5px rgba(0,0,0,0.8);
+}
+
+.header-text{
+	font-weight:800;
+	letter-spacing: 0.1em;
+	font-size: 2.4em;
+	color:white;
+}
+.header-sub-text{
+	font-size: 2em;
+	color:white;
+	letter-spacing: 0.04em;
+}
