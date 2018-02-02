@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
+import Question from './components/Question';
 import Results from './components/Results';
 import './App.css';
 
@@ -11,7 +12,6 @@ class App extends Component {
 			index: -1,
 			vars:[],
 			range:50,
-			options:['<10',"10-24","25-99","100-999",">1000"],
 		}
 		this.handleUserType = this.handleUserType.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -76,82 +76,26 @@ class App extends Component {
 	}
 
     render() {
-		const individualQuestions =[
-			<div className="card">
-				<form onSubmit={this.handleSubmit}>
-					<p className="card-text">Please Enter Your Annual Household Income:</p>
-					<input onChange={this.handleChange} className="text-box"
-						type="text"
-						value={this.state.vars[this.state.index] ? this.state.vars[this.state.index] : ''}
-						required>
-					</input>
-					<button type="submit">Next &gt;&gt;</button>
-				</form>
-			</div>,
-			<div className="card">
-				<form onSubmit={this.handleSubmit}>
-					<p className="card-text">Please Enter Your Net Annual Household Capital Gains:</p>
-					<input onChange={this.handleChange} className="text-box" type="text" value={this.state.vars[this.state.index] ? this.state.vars[this.state.index] : ''} required></input>
-					<button type="submit">Next &gt;&gt;</button>
-				</form>
-			</div>,
-			<div className="card">
-				<form onSubmit={this.handleSubmit}>
-					<p className="card-text">Please Enter The Size of Your Household:</p>
-					<input onChange={this.handleChange} className="text-box" type="text" value={this.state.vars[this.state.index] ? this.state.vars[this.state.index] : ''} required></input>
-					<button type="submit">Next &gt;&gt;</button>
-				</form>
-			</div>,
-			<div className="card">
-				<form onSubmit={this.handleSubmit}>
-					<p className="card-text">Number of Adults over 19:</p>
-					<input onChange={this.handleChange} className="text-box" type="text" value={this.state.vars[this.state.index] ? this.state.vars[this.state.index] : ''} required></input>
-					<button type="submit">Next &gt;&gt;</button>
-				</form>
-			</div>
-		];
+		const questions = {
+			individual:[
+				{questionText:"Your Annual Household Income:", inputType:'text'},
+				{questionText:"Your Net Annual Capital Gains:", inputType:'text'},
+				{questionText:"Size of Your Household", inputType:'text'},
+				{questionText:"Number of Adults over 19", inputType:'text'}
+			],
+			business:[
+				{questionText:'Annual Total Payroll Costs:', inputType:'text'},
+				{questionText:'Current Annual Healthcare Costs:', inputType:'text'},
+				{questionText:'Total Number of Employees',
+					inputType:'select-box',
+					options: ['<10',"10-24","25-99","100-999",">1000"]
+				},
+				{questionText:'Percentage of Employees Covered', inputType:'range'}
+			]
+		};
 
-		const businessQuestions =[
-			<div className="card">
-				<form onSubmit={this.handleSubmit}>
-					<p className="card-text">Please Enter Your Annual Total Payroll Costs:</p>
-					<input onChange={this.handleChange} className="text-box" type="text" value={this.state.vars[this.state.index] ? this.state.vars[this.state.index] : ''} required></input>
-					<button type="submit">Next &gt;&gt;</button>
-				</form>
-			</div>,
-			<div className="card">
-				<form onSubmit={this.handleSubmit}>
-					<p className="card-text">Please Enter Your Current Annual Healthcare Costs:</p>
-					<input onChange={this.handleChange} className="text-box" type="text" value={this.state.vars[this.state.index] ? this.state.vars[this.state.index] : ''} required></input>
-					<button type="submit">Next &gt;&gt;</button>
-				</form>
-			</div>,
-			<div className="card">
-				<form onSubmit={this.handleSubmit}>
-					<p className="card-text">Total Number of Employees:</p>
-					<select onChange={this.handleChange} className="select-box" required>
-						{this.state.options.map((item, index)=>{
-							if(item===this.state.vars[this.state.index]){
-								return <option key={index} selected="selected" value={item}>{item}</option>
-							}else{
-								return <option key={index} value={item}>{item}</option>
-							}
-						})}
-					</select>
-					<button type="submit">Next &gt;&gt;</button>
-				</form>
-			</div>,
-			<div className="card">
-				<p className="card-text">Percentage of Employees Covered:</p>
-				<form onSubmit={this.handleSubmit}>
-					<div className="slidecontainer">
-							  <input onChange={this.handleRange} type="range" min="1" max="100" value={this.state.vars[this.state.index] ? this.state.vars[this.state.index] : 50} className="slider" id="myRange"></input>
-							  <span className="range">{this.state.range}%</span>
-					</div>
-					<button type="submit">Next &gt;&gt;</button>
-				</form>
-			</div>
-		];
+		const questionArray = questions[`${this.state.userType}`];
+
     	return (
       	<div className="app-container">
 		  	<Header
@@ -175,27 +119,27 @@ class App extends Component {
 					</button>
 			</div>}
 
-		{this.state.userType==='business' &&
-			businessQuestions[this.state.index]
+		{this.state.index>-1 &&
+		 this.state.index<questionArray.length &&
+			<Question
+				vars={this.state.vars}
+				index={this.state.index}
+				handleSubmit={this.handleSubmit}
+				handleChange={this.handleChange}
+				handleRange={this.handleRange}
+				range={this.state.range}
+				question={questionArray[this.state.index].questionText}
+				inputType={questionArray[this.state.index].inputType}
+				options={questionArray[this.state.index].options ||''}
+			/>
 		}
 
-		{this.state.userType==='individual' &&
-			individualQuestions[this.state.index]
-		}
-
-		{this.state.userType==='business' && typeof businessQuestions[this.state.index]==='undefined' &&
+		{this.state.index>-1 && this.state.index === questionArray.length &&
 			<Results
 				userType={this.state.userType}
 				vars={this.state.vars}
 				range={this.state.range}/>
 		}
-
-		{this.state.userType==='individual' && typeof individualQuestions[this.state.index]==='undefined' &&
-			<Results
-				userType={this.state.userType}
-				vars={this.state.vars}/>
-		}
-	{/* <!-- End App Container	 --> */}
 	</div>
     );
   }
