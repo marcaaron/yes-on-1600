@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../css/Question.css';
 
 class Question extends Component {
-
 	render() {
 		if (this.props.inputType==='' || typeof this.props.inputType === 'undefined'){
 			console.error('Must pass an inputType to Question component!');
@@ -11,8 +10,6 @@ class Question extends Component {
 		if(this.props.inputType==='select-box' && this.props.options === ''){
 			console.error('Must pass options to Question with inputType "select-box"');
 		}
-		const defaultValue = this.props.vars[this.props.index];
-
 		return (
 			<div className="card">
 				<form onSubmit={this.props.handleSubmit}>
