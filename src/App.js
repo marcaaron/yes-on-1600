@@ -37,7 +37,7 @@ class App extends Component {
 
 	handleFwdBtn(){
 		let index = this.state.index;
-		if(index>-1){
+		if(index>-1 && this.state.vars[this.state.index]){
 			index++;
 		}
 		this.setState({index});
