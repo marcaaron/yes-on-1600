@@ -2,6 +2,19 @@ import React, { Component } from 'react';
 import '../css/Question.css';
 
 class Question extends Component {
+	constructor(props){
+		super(props);
+		this.handleKeyPress = this.handleKeyPress.bind(this);
+	}
+
+	handleKeyPress(event) {
+		const keyCode = event.keyCode || event.which;
+		const keyValue = String.fromCharCode(keyCode);
+		if (/\.|\+|-/.test(keyValue)){
+			event.preventDefault();
+		}
+	}
+
 	render() {
 		if (this.props.inputType==='' || typeof this.props.inputType === 'undefined'){
 			console.error('Must pass an inputType to Question component!');
@@ -15,10 +28,12 @@ class Question extends Component {
 				<form onSubmit={this.props.handleSubmit}>
 					<p className="card-text">{this.props.question}</p>
 
-					{this.props.inputType==='text'&&
+					{this.props.inputType==='number'&&
 					<input onChange={this.props.handleChange}
 						   className="text-box"
-						   type="text"
+						   type="number"
+						   placeholder={this.props.unit || ''}
+						   onKeyPress={this.handleKeyPress}
 						   value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
 						   required
 					>

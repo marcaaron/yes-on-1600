@@ -26,13 +26,15 @@ class App extends Component {
 	handleBackBtn(){
 		let index = this.state.index;
 		let userType = this.state.userType;
+		let vars = [...this.state.vars];
 		if(index>=0){
 			index--;
 			if(index===-1){
 				userType='';
+				vars=[];
 			}
 		}
-		this.setState({index, userType});
+		this.setState({index, userType,vars});
 	}
 
 	handleFwdBtn(){
@@ -52,15 +54,21 @@ class App extends Component {
 	handleSubmit(e){
 		e.preventDefault();
 		let vars = [...this.state.vars];
-
+		let input = e.nativeEvent.target[0].value;
 		if(typeof this.state.vars[this.state.index]==='undefined'){
-			const input = e.nativeEvent.target[0].value;
 			vars.push(input);
 		}
 
 		const index = this.state.index+1;
 		this.setState({index,vars});
 		e.target.reset();
+	}
+
+	handleChange(e){
+		e.preventDefault();
+		let vars = [...this.state.vars];
+		vars[this.state.index] = parseInt(e.target.value,10);
+		this.setState({vars});
 	}
 
 	handleRange(e){
@@ -70,12 +78,6 @@ class App extends Component {
 		this.setState({range,vars});
 	}
 
-	handleChange(e){
-		e.preventDefault();
-		let vars = [...this.state.vars];
-		vars[this.state.index]=e.target.value;
-		this.setState({vars});
-	}
 
     render() {
 		const questionArray = questions[`${this.state.userType}`];
@@ -113,6 +115,7 @@ class App extends Component {
 				handleRange={this.handleRange}
 				range={this.state.range}
 				question={questionArray[this.state.index].questionText}
+				unit={questionArray[this.state.index].unit}
 				inputType={questionArray[this.state.index].inputType}
 				options={questionArray[this.state.index].options ||''}
 			/>

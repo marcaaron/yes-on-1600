@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {businessCalc} from '../helpers/business-calc';
 import {individualCalc} from '../helpers/individual-calc';
+import Socials from '../components/Socials';
 
 class Results extends Component {
 	constructor(props) {
@@ -43,13 +44,21 @@ class Results extends Component {
 				// Business Results
 				<div className="card">
 					<div className="results">
-						<h1>My I-1600 Cost Calculator Results:</h1>
-						<p className="results-heading">Current Annual Healthcare Costs:</p>
+						<div className="header-box">
+							<h1>Calculator Results:</h1>
+						</div>
+						<div className="middle-box">
+							<h2>Current Annual Healthcare Costs:</h2>
+						</div>
 						<div className='color-bar red'>
 							<span className='color-bar-text'>${this.props.vars[1]}</span>
 						</div>
-						<p className="results-heading">Projected Annual Healthcare Costs:</p>
-						<div style={colorBarGreen} className='color-bar green'><span className='color-bar-text'>${this.state.futureCost}</span></div>
+						<div className="middle-box">
+							<h2>Projected Annual Healthcare Costs:</h2>
+						</div>
+						<div className="color-bar-box">
+							<div style={colorBarGreen} className='color-bar green'><span className='color-bar-text'>${this.state.futureCost}</span></div>
+						</div>
 						<div className="percentages">
 							<div className="row">
 								<p>Employees Covered<br />Under Current System</p>
@@ -64,10 +73,11 @@ class Results extends Component {
 								</div>
 							</div>
 						</div>
-						<div className="col">
-							<span className="results-heading">Total Annual Savings:</span>
+						<div className="col white">
+							<h2 className="results-heading">Total Annual Savings:</h2>
 							<span className="results-total">${this.props.vars[1] - this.state.futureCost}</span>
 						</div>
+						<Socials size="40"/>
 					</div>
 				</div>
 			);
@@ -76,27 +86,34 @@ class Results extends Component {
 			// Individual Results
 				<div className='card'>
 					<div className="results">
-						<h1>My I-1600 Cost Calculator Results:</h1>
-						<p className='results-heading'>Income Tax Contribution:</p>
-						<p className='results-numbers'>
-							${this.state.income}/yr or ${Math.floor(this.state.income / 12)}/mo
-						</p>
-						<p className='results-heading'>Capitol Gains Tax Contribution</p>
-						<p className='results-numbers'>
-							${this.state.capGains}/yr or ${Math.floor(this.state.capGains / 12)}/mo
-						</p>
-						<p className='results-heading'>Premium Contribution</p>
-						<p className='results-numbers'>
-							${this.state.premium}/yr or ${Math.floor(this.state.premium / 12)}/mo
-							</p>
-						<p className='results-heading'>Total Contribution</p>
-						<p className='results-numbers'>
-							${this.state.totalPersonalContribution}/yr or ${Math.floor(this.state.totalPersonalContribution / 12)}/mo
-						</p>
-						<p className='results-heading'>Employer Contribution</p>
-						<p className='results-numbers'>
-							${this.state.payroll}/yr or ${Math.floor(this.state.payroll / 12)}/mo
-						</p>
+						<div className="header-box">
+							<h1>Calculator Results:</h1>
+						</div>
+						<div className="middle-box">
+							<h2>CONTRIBUTIONS</h2>
+						</div>
+						<div className="contributions-box">
+							<div className="contributions-row">
+								<p className='contributions-row-heading'>Income Tax</p>
+								<p className="contributions-row-result">${Math.floor(this.state.income / 12)}/mo</p>
+							</div>
+							<div className="contributions-row">
+								<p className='contributions-row-heading'>Capital Gains Tax</p>
+								<p className="contributions-row-result">${Math.floor(this.state.capGains / 12)}/mo</p>
+							</div>
+							<div className="contributions-row">
+								<p className='contributions-row-heading'>Premium</p>
+								<p className="contributions-row-result">${Math.floor(this.state.premium / 12)}/mo</p>
+							</div>
+						</div>
+						<div className="middle-box">
+							<h2>TOTAL</h2>
+						</div>
+						<div className="total-box">
+							<p>${Math.floor(this.state.totalPersonalContribution / 12)}/mo</p>
+							<p>(${this.state.totalPersonalContribution}/yr)</p>
+						</div>
+						<Socials size="40"/>
 					</div>
 				</div>
 			);
