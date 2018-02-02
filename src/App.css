@@ -38,8 +38,8 @@ p{
 	justify-content: center;
 	margin:0 auto;
 	margin-top:1em;
-	margin-bottom:10em;
 	box-shadow: 3px 3px 15px rgba(0,0,0,0.5);
+	border-radius:10px;
 }
 
 form{
@@ -51,14 +51,20 @@ form{
 
 button{
 	font-family: 'Barlow Semi Condensed', sans-serif;
-	font-size:1.5em;
-	background:white;
+	font-size:1.4em;
+	background:#eaf8ff;
 	width:80%;
 	height:2.5em;
-	margin:0.5em 0;
+	margin:1em 0;
 	border-radius:15px;
 	border:ridge 3px rgba(0,0,0,0.8);
 	box-shadow: 3px 3px 15px rgba(0,0,0,0.4);
+	transition: background-color 0.2s;
+}
+
+button:hover{
+	background-color: #fcfeff;
+	cursor:pointer;
 }
 
 .card-text{
@@ -114,9 +120,11 @@ button{
     background: white;
     outline: none;
     opacity: 0.7;
-    -webkit-transition: .3s;
+    -webkit-transition: .2s;
     transition: opacity .3s;
 	border-radius: 25px;
+	border:black solid 2px;
+	box-shadow: inset 0px 0px 3px black;
 }
 
 /* Mouse-over effects */
@@ -153,6 +161,7 @@ button{
 	background-color: black;
 	margin:0.5em;
 	order:-1;
+	user-select: none;
 }
 
 .biz{
@@ -169,6 +178,9 @@ button{
 	align-items: flex-start;
 	background:white;
 	padding:1em;
+	margin:1em;
+	border-radius:10px;
+	box-shadow: 3px 3px 15px rgba(0,0,0,0.2);
 	/* max-width:100%; */
 	/* height:100%; */
 }
@@ -235,19 +247,46 @@ button{
 	margin-bottom: 0.5em;
 }
 
+.results>h1{
+	font-size: 2em;
+}
 .results-heading{
 	font-size:1.2em;
-	margin:0.5em;
+	margin:0.1em;
 }
 
 .results-total{
-	font-size:3em;
+	font-size:1em;
 }
 /* Media Queries */
 
+@media screen and (min-width:350px) {
+	button{
+		width:60%;
+		font-size:1.6em;
+		height:3em;
+	}
+ }
+
+ @media screen and (min-width:450px) {
+	 .card{
+		 width:70%;
+	 }
+ 	button{
+ 		width:60%;
+ 		font-size:1.6em;
+ 		height:3em;
+ 	}
+  }
 
 @media screen and (min-width:600px) {
  	.card{
-		width:600px;
+		width:70%;
 	}
  }
+
+ @media screen and (min-width:700px) {
+  	.card{
+ 		width:500px;
+ 	}
+  }

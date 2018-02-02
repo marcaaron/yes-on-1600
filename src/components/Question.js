@@ -25,11 +25,11 @@ class Question extends Component {
 					</input>}
 
 					{this.props.inputType==='select-box' &&
-						<select defaultValue={this.props.vars[this.props.index]} onChange={this.props.handleChange} className="select-box" required>
-							{this.props.options.map((item, index)=>{
-									return <option key={index} value={item}>{item}</option>
-							})}
-						</select>
+							<select defaultValue={this.props.vars[this.props.index]} onChange={this.props.handleChange} className="select-box" required>
+								{this.props.options.map((item, index)=>{
+										return <option key={index} value={item}>{item}</option>
+								})}
+							</select>
 					}
 					{this.props.inputType==='range' &&
 						<div className="slidecontainer">

@@ -5,12 +5,14 @@ class Header extends Component {
 	render() {
 		return (
 			<header>
-				<i onClick={this.props.handleBackBtn} className="fa fa-3x fa-chevron-circle-left"></i>
+				<div className='header-content'>
+				<i onClick={this.props.handleBackBtn} className="fa fa-3x fa-chevron-left"></i>
 				<div>
 					<span className="header-text">YES! ON I-1600</span><br/>
 					<span className="header-sub-text">COST CALCULATOR</span>
 				</div>
-				<i onClick={this.props.handleFwdBtn} className="fa fa-3x fa-chevron-circle-right"></i>
+				<i onClick={this.props.handleFwdBtn} className="fa fa-3x fa-chevron-right"></i>
+				</div>
 			</header>
 		);
 	}
