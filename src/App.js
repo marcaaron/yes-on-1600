@@ -52,17 +52,20 @@ class App extends Component {
 	}
 
 	handleSubmit(e){
-		e.preventDefault();
-		let vars = [...this.state.vars];
-		let input = e.nativeEvent.target[0].value;
-		if(typeof this.state.vars[this.state.index]==='undefined'){
-			vars.push(input);
+			e.preventDefault();
+			let vars = [...this.state.vars];
+			let input = e.nativeEvent.target[0].value;
+			if(!input){
+				alert('This field is required!')
+			}else{
+				if(typeof this.state.vars[this.state.index]==='undefined'){
+					vars.push(input);
+				}
+				const index = this.state.index+1;
+				this.setState({index,vars});
+				e.target.reset();
+			}
 		}
-
-		const index = this.state.index+1;
-		this.setState({index,vars});
-		e.target.reset();
-	}
 
 	handleChange(e){
 		e.preventDefault();
@@ -87,6 +90,8 @@ class App extends Component {
 		  	<Header
 				handleBackBtn={this.handleBackBtn}
 				handleFwdBtn={this.handleFwdBtn}
+				index={this.state.index}
+				questionArray={questionArray}
 			/>
 			<div className='header-gap'></div>
 
