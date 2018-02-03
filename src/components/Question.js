@@ -55,7 +55,7 @@ class Question extends Component {
 					}
 					{this.props.inputType==='range' &&
 						<div className="slidecontainer">
-							<input onChange={this.props.handleRange} type="range" min="1" max="100" value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : 50} className="slider" id="myRange"></input>
+							<input onChange={this.props.handleRange} type="range" min="0" max="100" value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : 50} className="slider" id="myRange"></input>
 							<span className="range">{this.props.range}%</span>
 						</div>
 					}
