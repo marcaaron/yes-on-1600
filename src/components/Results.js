@@ -1,7 +1,10 @@
+import html2canvas from 'html2canvas';
+import BusinessResults from './BusinessResults';
+import IndividualResults from './IndividualResults';
+
 import React, { Component } from 'react';
 import {businessCalc} from '../helpers/business-calc';
 import {individualCalc} from '../helpers/individual-calc';
-import Socials from '../components/Socials';
 
 class Results extends Component {
 	constructor(props) {
@@ -19,6 +22,16 @@ class Results extends Component {
 	}
 	componentWillMount() {
 		this.getResult();
+	}
+	componentDidMount(){
+		html2canvas(document.querySelector('.social-render'),{
+			width:'1200',
+			height:'630',
+		})
+		.then(function(canvas) {
+		document.querySelector('.social-render').remove();
+		console.log((canvas).toDataURL('image/png'));
+});
 	}
 
 	getResult() {
@@ -42,80 +55,50 @@ class Results extends Component {
 			};
 			return (
 				// Business Results
-				<div className="card">
-					<div className="results">
-						<div className="header-box">
-							<h1>Calculator Results:</h1>
-						</div>
-						<div className="middle-box">
-							<h2>Current Annual Healthcare Costs:</h2>
-						</div>
-						<div className='color-bar red'>
-							<span className='color-bar-text'>${this.props.vars[1]}</span>
-						</div>
-						<div className="middle-box">
-							<h2>Projected Annual Healthcare Costs:</h2>
-						</div>
-						<div className="color-bar-box">
-							<div style={colorBarGreen} className='color-bar green'><span className='color-bar-text'>${this.state.futureCost}</span></div>
-						</div>
-						<div className="percentages">
-							<div className="row">
-								<p>Employees Covered<br />Under Current System</p>
-								<p>Employees Covered<br />Under I-1600</p>
-							</div>
-							<div className="row">
-								<div className="col">
-									<span style={rangeStyle} className="percentage result-percentage">{this.props.range}%</span>
-								</div>
-								<div className="col">
-									<span className="percentage result-percentage">100%</span>
-								</div>
-							</div>
-						</div>
-						<div className="col white">
-							<h2 className="results-heading">Total Annual Savings:</h2>
-							<span className="results-total">${this.props.vars[1] - this.state.futureCost}</span>
-						</div>
-						<Socials size="40"/>
+				<div>
+					<div className="card">
+						<BusinessResults
+							colorBarGreen={colorBarGreen}
+							rangeStyle={rangeStyle}
+							vars={this.props.vars}
+							futureCost={this.state.futureCost}
+							range={this.props.range}
+						/>
+					</div>
+					{/* Hidden Render >> html2canvas >> base64 image string */}
+					<div className="social-render">
+						<BusinessResults
+							colorBarGreen={colorBarGreen}
+							rangeStyle={rangeStyle}
+							vars={this.props.vars}
+							futureCost={this.state.futureCost}
+							range={this.props.range}
+						/>
 					</div>
 				</div>
 			);
 		} else {
 			return (
 			// Individual Results
+			<div>
 				<div className='card'>
-					<div className="results">
-						<div className="header-box">
-							<h1>Calculator Results:</h1>
-						</div>
-						<div className="middle-box">
-							<h2>CONTRIBUTIONS</h2>
-						</div>
-						<div className="contributions-box">
-							<div className="contributions-row">
-								<p className='contributions-row-heading'>WA State Personal Health Assessment</p>
-								<p className="contributions-row-result">${Math.floor(this.state.income / 12)}/mo</p>
-							</div>
-							<div className="contributions-row">
-								<p className='contributions-row-heading'>Capital Gains Tax</p>
-								<p className="contributions-row-result">${Math.floor(this.state.capGains / 12)}/mo</p>
-							</div>
-							<div className="contributions-row">
-								<p className='contributions-row-heading'>Premium</p>
-								<p className="contributions-row-result">${Math.floor(this.state.premium / 12)}/mo</p>
-							</div>
-						</div>
-						<div className="middle-box">
-							<h2>TOTAL</h2>
-						</div>
-						<div className="total-box">
-							<p>${Math.floor(this.state.totalPersonalContribution / 12)}/mo</p>
-							<p>(${this.state.totalPersonalContribution}/yr)</p>
-						</div>
-						<Socials size="40"/>
-					</div>
+					<IndividualResults
+						income={this.state.income}
+						capGains={this.state.capGains}
+						premium={this.state.premium}
+						totalPersonalContribution={this.state.totalPersonalContribution}
+					/>
 				</div>
+				{/* Hidden Render >> html2canvas >> base64 image string */}
+				<div className="social-render">
+					<IndividualResults
+						income={this.state.income}
+						capGains={this.state.capGains}
+						premium={this.state.premium}
+						totalPersonalContribution={this.state.totalPersonalContribution}
+					/>
+				</div>
+			</div>
 			);
 		}
 	}

@@ -11,6 +11,15 @@ body{
 	height:100%;
 }
 
+.social-render{
+	width:1200px;
+	height:630px;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(52, 167, 238, 0.7);
+}
+
 h1,h2,p{
 	margin:0;
 }
