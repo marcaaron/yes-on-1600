@@ -94,7 +94,7 @@ class Results extends Component {
 						</div>
 						<div className="contributions-box">
 							<div className="contributions-row">
-								<p className='contributions-row-heading'>Income Tax</p>
+								<p className='contributions-row-heading'>WA State Personal Health Assessment</p>
 								<p className="contributions-row-result">${Math.floor(this.state.income / 12)}/mo</p>
 							</div>
 							<div className="contributions-row">

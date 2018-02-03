@@ -39,6 +39,13 @@ class Question extends Component {
 					>
 					</input>}
 
+					{/* {this.props.inputType==='confirm'&&
+					<div>
+						<button className="confirm-btn" type="submit" value="true">Yes</button>
+						<button className="confirm-btn" type="submit" value="false">No</button>
+					</div>
+					} */}
+
 					{this.props.inputType==='select-box' &&
 							<select defaultValue={this.props.vars[this.props.index]} onChange={this.props.handleChange} className="select-box" required>
 								{this.props.options.map((item, index)=>{

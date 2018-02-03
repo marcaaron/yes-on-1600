@@ -1,6 +1,8 @@
 const questions = {
 	individual:[
-		{questionText:"Your Annual Household Income:", inputType:'number', unit:'$'},
+		// {questionText:"Is Your Adjusted Gross Income Less Than $15,000/year?", inputType:'confirm'},
+		{questionText:"Your Adjusted Gross Income:", inputType:'number', unit:'$'},
+		// {questionText:"Are Your Net Long Term Capital Gains Less Than $15,000/year?", inputType:'confirm'},
 		{questionText:"Your Net Annual Capital Gains:", inputType:'number', unit:'$'},
 		{questionText:"Size of Your Household", inputType:'number'},
 		{questionText:"Number of Adults over 19", inputType:'number'}
