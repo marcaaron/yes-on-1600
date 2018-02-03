@@ -52,10 +52,10 @@ export const individualCalc = (a,b,c,d)=>{
 	}
 
 	if (grossIncome < 15000) {
-		let phaseOut = parseInt((15000 - grossIncome), 10) * 0.25;
-		payroll = (grossIncome - phaseOut) * 0.085;
+		let phaseOut = 15000 - (grossIncome * 0.25);
+		payroll = Math.max(0,((grossIncome - phaseOut) * 0.085));
 	} else if (grossIncome >= 15000 && grossIncome < 60000) {
-		let phaseOut = (15000 - grossIncome) * 0.25;
+		let phaseOut = 15000 - (grossIncome * 0.25);
 		income = (grossIncome - 15000) * 0.01;
 		payroll = (grossIncome - phaseOut) * 0.085;
 	} else if (grossIncome >= 60000) {
@@ -64,13 +64,12 @@ export const individualCalc = (a,b,c,d)=>{
 	}
 
 	// Caclculate Capital Gains  - (capGains)
-	capitalGains = parseInt(capitalGains, 10);
 
 	if (capitalGains < 15000) {
 		capGains = 0;
 	} else if (capitalGains >= 15000 && capitalGains < 60000) {
-		let ltcg = 15000 - (parseInt((capitalGains * 0.25), 10));
-		capGains = parseInt((capitalGains - ltcg) * 0.085, 10);
+		let ltcg = 15000 - (capitalGains * 0.25);
+		capGains = (capitalGains - ltcg) * 0.085;
 	} else if (capitalGains >= 60000) {
 		capGains = capitalGains * 0.085;
 	}
