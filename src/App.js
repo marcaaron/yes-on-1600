@@ -70,7 +70,7 @@ class App extends Component {
 	handleChange(e){
 		e.preventDefault();
 		let vars = [...this.state.vars];
-		vars[this.state.index] = parseInt(e.target.value,10);
+		vars[this.state.index] = e.target.value;
 		this.setState({vars});
 	}
 
