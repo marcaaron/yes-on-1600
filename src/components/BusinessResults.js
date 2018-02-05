@@ -45,11 +45,11 @@ class BusinessResults extends Component {
 						<span className="results-sub-heading">(While Covering All Employees)</span>
 						<span className="results-total">${this.props.vars[1] - this.props.futureCost}/year <sup>*</sup></span>
 						<span className="results-total-year"></span>
-						<span className="results-disclaimer"><em>Results are estimated based on company size provided. Please contact us for more information!</em></span>
+						<span className="results-disclaimer"><em>Results are estimated based on company size provided. Please contact us @ for a detailed assessment!</em></span>
 					</div> :
 					<div className="col white">
 						<h2 className="results-heading">Total Contribution:</h2>
-						<span className="results-sub-heading">(To Cover All Employees)<sup>*</sup></span>
+						<span className="results-sub-heading">(To Cover All Employees)</span>
 						<span className="results-total">${parseInt(this.props.futureCost/12, 10)}/month <sup>*</sup></span>
 						<span className="results-total-year">(${this.props.futureCost}/year)</span>
 						<span className="results-disclaimer"><em>* Results are estimated based on company size provided. Please contact us @ for a detailed assessment!</em></span>
