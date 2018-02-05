@@ -17,6 +17,7 @@ class Results extends Component {
 			premium: 0,
 			totalPersonalContribution: 0,
 			payroll: 0,
+			currentPremium:0,
 		}
 		this.getResult = this.getResult.bind(this);
 	}
@@ -40,7 +41,7 @@ class Results extends Component {
 			this.setState({ futureCost });
 		}
 		 else {
-			const state = individualCalc(this.props.vars[0], this.props.vars[1], this.props.vars[2], this.props.vars[3]);
+			const state = individualCalc(this.props.vars[0], this.props.vars[1], this.props.vars[2], this.props.vars[3], this.props.vars[4]);
 			this.setState(state);
 		}
 	}
@@ -87,6 +88,7 @@ class Results extends Component {
 						capGains={this.state.capGains}
 						premium={this.state.premium}
 						totalPersonalContribution={this.state.totalPersonalContribution}
+						currentPremium={this.state.currentPremium}
 					/>
 				</div>
 				{/* Hidden Render >> html2canvas >> base64 image string */}
@@ -96,6 +98,7 @@ class Results extends Component {
 						capGains={this.state.capGains}
 						premium={this.state.premium}
 						totalPersonalContribution={this.state.totalPersonalContribution}
+						currentPremium={this.state.currentPremium}
 					/>
 				</div>
 			</div>
