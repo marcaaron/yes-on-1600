@@ -5,7 +5,7 @@ html{
 body{
 	margin:0;
 	padding:0;
-	font-family: 'Barlow Semi Condensed', sans-serif;
+	font-family: 'Barlow', sans-serif;
 	background-color: rgb(50,60,143);
 	background-image: url('https://www.transparenttextures.com/patterns/diagmonds-light.png');
 	height:100%;
@@ -55,7 +55,6 @@ form{
 }
 
 button{
-	font-family: 'Barlow Semi Condensed', sans-serif;
 	font-size:1.4em;
 	background:#eaf8ff;
 	width:80%;
@@ -192,6 +191,10 @@ button:hover{
 .results-numbers{
 	font-size:2em;
 }
+.results-disclaimer{
+	text-align: center;
+	margin-bottom:0.5em;
+}
 
 .color-bar{
 	display:flex;
@@ -268,12 +271,21 @@ button:hover{
 	font-size: 2em;
 }
 .results-heading{
-	font-size:1.5em;
-	margin:0.5em;
+	font-size:2em;
+	margin-top:0.5em;
+	text-align: center;
+}
+.results-sub-heading{
+	font-size:0.9em;
+	margin-bottom:0.5em;
+	text-align: center;
 }
 
 .results-total{
 	font-size:2em;
+}
+.results-total-year{
+	font-size:1.5em;
 	margin:0 0 0.5em 0;
 }
 
@@ -284,6 +296,7 @@ button:hover{
 	width:100%;
 	text-align: center;
 	padding:0.5em 0;
+	border-bottom:3px solid black;
 }
 .contributions-row{
 	display:flex;

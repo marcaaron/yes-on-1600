@@ -51,6 +51,7 @@ header>div{
 }
 
 .header-text{
+	font-family: 'Barlow Semi Condensed', sans-serif;
 	font-weight:800;
 	letter-spacing: 0.1em;
 	font-size: 1.5em;
@@ -58,6 +59,7 @@ header>div{
 	user-select: none;
 }
 .header-sub-text{
+	font-family: 'Barlow Semi Condensed', sans-serif;
 	font-size: 1.3em;
 	color:white;
 	letter-spacing: 0.04em;
