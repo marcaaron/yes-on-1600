@@ -41,9 +41,18 @@ class App extends Component {
 	handleFwdBtn(){
 		let index = this.state.index;
 		if(index>-1 && this.state.vars[this.state.index]){
-			index++;
+			const questionArray = questions[`${this.state.userType}`];
+			if(questionArray[this.state.index].confirm && !this.state.confirm){
+				if(window.confirm(questionArray[this.state.index].confirmText)){
+					index++;
+					const confirm = true;
+					this.setState({index, confirm});
+				}
+			}else{
+				index++;
+				this.setState({index});
+			}
 		}
-		this.setState({index});
 	}
 
 	handleUserType(e){
