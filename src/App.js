@@ -14,6 +14,7 @@ class App extends Component {
 			index: -1,
 			vars:[],
 			range:50,
+			confirm:false,
 		}
 		this.handleUserType = this.handleUserType.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -53,17 +54,37 @@ class App extends Component {
 
 	handleSubmit(e){
 			e.preventDefault();
-			let vars = [...this.state.vars];
-			let input = e.nativeEvent.target[0].value;
-			if(!input){
-				alert('This field is required!')
-			}else{
-				if(typeof this.state.vars[this.state.index]==='undefined'){
-					vars.push(input);
+			const questionArray = questions[`${this.state.userType}`];
+
+			if(questionArray[this.state.index].confirm && !this.state.confirm){
+				if(window.confirm(questionArray[this.state.index].confirmText)){
+					let vars = [...this.state.vars];
+					let input = e.nativeEvent.target[0].value;
+					if(!input){
+						alert('This field is required!')
+					}else{
+						if(typeof this.state.vars[this.state.index]==='undefined'){
+							vars.push(input);
+						}
+						const confirm = true;
+						const index = this.state.index+1;
+						this.setState({index,vars, confirm});
+						e.target.reset();
+					}
 				}
-				const index = this.state.index+1;
-				this.setState({index,vars});
-				e.target.reset();
+			}else{
+				let vars = [...this.state.vars];
+				let input = e.nativeEvent.target[0].value;
+				if(!input){
+					alert('This field is required!')
+				}else{
+					if(typeof this.state.vars[this.state.index]==='undefined'){
+						vars.push(input);
+					}
+					const index = this.state.index+1;
+					this.setState({index,vars});
+					e.target.reset();
+				}
 			}
 		}
 
@@ -125,6 +146,8 @@ class App extends Component {
 				unit={questionArray[this.state.index].unit}
 				inputType={questionArray[this.state.index].inputType}
 				options={questionArray[this.state.index].options ||''}
+				tip={questionArray[this.state.index].tip||''}
+				link={questionArray[this.state.index].link||''}
 			/>
 		}
 

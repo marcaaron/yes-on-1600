@@ -59,6 +59,15 @@ class Question extends Component {
 							<span className="range">{this.props.range}%</span>
 						</div>
 					}
+					{this.props.tip &&
+						<div className="tip-box">
+							<i className="fa fa-2x fa-exclamation-triangle tip-icon"></i>
+							<div className="tip">
+								{this.props.tip}
+							</div>
+							<a className="tip-link" href={this.props.link[0]} target="_blank">{this.props.link[1]}</a>
+						</div>
+					}
 					<button type="submit">Next &gt;&gt;</button>
 				</form>
 			</div>
