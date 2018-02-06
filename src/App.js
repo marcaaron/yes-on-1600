@@ -100,13 +100,15 @@ class App extends Component {
 					<button
 						onClick={this.handleUserType}
 						type="submit"
-						value="business">I'm a Business Owner
+						value="business">
+						I'm a Business Owner
 					</button>
 
 					<button
 						onClick={this.handleUserType}
 						type="submit"
-						value="individual">I'm an Individual
+						value="individual">
+						I'm an Individual
 					</button>
 			</div>}
 

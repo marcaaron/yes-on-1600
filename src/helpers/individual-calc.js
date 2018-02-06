@@ -19,7 +19,7 @@ export const individualCalc = (a,b,c,d,e)=>{
 		capGains = 0,
 		grossIncome = a,
 		capitalGains = b,
-		currentPremium = parseInt(c*12),
+		currentPremium = parseInt(c*12, 10),
 		sizeOfHousehold = d,
 		numberOfAdults = parseInt(e, 10);
 
