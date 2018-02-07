@@ -5,7 +5,7 @@ const questions = {
 			questionText:"Your Adjusted Gross Income (AGI):",
 			inputType:'number',
 			unit:'$',
-			tip: "Adjusted gross income (AGI) is an individual's total gross income minus specific deductions. In order to calculate your costs accurately it is VERY IMPORTANT to enter your AGI and NOT gross income. To find your AGI, refer to your last year's tax return or use the AGI calculator provided below prior to proceeding!",
+			tip: `<p>Adjusted gross income (AGI) is an individual's total gross income minus specific deductions. In order to calculate your costs accurately it is <strong>VERY IMPORTANT</strong> to enter your AGI and NOT gross income. To find your AGI, refer to your last year's tax return or use the AGI calculator provided below prior to proceeding!</p><ul><li>If you filed Form 1040: the AGI is on line 37.</li><li>If you filed Form 1040A: the AGI is on line 21.</li><li>If you filed Form 1040EZ: the AGI is on line 4.</li></ul>`,
 			link:['http://money.cnn.com/tmp/networth2.html','Take me to the AGI Caculator first...'],
 			confirm: true,
 			confirmText: 'Danger, Will Robinson! If you enter your Gross Income and not your AGI, you will not receive the correct calculation! Proceed anyway?'

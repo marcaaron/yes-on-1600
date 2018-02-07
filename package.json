@@ -5,6 +5,7 @@
   "homepage": "https://marcaaron.github.io/ww-calc-2.0",
   "dependencies": {
     "gh-pages": "^1.1.0",
+    "html-react-parser": "^0.4.1",
     "html2canvas": "^1.0.0-alpha.9",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",

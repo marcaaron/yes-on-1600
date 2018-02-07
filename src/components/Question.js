@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/Question.css';
+import Parser from 'html-react-parser';
 
 class Question extends Component {
 	constructor(props){
@@ -63,7 +64,7 @@ class Question extends Component {
 						<div className="tip-box">
 							<i className="fa fa-2x fa-exclamation-triangle tip-icon"></i>
 							<div className="tip">
-								{this.props.tip}
+								{Parser(this.props.tip)}
 							</div>
 							<a className="tip-link" href={this.props.link[0]} target="_blank">{this.props.link[1]}</a>
 						</div>
