@@ -10,18 +10,22 @@ class BusinessResults extends Component {
 				</div>
 				{ (this.props.vars[1]-this.props.futureCost) > 0 &&
 					[
+				<div className="cost-bars-container">
 					<div className="middle-box">
 						<h2>Current Annual Healthcare Costs:</h2>
-					</div>,
-					<div className='color-bar red'>
-						<span className='color-bar-text'>${this.props.vars[1]}</span>
-					</div>,
+					</div>
+					<div className="color-bar-box">
+						<div className='color-bar red'>
+							<span className='color-bar-text'>${this.props.vars[1]}</span>
+						</div>
+					</div>
 					<div className="middle-box">
 						<h2>Projected Annual Healthcare Costs:</h2>
-					</div>,
+					</div>
 					<div className="color-bar-box">
 						<div style={this.props.colorBarGreen} className='color-bar green'><span className='color-bar-text'>${this.props.futureCost}</span></div>
 					</div>
+				</div>
 					]
 				}
 

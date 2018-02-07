@@ -68,7 +68,7 @@ class Question extends Component {
 							<a className="tip-link" href={this.props.link[0]} target="_blank">{this.props.link[1]}</a>
 						</div>
 					}
-					<button type="submit">Next &gt;&gt;</button>
+					<button type="submit">Next</button>
 				</form>
 			</div>
 		);
