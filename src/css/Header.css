@@ -12,6 +12,7 @@ header{
 	display:flex;
 	justify-content: center;
 	align-items: center;
+	z-index:999999;
 }
 header>div{
 	text-align: center;
