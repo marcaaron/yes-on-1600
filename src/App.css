@@ -443,6 +443,12 @@ button:hover{
 	.slider{
 		width:315px;
 	}
+	.contributions-row-heading{
+		padding:0.5em;
+	}
+	.results{
+		width:90%
+	}
 }
 
  @media screen and (min-width:450px) {
@@ -455,6 +461,9 @@ button:hover{
 	}
 	.slider{
 		width:90%;
+	}
+	.results{
+		width:80%
 	}
 
   }
