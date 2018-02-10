@@ -21,8 +21,8 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 		spouseAGI = b,
 		capitalGains = c,
 		currentPremium = d,
-		sizeOfHousehold = e,
-		numberOfAdults = parseInt(f, 10);
+		sizeOfHousehold = e;
+		// numberOfAdults = parseInt(f, 10);
 
 	function calc200fpl(size) {
 		if (size > 8) {
@@ -57,6 +57,6 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 	}
 
 	const totalPersonalContribution = (parseInt(income,10) + parseInt(capitalGainsContribution,10) + parseInt(premium, 10));
-
-	return { fpl200, income, capitalGainsContribution, premium, totalPersonalContribution, currentPremium };
+	const savings = parseInt(currentPremium*12,10) - totalPersonalContribution;
+	return { fpl200, income, savings, capitalGainsContribution, premium, totalPersonalContribution, currentPremium };
 };

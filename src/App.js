@@ -55,14 +55,27 @@ class App extends Component {
 		let index = this.state.index;
 		let userType = this.state.userType;
 		let vars = [...this.state.vars];
-		if(index>=0){
-			index--;
-			if(index===-1){
-				userType='';
-				vars=[];
+		// Prevent the app from repeatedly calling skipIndex() when we're at the index immediately AFTER any indices we want to skip. We check if the hiddenIndexes blocklist includes the previous index and if it does decrement index by 2 instead of 1.
+		if(this.state.hiddenIndexes.includes(index-1)){
+			index-=2;
+		}else{
+			if(index>=0){
+				index--;
+				if(index===-1){
+					userType='';
+					vars=[];
+				}
 			}
 		}
 		this.setState({index, userType,vars});
+	}
+
+	componentDidUpdate(){
+		console.log('component did update');
+		if(this.state.hiddenIndexes.includes(this.state.index)){
+			console.log('skip this one');
+			this.skipIndex();
+		}
 	}
 
 	handleFwdBtn(){
@@ -76,7 +89,11 @@ class App extends Component {
 					this.setState({index, confirm});
 				}
 			}else{
-				index++;
+				if(this.state.hiddenIndexes.includes(index+1)){
+					index+=2;
+				}else{
+					index++;
+				}
 				this.setState({index});
 			}
 		}
@@ -187,9 +204,6 @@ class App extends Component {
 				link={questionArray[this.state.index].link||''}
 				handleSelectBtn = {this.handleSelectBtn}
 			/>
-		}
-		{
-			this.state.hiddenIndexes.includes(this.state.index) && this.skipIndex()
 		}
 
 		{this.state.index>-1 && this.state.index === questionArray.length &&

@@ -60,7 +60,11 @@ class BusinessResults extends Component {
 
 					</div>
 				}
-				<Socials size="40"/>
+				<Socials
+					imageURL={this.props.imageURL}
+					size="40"
+				/>
+
 			</div>
 		);
 	}

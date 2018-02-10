@@ -14,8 +14,11 @@ class Results extends Component {
 			income: 0,
 			capitalGainsContribution: 0,
 			premium: 0,
+			savings: 0,
 			totalPersonalContribution: 0,
 			currentPremium:0,
+			imageURL:'',
+			imageb64:''
 		}
 		this.getResult = this.getResult.bind(this);
 	}
@@ -27,10 +30,11 @@ class Results extends Component {
 			width:'1200',
 			height:'630',
 		})
-		.then(function(canvas) {
-		document.querySelector('.social-render').remove();
-		console.log((canvas).toDataURL('image/png'));
-});
+		.then((canvas)=>{
+			document.querySelector('.social-render').remove();
+			const imageURL = (canvas).toDataURL('image/png');
+			this.setState({imageURL});
+		});
 	}
 
 	getResult() {
@@ -87,6 +91,8 @@ class Results extends Component {
 						premium={this.state.premium}
 						totalPersonalContribution={this.state.totalPersonalContribution}
 						currentPremium={this.state.currentPremium}
+						imageURL={this.state.imageURL}
+						savings={this.state.savings}
 					/>
 				</div>
 				{/* Hidden Render >> html2canvas >> base64 image string */}
@@ -97,6 +103,8 @@ class Results extends Component {
 						premium={this.state.premium}
 						totalPersonalContribution={this.state.totalPersonalContribution}
 						currentPremium={this.state.currentPremium}
+						imageURL={this.state.imageURL}
+						savings={this.state.savings}
 					/>
 				</div>
 			</div>

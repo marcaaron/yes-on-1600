@@ -39,7 +39,21 @@ class IndividualResults extends Component {
 					<p>${Math.floor(this.props.totalPersonalContribution / 12)}/mo</p>
 					<p>(${this.props.totalPersonalContribution}/yr)</p>
 				</div>
-				<Socials size="40"/>
+				{this.props.savings>0 &&
+					[
+					<div className="middle-box">
+						<h2>TOTAL SAVINGS</h2>
+					</div>,
+					<div className="total-box">
+						<p>${this.props.savings}/yr</p>
+					</div>
+					]
+				}
+				<Socials
+					savings={this.props.savings}
+					imageURL={this.props.imageURL}
+					size="40"
+				/>
 			</div>
 		);
 	}
