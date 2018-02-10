@@ -1,6 +1,11 @@
 const questions = {
 	individual:[
-		// {questionText:"Is Your Adjusted Gross Income Less Than $15,000/year?", inputType:'confirm'},
+		{
+			questionText:'How Do You File Your Tax Return?',
+			inputType:'button',
+			options:['Single', 'Married Jointly','Married Separately'],
+			indexToHide:2,
+			condition:'Single'		},
 		{
 			questionText:"Your Adjusted Gross Income (AGI):",
 			inputType:'number',
@@ -8,10 +13,10 @@ const questions = {
 			tip: `<p>Adjusted gross income (AGI) is an individual's total gross income minus specific deductions. In order to calculate your costs accurately it is <strong>VERY IMPORTANT</strong> to enter your AGI and NOT gross income. To find your AGI, refer to your last year's tax return or use the AGI calculator provided below prior to proceeding!</p><ul><li>If you filed Form 1040: the AGI is on line 37.</li><li>If you filed Form 1040A: the AGI is on line 21.</li><li>If you filed Form 1040EZ: the AGI is on line 4.</li></ul>`,
 			link:['http://money.cnn.com/tmp/networth2.html','Take me to the AGI Caculator first...'],
 			confirm: true,
-			confirmText: 'Danger, Will Robinson! If you enter your Gross Income and not your AGI, you will not receive the correct calculation! Proceed anyway?'
+			confirmText: '🤖 Danger, Will Robinson! 🤖 \n\n If you enter your Gross Income and not your AGI, you will not receive the correct calculation! Proceed anyway?'
 		},
-		// {questionText:"Are Your Net Long Term Capital Gains Less Than $15,000/year?", inputType:'confirm'},
-		{questionText:"Your Net Annual Capital Gains:", inputType:'number', unit:'$'},
+		{questionText:"Your Spouse's Adjusted Gross Income:", inputType:'number', unit:'$', defaultValue:0},
+		{questionText:"Your Net Long-Term Capital Gains:", inputType:'number', unit:'$'},
 		{questionText:"Your Current Monthly Health Insurance Premium:", inputType:'number', unit:'$'},
 		{questionText:"Size of Your Household", inputType:'number'},
 		{questionText:"Number of Adults over 19", inputType:'number'}

@@ -15,6 +15,7 @@ class App extends Component {
 			vars:[],
 			range:50,
 			confirm:false,
+			hiddenIndexes:[],
 		}
 		this.handleUserType = this.handleUserType.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,6 +23,32 @@ class App extends Component {
 		this.handleBackBtn = this.handleBackBtn.bind(this);
 		this.handleChange = this.handleChange.bind(this);
 		this.handleFwdBtn = this.handleFwdBtn.bind(this);
+		this.handleSelectBtn = this.handleSelectBtn.bind(this);
+		this.skipIndex = this.skipIndex.bind(this);
+
+	}
+
+	handleSelectBtn(e){
+		const questionArray = questions[`${this.state.userType}`];
+		const question = questionArray[this.state.index];
+		let vars = [...this.state.vars];
+		let index = this.state.index+1;
+		let input = e.target.value;
+		let hiddenIndexes = [...this.state.hiddenIndexes];
+		if(input===question.condition){
+			hiddenIndexes.push(question.indexToHide);
+		}
+		vars[this.state.index] = input;
+		this.setState({vars, index, hiddenIndexes});
+	}
+
+	skipIndex(){
+		const questionArray = questions[`${this.state.userType}`];
+		const question = questionArray[this.state.index];
+		let index = this.state.index+1;
+		let vars = [...this.state.vars];
+		vars.push(question.defaultValue);
+		this.setState({index, vars});
 	}
 
 	handleBackBtn(){
@@ -63,12 +90,13 @@ class App extends Component {
 
 	handleSubmit(e){
 			e.preventDefault();
+			console.log(e.target);
 			const questionArray = questions[`${this.state.userType}`];
 
 			if(questionArray[this.state.index].confirm && !this.state.confirm){
 				if(window.confirm(questionArray[this.state.index].confirmText)){
 					let vars = [...this.state.vars];
-					let input = e.nativeEvent.target[0].value;
+					let input = e.nativeEvent.target[0].value || e.target.value;
 					if(!input){
 						alert('This field is required!')
 					}else{
@@ -143,7 +171,7 @@ class App extends Component {
 			</div>}
 
 		{this.state.index>-1 &&
-		 this.state.index<questionArray.length &&
+		 this.state.index<questionArray.length && !this.state.hiddenIndexes.includes(this.state.index) &&
 			<Question
 				vars={this.state.vars}
 				index={this.state.index}
@@ -157,7 +185,11 @@ class App extends Component {
 				options={questionArray[this.state.index].options ||''}
 				tip={questionArray[this.state.index].tip||''}
 				link={questionArray[this.state.index].link||''}
+				handleSelectBtn = {this.handleSelectBtn}
 			/>
+		}
+		{
+			this.state.hiddenIndexes.includes(this.state.index) && this.skipIndex()
 		}
 
 		{this.state.index>-1 && this.state.index === questionArray.length &&

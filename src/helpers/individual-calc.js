@@ -1,4 +1,4 @@
-export const individualCalc = (a,b,c,d,e)=>{
+export const individualCalc = (a,b,c,d,e,f)=>{
 	const
 		prem = 134,
 		fpl1808 = 4320,
@@ -14,14 +14,15 @@ export const individualCalc = (a,b,c,d,e)=>{
 		];
 	let
 		premium = 0,
-		payroll = 0,
 		income = 0,
-		capGains = 0,
-		grossIncome = a,
-		capitalGains = b,
-		currentPremium = parseInt(c*12, 10),
-		sizeOfHousehold = d,
-		numberOfAdults = parseInt(e, 10);
+		capitalGainsContribution = 0,
+		// householdPremium = 0,
+		adjustedGrossIncome = a,
+		spouseAGI = b,
+		capitalGains = c,
+		currentPremium = d,
+		sizeOfHousehold = e,
+		numberOfAdults = parseInt(f, 10);
 
 	function calc200fpl(size) {
 		if (size > 8) {
@@ -33,49 +34,29 @@ export const individualCalc = (a,b,c,d,e)=>{
 		}
 	}
 
-	if (numberOfAdults > sizeOfHousehold) {
-		numberOfAdults = sizeOfHousehold
-	}
-	if (grossIncome === '') {
-		grossIncome = 0;
-	}
-	if (capitalGains === '') {
-		capitalGains = 0;
-	}
-	grossIncome = parseInt(grossIncome, 10);
-	capitalGains = parseInt(capitalGains, 10);
-
-	const totalIncome = grossIncome + capitalGains;
 	const fpl200 = calc200fpl(sizeOfHousehold);
 
-	if (fpl200 < totalIncome) {
-		premium = prem * numberOfAdults * 12;
+	if(fpl200 < (adjustedGrossIncome+spouseAGI)){
+		premium = ((prem)*12);
+		// householdPremium = ((prem*numberOfAdults)*12);
 	}
 
-	if (grossIncome < 15000) {
-		let phaseOut = 15000 - (grossIncome * 0.25);
-		payroll = Math.max(0,((grossIncome - phaseOut) * 0.085));
-	} else if (grossIncome >= 15000 && grossIncome < 60000) {
-		let phaseOut = 15000 - (grossIncome * 0.25);
-		income = (grossIncome - 15000) * 0.01;
-		payroll = (grossIncome - phaseOut) * 0.085;
-	} else if (grossIncome >= 60000) {
-		income = (grossIncome - 15000) * 0.01;
-		payroll = (grossIncome - 15000) * 0.085;
+	if(adjustedGrossIncome < 15000){
+		income =0;
+	}else if(adjustedGrossIncome >= 15000){
+		income = ((adjustedGrossIncome-15000)*0.01);
 	}
 
-	// Caclculate Capital Gains  - (capGains)
-
-	if (capitalGains < 15000) {
-		capGains = 0;
-	} else if (capitalGains >= 15000 && capitalGains < 60000) {
-		let ltcg = 15000 - (capitalGains * 0.25);
-		capGains = (capitalGains - ltcg) * 0.085;
-	} else if (capitalGains >= 60000) {
-		capGains = capitalGains * 0.085;
+	if(capitalGains < 15000){
+		capitalGainsContribution = 0;
+	}else if(parseInt(capitalGains,10) >= 15000 && parseInt(capitalGains,10) < 60000){
+		const ltcg = (15000 - (parseInt(capitalGains,10)*0.25));
+		capitalGainsContribution = ((parseInt(capitalGains,10)-parseInt(ltcg,10))*0.085);
+	}else if(parseInt(capitalGains,10) >= 60000){
+		capitalGainsContribution = (parseInt(capitalGains,10)*0.085);
 	}
 
-	const totalPersonalContribution = income + capGains + premium;
-	payroll = parseInt(payroll, 10);
-	return { fpl200, income, capGains, premium, totalPersonalContribution, payroll, currentPremium };
+	const totalPersonalContribution = (parseInt(income,10) + parseInt(capitalGainsContribution,10) + parseInt(premium, 10));
+
+	return { fpl200, income, capitalGainsContribution, premium, totalPersonalContribution, currentPremium };
 };
