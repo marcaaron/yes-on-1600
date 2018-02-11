@@ -19,8 +19,26 @@ const questions = {
 		{questionText:"Your Spouse's Adjusted Gross Income:", inputType:'number', unit:'$', defaultValue:0},
 		{questionText:"Your Net Long-Term Capital Gains:", inputType:'number', unit:'$'},
 		{questionText:"Your Current Monthly Health Insurance Premium:", inputType:'number', unit:'$'},
-		{questionText:"Size of Your Household", inputType:'number'},
-		{questionText:"Number of Adults over 19", inputType:'number'}
+		{
+			questionText:"Size of Your Household",
+			inputType:'number',
+			min:{
+				val: 1,
+				error: 'Please enter a household size greater than zero.'
+			}
+		},
+		{
+			questionText:"Number of Adults over 19",
+			inputType:'number',
+			min:{
+				val: 1,
+				error: 'Please enter a value greater than zero.'
+			},
+			max:{
+				val: 'Size of Your Household',
+				error:'Number of Adults over 19 cannot exceed total household size!'
+			}
+		}
 	],
 	business:[
 		{questionText:'Annual Total Payroll Costs:', inputType:'number',unit:'$'},

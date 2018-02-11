@@ -129,10 +129,25 @@ class App extends Component {
 					}
 				}
 			}else{
+				const question = questionArray[this.state.index];
 				let vars = [...this.state.vars];
 				let input = e.nativeEvent.target[0].value;
+				function findMax(element) {
+  					return element.questionText===question.max.val;
+				}
+				// If it's empty
 				if(!input){
 					alert('This field is required!')
+				}
+				// else if it has a 'min' option
+				else if(question.min && input < question.min.val){
+					alert(question.min.error);
+				}
+				// else if it has a 'max' option and max references the value returned by a preceding question - flagged by questionText and found with the above function findMax()/
+				else if(question.max &&
+					input > this.state.vars[questionArray.findIndex(findMax)]
+				){
+					alert(question.max.error);
 				}else{
 					if(typeof this.state.vars[this.state.index]==='undefined'){
 						vars.push(input);
