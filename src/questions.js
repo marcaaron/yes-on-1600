@@ -5,7 +5,8 @@ const questions = {
 			inputType:'button',
 			options:['Single', 'Married Jointly','Married Separately'],
 			indexToHide:2,
-			condition:'Single'		},
+			condition:'Married Separately'
+		},
 		{
 			questionText:"Your Adjusted Gross Income (AGI):",
 			inputType:'number',

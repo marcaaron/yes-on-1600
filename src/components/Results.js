@@ -1,6 +1,9 @@
 import html2canvas from 'html2canvas';
 import BusinessResults from './BusinessResults';
+import BusinessRender from './BusinessRender';
+
 import IndividualResults from './IndividualResults';
+import IndividualRender from './IndividualRender';
 
 import React, { Component } from 'react';
 import {businessCalc} from '../helpers/business-calc';
@@ -27,7 +30,7 @@ class Results extends Component {
 	}
 	componentDidMount(){
 		html2canvas(document.querySelector('.social-render'),{
-			width:'1200',
+			width:'630',
 			height:'630',
 		})
 		.then((canvas)=>{
@@ -66,16 +69,14 @@ class Results extends Component {
 							vars={this.props.vars}
 							futureCost={this.state.futureCost}
 							range={this.props.range}
+							imageURL={this.state.imageURL}
 						/>
 					</div>
 					{/* Hidden Render >> html2canvas >> base64 image string */}
 					<div className="social-render">
-						<BusinessResults
-							colorBarGreen={colorBarGreen}
-							rangeStyle={rangeStyle}
+						<BusinessRender
 							vars={this.props.vars}
 							futureCost={this.state.futureCost}
-							range={this.props.range}
 						/>
 					</div>
 				</div>
@@ -97,13 +98,8 @@ class Results extends Component {
 				</div>
 				{/* Hidden Render >> html2canvas >> base64 image string */}
 				<div className="social-render">
-					<IndividualResults
-						income={this.state.income}
-						capitalGainsContribution={this.state.capitalGainsContribution}
-						premium={this.state.premium}
+					<IndividualRender
 						totalPersonalContribution={this.state.totalPersonalContribution}
-						currentPremium={this.state.currentPremium}
-						imageURL={this.state.imageURL}
 						savings={this.state.savings}
 					/>
 				</div>

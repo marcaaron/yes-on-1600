@@ -83,12 +83,84 @@ svg:hover{
 }
 
 .social-render{
-	width:1200px;
+	width:630px;
 	height:630px;
+
+	background: -webkit-linear-gradient(top left, #578cfd, #00d1bf);
+	background: -o-linear-gradient(top left, #578cfd, #00d1bf);
+	background: linear-gradient(to bottom right, #578cfd, #00d1bf);
+}
+.social-results{
 	display:flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: rgba(52, 167, 238, 0.7);
+	text-align: center;
+	height:95%;
+	font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.social-saving{
+	font-weight: 800;
+	font-size: 6em;
+}
+.social-contribution{
+	font-weight: 800;
+	font-size: 4.5em;
+}
+.social-cost{
+	font-weight: 600;
+	font-size:6em;
+}
+.social-amount{
+	color:white;
+	flex:1
+}
+.social-year{
+	font-size:7em;
+}
+.social-yes{
+		font-size:7em;
+		font-weight: 800;
+		line-height: 0.7em;
+}
+.social-universal{
+	font-size:7.5em;
+	font-weight: 600;
+	color:white;
+	line-height: 1.4em;
+}
+.social-healthcare{
+	line-height: 0.7em;
+	font-size:6.5em;
+	font-weight: 600;
+	color:white;
+}
+
+.employees-covered-block{
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	flex:2;
+}
+.social-100{
+	font-size:6em;
+	font-weight: 800;
+	line-height: 0.7em;
+}
+.social-employees{
+	font-size:6.5em;
+	font-weight: 600;
+	color:white;
+	line-height: 1.4em;
+}
+.social-covered{
+	line-height: 0.7em;
+	font-size:8.3em;
+	font-weight: 600;
+	color:white;
 }
 
 h1,h2,p{

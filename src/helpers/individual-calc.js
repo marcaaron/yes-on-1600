@@ -17,7 +17,7 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 		income = 0,
 		capitalGainsContribution = 0,
 		// householdPremium = 0,
-		adjustedGrossIncome = a,
+		adjustedGrossIncome = parseInt(a,10),
 		spouseAGI = b,
 		capitalGains = c,
 		currentPremium = d,
@@ -35,14 +35,14 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 	}
 
 	const fpl200 = calc200fpl(sizeOfHousehold);
-
 	if(fpl200 < (adjustedGrossIncome+spouseAGI)){
 		premium = ((prem)*12);
+		console.log('multiplying premium by 12');
 		// householdPremium = ((prem*numberOfAdults)*12);
 	}
-
+	console.log(premium);
 	if(adjustedGrossIncome < 15000){
-		income =0;
+		income = 0;
 	}else if(adjustedGrossIncome >= 15000){
 		income = ((adjustedGrossIncome-15000)*0.01);
 	}

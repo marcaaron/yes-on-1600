@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class BusinessResults extends Component {
 	render(){
 		return(
-			<div className="results">
+			<div className={`results ${this.props.resultStyle}`}>
 				<div className="header-box">
 					<h1>Calculator Results:</h1>
 				</div>
@@ -63,6 +63,7 @@ class BusinessResults extends Component {
 				<Socials
 					imageURL={this.props.imageURL}
 					size="40"
+					killClass={this.props.killClass}
 				/>
 
 			</div>

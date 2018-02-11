@@ -35,7 +35,7 @@ class App extends Component {
 		let index = this.state.index+1;
 		let input = e.target.value;
 		let hiddenIndexes = [...this.state.hiddenIndexes];
-		if(input===question.condition){
+		if(input!==question.condition){
 			hiddenIndexes.push(question.indexToHide);
 		}
 		vars[this.state.index] = input;
@@ -55,6 +55,7 @@ class App extends Component {
 		let index = this.state.index;
 		let userType = this.state.userType;
 		let vars = [...this.state.vars];
+		let hiddenIndexes = [...this.state.hiddenIndexes];
 		// Prevent the app from repeatedly calling skipIndex() when we're at the index immediately AFTER any indices we want to skip. We check if the hiddenIndexes blocklist includes the previous index and if it does decrement index by 2 instead of 1.
 		if(this.state.hiddenIndexes.includes(index-1)){
 			index-=2;
@@ -64,10 +65,11 @@ class App extends Component {
 				if(index===-1){
 					userType='';
 					vars=[];
+					hiddenIndexes=[];
 				}
 			}
 		}
-		this.setState({index, userType,vars});
+		this.setState({index, userType,vars, hiddenIndexes});
 	}
 
 	componentDidUpdate(){

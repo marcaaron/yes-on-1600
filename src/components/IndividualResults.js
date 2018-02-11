@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class IndividualResults extends Component {
 	render(){
 		return(
-			<div className="results">
+			<div className={`results ${this.props.resultStyle}`}>
 				<div className="header-box">
 					<h1>Calculator Results:</h1>
 				</div>
@@ -50,6 +50,7 @@ class IndividualResults extends Component {
 					]
 				}
 				<Socials
+					killClass={this.props.killClass}
 					savings={this.props.savings}
 					imageURL={this.props.imageURL}
 					size="40"
