@@ -12,8 +12,8 @@ class IndividualResults extends Component {
 					<h2>CURRENT COSTS</h2>
 				</div>
 				<div className="total-box">
-					<p>${this.props.currentPremium}/mo</p>
-					<p>(${parseInt(this.props.currentPremium*12,10)}/yr)</p>
+					<p>${this.props.currentCosts}/mo</p>
+					<p>(${parseInt(this.props.currentCosts*12,10)}/yr)</p>
 				</div>
 				<div className="middle-box">
 					<h2>CONTRIBUTIONS</h2>
@@ -28,7 +28,7 @@ class IndividualResults extends Component {
 						<p className="contributions-row-result">${Math.floor(this.props.capitalGainsContribution / 12)}/mo</p>
 					</div>
 					<div className="contributions-row">
-						<p className='contributions-row-heading'>Premium</p>
+						<p className='contributions-row-heading'>Household Premium</p>
 						<p className="contributions-row-result">${Math.floor(this.props.premium / 12)}/mo</p>
 					</div>
 				</div>

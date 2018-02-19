@@ -140,12 +140,12 @@ class App extends Component {
 					alert('This field is required!')
 				}
 				// else if it has a 'min' option
-				else if(question.min && input < question.min.val){
+				else if(question.min && parseInt(input,10) < question.min.val){
 					alert(question.min.error);
 				}
 				// else if it has a 'max' option and max references the value returned by a preceding question - flagged by questionText and found with the above function findMax()/
 				else if(question.max &&
-					input > this.state.vars[questionArray.findIndex(findMax)]
+					parseInt(input,10) > this.state.vars[questionArray.findIndex(findMax)]
 				){
 					alert(question.max.error);
 				}else{

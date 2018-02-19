@@ -1,4 +1,4 @@
-export const individualCalc = (a,b,c,d,e,f)=>{
+export const individualCalc = (a,b,c,d,e,f,g)=>{
 	const
 		prem = 134,
 		fpl1808 = 4320,
@@ -16,13 +16,15 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 		premium = 0,
 		income = 0,
 		capitalGainsContribution = 0,
-		// householdPremium = 0,
-		adjustedGrossIncome = parseInt(a,10),
-		spouseAGI = b,
-		capitalGains = c,
-		currentPremium = d,
-		sizeOfHousehold = e;
-		// numberOfAdults = parseInt(f, 10);
+		householdPremium = 0,
+		sizeOfHousehold = parseInt(a,10),
+		adjustedGrossIncome = parseInt(b,10),
+		capitalGains = parseInt(c,10),
+		houseAGI = parseInt(d,10),
+		houseLTCG = parseInt(e,10),
+		numberOfAdults = parseInt(f, 10),
+		currentCosts = parseInt(g,10),
+		spouseAGI = 0;
 
 	function calc200fpl(size) {
 		if (size > 8) {
@@ -57,6 +59,6 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 	}
 
 	const totalPersonalContribution = (parseInt(income,10) + parseInt(capitalGainsContribution,10) + parseInt(premium, 10));
-	const savings = parseInt(currentPremium*12,10) - totalPersonalContribution;
-	return { fpl200, income, savings, capitalGainsContribution, premium, totalPersonalContribution, currentPremium };
+	const savings = parseInt(currentCosts*12,10) - totalPersonalContribution;
+	return { fpl200, income, savings, capitalGainsContribution, premium, totalPersonalContribution, currentCosts };
 };

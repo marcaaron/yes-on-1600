@@ -1,11 +1,12 @@
 const questions = {
 	individual:[
 		{
-			questionText:'How Do You File Your Tax Return?',
-			inputType:'button',
-			options:['Single', 'Married Jointly','Married Separately'],
-			indexToHide:2,
-			condition:'Married Separately'
+			questionText:"Size of Your Household",
+			inputType:'number',
+			min:{
+				val: 1,
+				error: 'Please enter a household size greater than zero.'
+			}
 		},
 		{
 			questionText:"Your Adjusted Gross Income (AGI):",
@@ -16,16 +17,22 @@ const questions = {
 			confirm: true,
 			confirmText: '🤖 Danger, Will Robinson! 🤖 \n\n If you enter your Gross Income and not your AGI, you will not receive the correct calculation! Proceed anyway?'
 		},
-		{questionText:"Your Spouse's Adjusted Gross Income:", inputType:'number', unit:'$', defaultValue:0},
-		{questionText:"Your Net Long-Term Capital Gains:", inputType:'number', unit:'$'},
-		{questionText:"Your Current Monthly Health Insurance Premium:", inputType:'number', unit:'$'},
 		{
-			questionText:"Size of Your Household",
+			questionText:"Your Net Long-Term Capital Gains:",
 			inputType:'number',
-			min:{
-				val: 1,
-				error: 'Please enter a household size greater than zero.'
-			}
+			unit:'$'
+		},
+		{
+			questionText:"Household Adjusted Gross Income:",
+			inputType:'number',
+			unit:'$',
+			defaultValue:0
+		},
+		{
+			questionText:"Household Net Long-Term Capital Gains:",
+			inputType:'number',
+			unit:'$',
+			defaultValue:0
 		},
 		{
 			questionText:"Number of Adults over 19",
@@ -38,6 +45,12 @@ const questions = {
 				val: 'Size of Your Household',
 				error:'Number of Adults over 19 cannot exceed total household size!'
 			}
+		},
+		{
+			questionText:"Your Current Monthly Health Care Costs",
+			inputType:'number',
+			unit:'$',
+			tip:'Include premiums, doctor visits, and medications.'
 		}
 	],
 	business:[
