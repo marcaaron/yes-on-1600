@@ -26,23 +26,38 @@ export const individualCalc = (a,b,c,d,e,f,g)=>{
 		currentCosts = parseInt(g,10),
 		spouseAGI = 0;
 
-	function calc200fpl(size) {
+	function fpl(size) {
 		if (size > 8) {
 			let extra = size - 8;
 			extra *= fpl1808;
-			return (fpl18[8] + extra) * 2;
+			return (fpl18[8] + extra);
 		} else {
-			return fpl18[size] * 2;
+			return fpl18[size];
 		}
 	}
 
-	const fpl200 = calc200fpl(sizeOfHousehold);
-	if(fpl200 < (adjustedGrossIncome+spouseAGI)){
-		premium = ((prem)*12);
+	const fplCheck = fpl(sizeOfHousehold);
+	const houseHoldIncome = houseAGI + houseLTCG;
+	if(fplCheck*2 <= houseHoldIncome && fplCheck*2.33 >= houseHoldIncome){
+		premium = ((prem*.25)*12);
+		console.log('multiplying premium by 12');
+		// householdPremium = ((prem*.25*numberOfAdults)*12);
+	} else if(fplCheck*2.33 < houseHoldIncome && fplCheck*2.67 >= houseHoldIncome){
+		premium = ((prem*.5)*12);
+		console.log('multiplying premium by 12');
+		// householdPremium = ((prem*.5*numberOfAdults)*12);
+	} else if(fplCheck*2.67 < houseHoldIncome && fplCheck*3 > houseHoldIncome){
+		premium = ((prem*.75)*12);
+		console.log('multiplying premium by 12');
+		// householdPremium = ((prem*.75*numberOfAdults)*12);
+	} else if(fplCheck*3 < houseHoldIncome){
+		premium = (prem*12);
 		console.log('multiplying premium by 12');
 		// householdPremium = ((prem*numberOfAdults)*12);
-	}
+	}	
 	console.log(premium);
+	
+	
 	if(adjustedGrossIncome < 15000){
 		income = 0;
 	}else if(adjustedGrossIncome >= 15000){
