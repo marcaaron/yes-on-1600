@@ -23,8 +23,7 @@ export const individualCalc = (a,b,c,d,e,f,g)=>{
 		houseAGI = parseInt(d,10),
 		houseLTCG = parseInt(e,10),
 		numberOfAdults = parseInt(f, 10),
-		currentCosts = parseInt(g,10),
-		spouseAGI = 0;
+		currentCosts = parseInt(g,10);
 
 	function fpl(size) {
 		if (size > 8) {
@@ -41,23 +40,23 @@ export const individualCalc = (a,b,c,d,e,f,g)=>{
 	if(fplCheck*2 <= houseHoldIncome && fplCheck*2.33 >= houseHoldIncome){
 		premium = ((prem*.25)*12);
 		console.log('multiplying premium by 12');
-		// householdPremium = ((prem*.25*numberOfAdults)*12);
+		householdPremium = ((prem*.25*numberOfAdults)*12);
 	} else if(fplCheck*2.33 < houseHoldIncome && fplCheck*2.67 >= houseHoldIncome){
 		premium = ((prem*.5)*12);
 		console.log('multiplying premium by 12');
-		// householdPremium = ((prem*.5*numberOfAdults)*12);
+		householdPremium = ((prem*.5*numberOfAdults)*12);
 	} else if(fplCheck*2.67 < houseHoldIncome && fplCheck*3 > houseHoldIncome){
 		premium = ((prem*.75)*12);
 		console.log('multiplying premium by 12');
-		// householdPremium = ((prem*.75*numberOfAdults)*12);
+		householdPremium = ((prem*.75*numberOfAdults)*12);
 	} else if(fplCheck*3 < houseHoldIncome){
 		premium = (prem*12);
 		console.log('multiplying premium by 12');
-		// householdPremium = ((prem*numberOfAdults)*12);
-	}	
+		householdPremium = ((prem*numberOfAdults)*12);
+	}
 	console.log(premium);
-	
-	
+
+
 	if(adjustedGrossIncome < 15000){
 		income = 0;
 	}else if(adjustedGrossIncome >= 15000){
@@ -75,5 +74,5 @@ export const individualCalc = (a,b,c,d,e,f,g)=>{
 
 	const totalPersonalContribution = (parseInt(income,10) + parseInt(capitalGainsContribution,10) + parseInt(premium, 10));
 	const savings = parseInt(currentCosts*12,10) - totalPersonalContribution;
-	return { fpl200, income, savings, capitalGainsContribution, premium, totalPersonalContribution, currentCosts };
+	return { fpl, income, numberOfAdults, sizeOfHousehold, savings, capitalGainsContribution, householdPremium, premium, totalPersonalContribution, currentCosts };
 };
