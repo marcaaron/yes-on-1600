@@ -105,6 +105,14 @@ class Results extends Component {
 						savings={this.state.savings}
 					/>
 				</div>
+				<a
+					className="feedback" href="https://docs.google.com/forms/d/e/1FAIpQLSeyFQ25YNFZdl2gLziNH8c5iQRBycnS4WuXFciTESLgMoDRig/viewform"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					<span>Pssst! We'd love some feedback!</span>
+					<span>Click here to let us know your thoughts!</span>
+				</a>
 			</div>
 			);
 		}
