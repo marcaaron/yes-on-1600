@@ -49,14 +49,14 @@ class BusinessResults extends Component {
 						<span className="results-sub-heading">(While Covering All Employees)</span>
 						<span className="results-total">${this.props.vars[1] - this.props.futureCost}/year <sup>*</sup></span>
 						<span className="results-total-year"></span>
-						<span className="results-disclaimer"><em>Results are estimated based on company size provided. Please <a href="mailto:Erin@wholewashington.org?Subject=I-1600%20Healthcare%20Costs%20For%20Businesses&Body=Hi%2C%20I%27d%20like%20some%20help%20calculating%20what%20my%20projected%20costs%20will%20be%20under%20I-1600.">contact us</a> for a detailed assessment!</em></span>
+						<div className="results-disclaimer"><span><em>Results are estimated based on company size provided.</em></span><span><em>Please <a href="mailto:Erin@wholewashington.org?Subject=I-1600%20Healthcare%20Costs%20For%20Businesses&Body=Hi%2C%20I%27d%20like%20some%20help%20calculating%20what%20my%20projected%20costs%20will%20be%20under%20I-1600.">contact us</a> for a detailed assessment!</em></span></div>
 					</div> :
 					<div className="col white">
 						<h2 className="results-heading">Total Contribution:</h2>
 						<span className="results-sub-heading">(To Cover All Employees)</span>
 						<span className="results-total">${parseInt(this.props.futureCost/12, 10)}/month <sup>*</sup></span>
 						<span className="results-total-year">(${this.props.futureCost}/year)</span>
-						<span className="results-disclaimer"><em>* Results are estimated based on company size provided. Please <a href="mailto:Erin@wholewashington.org?Subject=I-1600%20Healthcare%20Costs%20For%20Businesses&Body=Hi%2C%20I%27d%20like%20some%20help%20calculating%20what%20my%20projected%20costs%20will%20be%20under%20I-1600.">contact us</a> for a detailed assessment!</em></span>
+						<span className="results-disclaimer"><em>* Results estimated based on company size. Please <a href="mailto:Erin@wholewashington.org?Subject=I-1600%20Healthcare%20Costs%20For%20Businesses&Body=Hi%2C%20I%27d%20like%20some%20help%20calculating%20what%20my%20projected%20costs%20will%20be%20under%20I-1600.">contact us</a> for a detailed assessment!</em></span>
 
 					</div>
 				}
