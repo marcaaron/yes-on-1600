@@ -1,4 +1,4 @@
-export const individualCalc = (a,b,c,d,e,f,g)=>{
+export const individualCalc = (a,b,c,d,e,f)=>{
 	const
 		prem = 134,
 		fpl1808 = 4320,
@@ -20,10 +20,9 @@ export const individualCalc = (a,b,c,d,e,f,g)=>{
 		sizeOfHousehold = parseInt(a,10),
 		adjustedGrossIncome = parseInt(b,10),
 		capitalGains = parseInt(c,10),
-		houseAGI = parseInt(d,10),
-		houseLTCG = parseInt(e,10),
-		numberOfAdults = parseInt(f, 10),
-		currentCosts = parseInt(g,10);
+		addHouseholdIncome = parseInt(d,10),
+		numberOfAdults = parseInt(e, 10),
+		currentCosts = parseInt(f,10);
 
 	function fpl(size) {
 		if (size > 8) {
@@ -36,7 +35,16 @@ export const individualCalc = (a,b,c,d,e,f,g)=>{
 	}
 
 	const fplCheck = fpl(sizeOfHousehold);
-	const houseHoldIncome = houseAGI + houseLTCG;
+	console.log(fplCheck);
+
+	console.log('sizeOfHousehold',sizeOfHousehold);
+	console.log('adjustedGrossIncome',adjustedGrossIncome);
+	console.log('capitalGains',capitalGains);
+	console.log('addHouseholdIncome',addHouseholdIncome);
+	console.log('numberOfAdults',numberOfAdults);
+	console.log('currentCosts',currentCosts);
+
+	const houseHoldIncome = adjustedGrossIncome + capitalGains + addHouseholdIncome;
 	if(fplCheck*2 <= houseHoldIncome && fplCheck*2.33 >= houseHoldIncome){
 		premium = ((prem*.25)*12);
 		console.log('multiplying premium by 12');
@@ -53,8 +61,10 @@ export const individualCalc = (a,b,c,d,e,f,g)=>{
 		premium = (prem*12);
 		console.log('multiplying premium by 12');
 		householdPremium = ((prem*numberOfAdults)*12);
+	} else{
+		console.log('did not meet any of the cases');
 	}
-	console.log(premium);
+	console.log('premium', premium);
 
 
 	if(adjustedGrossIncome < 15000){
@@ -73,6 +83,12 @@ export const individualCalc = (a,b,c,d,e,f,g)=>{
 	}
 
 	const totalPersonalContribution = (parseInt(income,10) + parseInt(capitalGainsContribution,10) + parseInt(premium, 10));
-	const savings = parseInt(currentCosts*12,10) - totalPersonalContribution;
+
+	let savings = 0;
+	if(sizeOfHousehold<2){
+		savings = parseInt(currentCosts*12,10) - totalPersonalContribution;
+	}else{
+		savings = parseInt(currentCosts*12,10) - ((parseInt(premium,10) * parseInt(numberOfAdults,10)) + parseInt(capitalGainsContribution,10) + (parseInt(income,10)));
+	}
 	return { fpl, income, numberOfAdults, sizeOfHousehold, savings, capitalGainsContribution, householdPremium, premium, totalPersonalContribution, currentCosts };
 };
