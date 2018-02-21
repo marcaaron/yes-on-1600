@@ -3,6 +3,8 @@
     box-sizing: border-box
 }
 
+
+
 button{
     border: none;
     margin: 0;
@@ -200,6 +202,7 @@ button{
 	border:1px ridge rgba(219, 219, 219,0.5);
 }
 
+
 button:after{
 	content:">";
 	position:absolute;
@@ -212,6 +215,23 @@ button:after{
 }
 button:focus{
 	outline: none;
+}
+
+.modal-btn{
+	width:50%;
+	margin:0 auto;
+	border:solid 3px rgba(0,0,0,0.2);
+}
+
+.modal-text{
+	margin:20px;
+	font-size: 1.5em;
+	text-align: center;
+
+}
+.modal-header{
+	font-size:2em;
+	text-align: center;
 }
 
 form{

@@ -3,8 +3,24 @@ import Header from './components/Header';
 import Question from './components/Question';
 import Results from './components/Results';
 import questions from './questions';
+import Modal from 'react-modal';
 
 import './App.css';
+
+const customStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)',
+	display: 'flex',
+	flexDirection:'column',
+	justifyContent:'center',
+	alignItem:'center'
+  }
+};
 
 class App extends Component {
 	constructor(){
@@ -16,6 +32,8 @@ class App extends Component {
 			range:50,
 			confirm:false,
 			hiddenIndexes:[],
+	        modalIsOpen: false,
+			error:''
 		}
 		this.handleUserType = this.handleUserType.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,7 +43,9 @@ class App extends Component {
 		this.handleFwdBtn = this.handleFwdBtn.bind(this);
 		this.handleSelectBtn = this.handleSelectBtn.bind(this);
 		this.skipIndex = this.skipIndex.bind(this);
-
+	    this.openModal = this.openModal.bind(this);
+    	this.afterOpenModal = this.afterOpenModal.bind(this);
+	    this.closeModal = this.closeModal.bind(this);
 	}
 
 	handleSelectBtn(e){
@@ -43,6 +63,21 @@ class App extends Component {
 		vars[this.state.index] = input;
 		this.setState({vars, index, hiddenIndexes});
 	}
+
+	// Modal Functions //
+	openModal(){
+    	this.setState({modalIsOpen: true});
+	}
+
+	closeModal(){
+	    this.setState({modalIsOpen: false});
+	}
+
+	afterOpenModal() {
+	    // references are now sync'd and can be accessed.
+	    this.subtitle.style.color = '#f00';
+    }
+
 
 	skipIndex(){
 		const questionArray = questions[`${this.state.userType}`];
@@ -118,7 +153,9 @@ class App extends Component {
 					let vars = [...this.state.vars];
 					let input = e.nativeEvent.target[0].value || e.target.value;
 					if(!input){
-						alert('This field is required!')
+						const error = 'This field is required!';
+						this.setState({error});
+						this.openModal();
 					}else{
 						if(typeof this.state.vars[this.state.index]==='undefined'){
 							vars.push(input);
@@ -136,20 +173,37 @@ class App extends Component {
 				function findMax(element) {
   					return element.questionText===question.max.val;
 				}
+				console.log(question.max && typeof question.max.val);
+				console.log(question.max && this.state.vars[questionArray.findIndex(findMax)]);
+				console.log(question.max && parseInt(input,10));
 				// If it's empty
 				if(!input){
-					alert('This field is required!')
+					const error = 'This field is required!';
+					this.setState({error});
+					this.openModal();
 				}
 				// else if it has a 'min' option
 				else if(question.min && parseInt(input,10) < question.min.val){
-					alert(question.min.error);
+					const error = question.min.error;
+					this.setState({error});
+					this.openModal();
 				}
 				// else if it has a 'max' option and max references the value returned by a preceding question - flagged by questionText and found with the above function findMax()/
-				else if(question.max &&
+				else if(question.max && typeof question.max.val==='string' &&
 					parseInt(input,10) > this.state.vars[questionArray.findIndex(findMax)]
 				){
-					alert(question.max.error);
-				}else{
+					const error = question.max.error;
+					this.setState({error});
+					this.openModal();
+				}
+				else if(question.max && (typeof question.max.val==='number') &&
+					parseInt(input,10) > question.max.val
+				){
+					const error = question.max.error;
+					this.setState({error});
+					this.openModal();
+				}
+				else{
 					if(typeof this.state.vars[this.state.index]==='undefined'){
 						vars.push(input);
 					}
@@ -188,6 +242,17 @@ class App extends Component {
 
     	return (
       	<div className="app-container">
+			<Modal
+            	isOpen={this.state.modalIsOpen}
+          		onAfterOpen={this.afterOpenModal}
+          		onRequestClose={this.closeModal}
+          		style={customStyles}
+          		contentLabel="Example Modal"
+        	>
+				<h2 className="modal-header" ref={subtitle => this.subtitle = subtitle}>Alert:</h2>
+				<div className="modal-text">{this.state.error}</div>
+				<button className="modal-btn" onClick={this.closeModal}>Close</button>
+        	</Modal>
 		  	<Header
 				handleBackBtn={this.handleBackBtn}
 				handleFwdBtn={this.handleFwdBtn}

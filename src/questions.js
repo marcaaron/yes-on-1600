@@ -1,11 +1,15 @@
 const questions = {
 	individual:[
 		{
-			questionText:"Size of Your Household",
+			questionText:"Size of Your Household:",
 			inputType:'number',
 			min:{
 				val: 1,
 				error: 'Please enter a household size greater than zero.'
+			},
+			max:{
+				val: 20,
+				error:'Please enter a household size between 1-20.'
 			},
 			tip:'The size of your household includes your spouse, if you have one, and any individuals that qualify as dependents.',
 			indexToHide:[3,4],
@@ -34,20 +38,20 @@ const questions = {
 			tip:`Additional household income includes any income earned from members of your household, whether taxable or not. This includes any cash jobs, dependent's earnings, capital gains and spouses income if not included in the AGI. This number is used in conjunction with your income and capital gains to determine your household level relative to the poverty line which is used to determine premium costs. Calculations will only be accurate if you include this information.`
 		},
 		{
-			questionText:"Number of Adults over 19",
+			questionText:"Number of Adults over 19:",
 			inputType:'number',
 			min:{
 				val: 1,
 				error: 'Please enter a value greater than zero.'
 			},
 			max:{
-				val: 'Size of Your Household',
+				val: 'Size of Your Household:',
 				error:'Number of Adults over 19 cannot exceed total household size!'
 			},
 			defaultValue:1
 		},
 		{
-			questionText:"Your Current Monthly Health Care Costs",
+			questionText:"Your Current Monthly Health Care Costs:",
 			inputType:'number',
 			unit:'$',
 			tip:'Include premiums, doctor visits, and medications for yourself and any dependents.'
