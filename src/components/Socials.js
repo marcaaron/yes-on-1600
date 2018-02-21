@@ -7,7 +7,7 @@ class Socials extends Component {
 		FB.ui(
 			 {
 			  method: 'share',
-			  href: 'http://yeson1600.org/calculator'
+			  href: 'https://i1600-wholewashington.nationbuilder.com/calculator'
 			}, function(response){}
 		);
 	}
