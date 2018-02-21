@@ -7,7 +7,9 @@ const questions = {
 				val: 1,
 				error: 'Please enter a household size greater than zero.'
 			},
-			tip:'The size of your household includes your spouse, if you have one, and any individuals that qualify as dependents.'
+			tip:'The size of your household includes your spouse, if you have one, and any individuals that qualify as dependents.',
+			indexToHide:[3,4],
+			condition:1
 		},
 		{
 			questionText:"Your Adjusted Gross Income (AGI):",
@@ -41,7 +43,8 @@ const questions = {
 			max:{
 				val: 'Size of Your Household',
 				error:'Number of Adults over 19 cannot exceed total household size!'
-			}
+			},
+			defaultValue:1
 		},
 		{
 			questionText:"Your Current Monthly Health Care Costs",
