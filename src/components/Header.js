@@ -16,8 +16,8 @@ class Header extends Component {
 
 				<i style={lBtnVisibile} onClick={this.props.handleBackBtn} className="fa fa-3x fa-chevron-left"></i>
 				<div>
-					<span className="header-text">YES! ON I-1600</span><br/>
-					<span className="header-sub-text">COST CALCULATOR</span>
+					<span className="header-text">I-1600 HEALTHCARE</span><br/>
+					<span className="header-sub-text">COST ESTIMATOR</span>
 				</div>
 				<i style={rBtnVisibile} onClick={this.props.handleFwdBtn} className="fa fa-3x fa-chevron-right"></i>
 				</div>

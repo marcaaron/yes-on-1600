@@ -19,8 +19,8 @@ const questions = {
 			questionText:"Your Adjusted Gross Income (AGI)",
 			inputType:'number',
 			unit:'$',
-			tip: `<p>Adjusted gross income (AGI) is an individual's total gross income minus specific deductions. In order to calculate your costs accurately it is <strong>VERY IMPORTANT</strong> to enter your AGI and NOT gross income. To find your AGI, refer to your last year's tax return or use the AGI calculator provided below prior to proceeding!</p><ul><li>If you filed Form 1040: the AGI is on line 37.</li><li>If you filed Form 1040A: the AGI is on line 21.</li><li>If you filed Form 1040EZ: the AGI is on line 4.</li></ul>`,
-			link:['http://money.cnn.com/tmp/networth2.html','Take me to the AGI Caculator first...'],
+			tip: `<p>Adjusted gross income (AGI) is an individual or joint couple's total gross income minus specific deductions. It's <strong>VERY IMPORTANT</strong> to enter your AGI and NOT gross income. To find your AGI, refer to your last year's tax return or use the AGI Calculator provided below.</p><table class="agi-table"><tr><th><strong>If you filed...</strong></th><th><strong>Look for line...</strong></th></tr><tr><td>Form 1040</td><td>37</td></tr><tr><td>Form 1040A</td><td>21</td></tr><tr><td>Form 1040EZ</td><td>4</td></tr></table>`,
+			link:['http://money.cnn.com/tmp/networth2.html','Take me to the AGI Calculator first...'],
 			confirm: false,
 			confirmText: '🤖 Danger, Will Robinson! 🤖 \n\n If you enter your Gross Income and not your AGI, you will not receive the correct calculation! Proceed anyway?'
 		},
@@ -28,14 +28,14 @@ const questions = {
 			questionText:"Your Net Long-Term Capital Gains",
 			inputType:'number',
 			unit:'$',
-			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months. For the purposes of the Whole Washington health trust, the following Capital Gains income is excluded: Home Sales, Farm Income and Retirement Accounts.'
+			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months. For example, profits earned from the sale of stock or fine art. For the purposes of the Whole Washington health trust, the following Capital Gains income is excluded: Home Sales, Farm Income and Retirement Accounts.'
 		},
 		{
 			questionText:"Additional Household Income",
 			inputType:'number',
 			unit:'$',
 			defaultValue:0,
-			tip:`Additional household income includes any income earned from members of your household, whether taxable or not. This includes any cash jobs, dependent's earnings, capital gains and spouses income if not included in the AGI. This number is used in conjunction with your income and capital gains to determine your household level relative to the poverty line which is used to determine premium costs. Calculations will only be accurate if you include this information.`
+			tip:`Additional household income includes any income earned from members of your household, whether taxable or not. This includes any cash jobs, dependent's earnings, capital gains and spouse's income if not included in the AGI. This number is used in conjunction with your income and capital gains to determine your household income level relative to the poverty line which is then used to determine premium costs.`
 		},
 		{
 			questionText:"Number of Adults over 19",
@@ -51,7 +51,7 @@ const questions = {
 			defaultValue:1
 		},
 		{
-			questionText:"Your Current Monthly Health Care Costs",
+			questionText:"Your Current Monthly Healthcare Costs",
 			inputType:'number',
 			unit:'$',
 			tip:'Include premiums, dental, vision, doctor visits, and medications for yourself and any dependents.'

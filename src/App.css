@@ -40,6 +40,21 @@
 	z-index:-9999;
 }
 
+
+.agi-table{
+	margin:5px auto;
+	padding:10px;
+}
+
+th{
+	padding:5px;
+	font-size: 1.1em;
+}
+
+td{
+	text-align: center;
+}
+
 .feedback{
 	text-decoration: none;
 	font-size: 1.5em;
