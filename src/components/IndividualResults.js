@@ -17,7 +17,7 @@ class IndividualResults extends Component {
 						<p>(${parseInt(this.props.currentCosts*12,10)}/yr)</p>
 					</div>
 					<div className="middle-box">
-						<h2>CONTRIBUTIONS</h2>
+						<h2>PROJECTED CONTRIBUTIONS</h2>
 					</div>
 					<div className="contributions-box">
 						<div className="contributions-row">
@@ -50,7 +50,7 @@ class IndividualResults extends Component {
 						</div>
 						]
 					}
-					<p className="results-disclaimer"><em>* This calculator assumes that an individual or household is responsible for 100% of their premium contribution. Actual costs will be less if some or all of that contribution is covered via employee benefits.</em></p>
+					{/* <p className="results-disclaimer"><em>* This calculator assumes that an individual or household is responsible for 100% of their premium contribution. Actual costs will be less if some or all of that contribution is covered via employee benefits.</em></p> */}
 					<Socials
 						killClass={this.props.killClass}
 						savings={this.props.savings}
@@ -73,7 +73,7 @@ class IndividualResults extends Component {
 						<p>(${parseInt(this.props.currentCosts*12,10)}/yr)</p>
 					</div>
 					<div className="middle-box">
-						<h2>CONTRIBUTIONS</h2>
+						<h2>PROJECTED CONTRIBUTIONS</h2>
 					</div>
 					<div className="contributions-box">
 						<div className="contributions-row">
@@ -96,7 +96,7 @@ class IndividualResults extends Component {
 						}
 					</div>
 					<div className="middle-box">
-						<h2>TOTAL PROJECTED COSTS</h2>
+						<h2>TOTAL PROJECTED COSTS PER HOUSEHOLD</h2>
 					</div>
 					<div className="total-box">
 						<p>${Math.floor((parseInt(this.props.capitalGainsContribution,10) + parseInt(this.props.income,10) + (parseInt(this.props.premium,10)*parseInt(this.props.numberOfAdults,10))) / 12)}/mo</p>
@@ -105,14 +105,14 @@ class IndividualResults extends Component {
 					{this.props.savings>0 &&
 						[
 						<div className="middle-box">
-							<h2>TOTAL SAVINGS</h2>
+							<h2>TOTAL SAVINGS PER HOUSEHOLD</h2>
 						</div>,
 						<div className="total-box">
 							<p>${this.props.savings}/yr</p>
 						</div>
 						]
 					}
-					<p className="results-disclaimer"><em>* This calculator assumes that an individual or household is responsible for 100% of their premium contribution. Actual costs will be less if some or all of that contribution is covered via employee benefits.</em></p>
+					{/* <p className="results-disclaimer"><em>* This calculator assumes that an individual or household is responsible for 100% of their premium contribution. Actual costs will be less if some or all of that contribution is covered via employee benefits.</em></p> */}
 					<Socials
 						killClass={this.props.killClass}
 						savings={this.props.savings}
