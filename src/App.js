@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import Question from './components/Question';
+import ProgressBar from './components/ProgressBar';
 import Results from './components/Results';
 import questions from './questions';
 import Modal from 'react-modal';
@@ -294,6 +295,12 @@ class App extends Component {
 				tip={questionArray[this.state.index].tip||''}
 				link={questionArray[this.state.index].link||''}
 				handleSelectBtn = {this.handleSelectBtn}
+			/>
+		}
+		{this.state.index>-1 && this.state.index !== questionArray.length &&
+			<ProgressBar
+				index={this.state.index}
+				questionArray={questionArray}
 			/>
 		}
 
