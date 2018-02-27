@@ -12,7 +12,7 @@ const questions = {
 				error:'Please enter a household size between 1-20.'
 			},
 			tip:'The size of your household includes your spouse, if you have one, and any individuals that qualify as dependents.',
-			indexToHide:[3,4],
+			indexToHide:[3],
 			condition:1
 		},
 		{
@@ -40,10 +40,6 @@ const questions = {
 		{
 			questionText:"Number of Adults over 19",
 			inputType:'number',
-			min:{
-				val: 1,
-				error: 'Please enter a value greater than zero.'
-			},
 			max:{
 				val: 'Size of Your Household',
 				error:'Number of Adults over 19 cannot exceed total household size!'
