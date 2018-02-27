@@ -56,9 +56,7 @@ class App extends Component {
 		let index = this.state.index+1;
 		let input = e.target.value;
 		let hiddenIndexes = [...this.state.hiddenIndexes];
-		console.log(input,question.condition);
 		if(input===question.condition){
-			console.log('setting indexes to skip');
 			hiddenIndexes = [...question.indexToHide];
 		}
 		vars[this.state.index] = input;
@@ -112,7 +110,7 @@ class App extends Component {
 
 	componentDidUpdate(){
 		if(this.state.hiddenIndexes.includes(this.state.index)){
-			console.log('skip this one');
+			// console.log('skip this one');
 			this.skipIndex();
 		}
 	}
@@ -146,7 +144,7 @@ class App extends Component {
 
 	handleSubmit(e){
 			e.preventDefault();
-			console.log(e.target);
+			// console.log(e.target);
 			const questionArray = questions[`${this.state.userType}`];
 
 			if(questionArray[this.state.index].confirm && !this.state.confirm){
@@ -174,9 +172,9 @@ class App extends Component {
 				function findMax(element) {
   					return element.questionText===question.max.val;
 				}
-				console.log(question.max && typeof question.max.val);
-				console.log(question.max && this.state.vars[questionArray.findIndex(findMax)]);
-				console.log(question.max && parseInt(input,10));
+				// console.log(question.max && typeof question.max.val);
+				// console.log(question.max && this.state.vars[questionArray.findIndex(findMax)]);
+				// console.log(question.max && parseInt(input,10));
 				// If it's empty
 				if(!input){
 					const error = 'This field is required!';
@@ -210,9 +208,9 @@ class App extends Component {
 					}
 					const index = this.state.index+1;
 					let hiddenIndexes = [...this.state.hiddenIndexes];
-					console.log(input,question.condition);
+					// console.log(input,question.condition);
 					if(parseInt(input,10)===question.condition){
-						console.log('setting indexes to skip');
+						// console.log('setting indexes to skip');
 						hiddenIndexes = [...question.indexToHide];
 					}else if(question.condition && parseInt(input,10!==question.condition)){
 						hiddenIndexes = [];

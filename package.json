@@ -2,7 +2,6 @@
   "name": "form-faction",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://marcaaron.github.io/ww-calc-2.0",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "html-react-parser": "^0.4.1",
