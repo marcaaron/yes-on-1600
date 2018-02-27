@@ -11,7 +11,7 @@ class ProgressBar extends Component {
 						return <div className="progress-point"></div>
 					}
 				})}
-				<div className="progress-line"></div>
+				{/* <div className="progress-line"></div> */}
 			</div>
 		);
 	}
