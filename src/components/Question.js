@@ -3,7 +3,7 @@ import '../css/Question.css';
 import Parser from 'html-react-parser';
 
 class Question extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.handleKeyPress = this.handleKeyPress.bind(this);
 	}
@@ -11,20 +11,20 @@ class Question extends Component {
 	handleKeyPress(event) {
 		const keyCode = event.keyCode || event.which;
 		const keyValue = String.fromCharCode(keyCode);
-		if (/\.|\+|-/.test(keyValue)){
+		if (/\.|\+|-/.test(keyValue)) {
 			event.preventDefault();
 		}
 	}
 
 	render() {
-		if (this.props.inputType==='' || typeof this.props.inputType === 'undefined'){
+		if (this.props.inputType === '' || typeof this.props.inputType === 'undefined') {
 			console.error('Must pass an inputType to Question component!');
 		}
 
-		if(this.props.inputType==='select-box' && this.props.options === ''){
+		if (this.props.inputType === 'select-box' && this.props.options === '') {
 			console.error('Must pass options to Question with inputType "select-box"');
 		}
-		if(this.props.inputType==='button' && this.props.options === ''){
+		if (this.props.inputType === 'button' && this.props.options === '') {
 			console.error('Must pass options to Question with inputType "button"');
 		}
 		return (
@@ -32,36 +32,36 @@ class Question extends Component {
 				<form onSubmit={this.props.handleSubmit}>
 					<p className="card-text">{this.props.question}</p>
 
-					{this.props.inputType==='number'&&
-					<input onChange={this.props.handleChange}
-						   className="text-box"
-						   type="number"
-						   placeholder={this.props.unit || ''}
-						   onKeyPress={this.handleKeyPress}
-						   value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
-						   // required
-						   autoFocus
-					>
-					</input>}
+					{this.props.inputType === 'number' &&
+						<input onChange={this.props.handleChange}
+							className="text-box"
+							type="number"
+							placeholder={this.props.unit || ''}
+							onKeyPress={this.handleKeyPress}
+							value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
+							// required
+							autoFocus
+						>
+						</input>}
 
 
 
-					{this.props.inputType==='select-box' &&
-							<select
-								defaultValue={this.props.vars[this.props.index]}
-								onChange={this.props.handleChange}
-								className="select-box"
-								// required
-								>
-								{this.props.options.map((item, index)=>{
-										return <option key={index} value={item}>{item}</option>
-								})}
-							</select>
+					{this.props.inputType === 'select-box' &&
+						<select
+							defaultValue={this.props.vars[this.props.index]}
+							onChange={this.props.handleChange}
+							className="select-box"
+						// required
+						>
+							{this.props.options.map((item, index) => {
+								return <option key={index} value={item}>{item}</option>
+							})}
+						</select>
 					}
 
-					{this.props.inputType==='button' &&
-						this.props.options.map((item, index)=>{
-								return(
+					{this.props.inputType === 'button' &&
+						this.props.options.map((item, index) => {
+							return (
 								<button
 									type="button"
 									onClick={this.props.handleSelectBtn}
@@ -74,24 +74,24 @@ class Question extends Component {
 						})
 					}
 
-					{this.props.inputType==='range' &&
+					{this.props.inputType === 'range' &&
 						<div className="slidecontainer">
 							<input onChange={this.props.handleRange} type="range" min="0" max="100"
-							autoFocus
-							value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : 50} className="slider" id="myRange"></input>
+								autoFocus
+								value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : 50} className="slider" id="myRange"></input>
 							<span className="range">{this.props.range}%</span>
 						</div>
 					}
 					{this.props.tip &&
 						<div className="tip-box">
-							<i className="fa fa-2x fa-exclamation-triangle tip-icon"></i>
+							<i className="fa fa-2x fa-pencil-square-o tip-icon"></i>
 							<div className="tip">
 								{Parser(this.props.tip)}
 							</div>
 							<a className="tip-link" href={this.props.link[0]} target="_blank">{this.props.link[1]}</a>
 						</div>
 					}
-					{this.props.inputType!=='button' &&
+					{this.props.inputType !== 'button' &&
 						<button type="submit">Next</button>
 					}
 				</form>
