@@ -84,7 +84,7 @@ class Question extends Component {
 					}
 					{this.props.tip &&
 						<div className="tip-box">
-							<i className="fa fa-2x fa-pencil-square-o tip-icon"></i>
+							<i className="fa fa-2x fa-info-circle tip-icon"></i>
 							<div className="tip">
 								{Parser(this.props.tip)}
 							</div>
