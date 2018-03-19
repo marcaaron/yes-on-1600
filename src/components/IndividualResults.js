@@ -36,7 +36,8 @@ class IndividualResults extends Component {
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
-                Individual Premium<sup>*</sup>
+                Individual Premium
+				{/* <sup>*</sup> */}
               </p>
               <p className="contributions-row-result">
                 ${Math.floor(this.props.premium / 12)}/mo
@@ -100,7 +101,8 @@ class IndividualResults extends Component {
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
-                Per Adult Premium<sup>*</sup>
+                Per Adult Premium
+				{/* <sup>*</sup> */}
               </p>
               <p className="contributions-row-result">
                 ${Math.floor(this.props.premium / 12)}/mo x{" "}
