@@ -51,7 +51,7 @@ const questions = {
 			questionText:"Your Current Monthly Healthcare Costs",
 			inputType:'number',
 			unit:'$',
-			tip:'Include premiums, dental, vision, doctor visits, and medications for yourself and any dependents.'
+			tip:'<strong>REMEMBER TO INCLUDE:</strong> <br/><br/> Monthly Cost <ul><li>Premiums</li></ul> Common Costs <ul> <li>Co-Pays</li> <li>Prescriptions</li> <li>Medical Bills not covered/denied by Insurance</li> <li>Emergency Room or Clinic Visits</li> <li>Deductible</li> <li>Dental</li> <li>Vision</li> </ul> <p>Remember to include costs for each member of household.</p>'
 		}
 	],
 	business:[
