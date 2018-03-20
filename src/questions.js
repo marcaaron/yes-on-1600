@@ -28,14 +28,14 @@ const questions = {
 			questionText:"Your Net Long-Term Capital Gains",
 			inputType:'number',
 			unit:'$',
-			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months. For example, profits earned from the sale of stock or fine art. For the purposes of the Whole Washington health trust, the following Capital Gains income is excluded: Home Sales, Farm Income and Retirement Accounts.'
+			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months, for example, profits earned from the sale of stocks.This tax contribution will not apply to Home Sales, Farm Income or Retirement Accounts.'
 		},
 		{
 			questionText:"Additional Household Income",
 			inputType:'number',
 			unit:'$',
 			defaultValue:0,
-			tip:`Additional household income includes any income earned from members of your household, whether taxable or not. This includes any cash jobs, dependent's earnings, capital gains and spouse's income if not included in the AGI. This number is used in conjunction with your income and capital gains to determine your household income level relative to the poverty line which is then used to determine premium costs.`
+			tip:`Additional household income includes any income earned from members of your household, whether taxable or not. This includes any cash jobs, dependent's earnings, capital gains and spouse's income if not included in the AGI.`
 		},
 		{
 			questionText:"Number of Adults over 19",
@@ -44,13 +44,14 @@ const questions = {
 				val: 'Size of Your Household',
 				error:'Number of Adults over 19 cannot exceed total household size!'
 			},
-			defaultValue:1
+			defaultValue:1,
+			tip: 'Click <strong>Next</strong> and we’ll review what you get to eliminate from your current expenses.'
 		},
 		{
 			questionText:"Your Current Monthly Healthcare Costs",
 			inputType:'number',
 			unit:'$',
-			tip:'Include premiums, dental, vision, doctor visits, and medications for yourself and any dependents.'
+			tip:'<strong>REMEMBER TO INCLUDE:</strong> <br/><br/> Monthly Cost <ul><li>Premiums</li></ul> Common Costs <ul> <li>Co-Pays</li> <li>Prescriptions</li> <li>Medical Bills not covered/denied by Insurance</li> <li>Emergency Room or Clinic Visits</li> <li>Deductible</li> <li>Dental</li> <li>Vision</li> </ul> <p>Remember to include costs for each member of household.</p>'
 		}
 	],
 	business:[
