@@ -40,7 +40,7 @@ class Question extends Component {
 
 					{this.props.inputType === 'number' &&
 						<input onChange={this.props.handleChange}
-							className="text-box"
+							className="number-box"
 							type="number"
 							placeholder={this.props.unit || ''}
 							onKeyPress={this.handleKeyPress}
@@ -51,7 +51,18 @@ class Question extends Component {
 						>
 						</input>}
 
-
+					{this.props.inputType === 'text' &&
+						<input onChange={this.props.handleChange}
+							className="text-box"
+							type="text"
+							placeholder={this.props.unit || ''}
+							onKeyPress={this.handleKeyPress}
+							value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
+							// required
+							autoFocus
+							ref={(input) => { this.input = input; }}
+						>
+						</input>}
 
 					{this.props.inputType === 'select-box' &&
 						<select

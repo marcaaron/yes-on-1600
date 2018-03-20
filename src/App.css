@@ -344,6 +344,7 @@ button:hover {
   padding: 0.5em;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
+
 .text-box {
   border: none;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
@@ -353,6 +354,18 @@ button:hover {
   height: 2.5em;
   margin: 0.5em 0;
   border-radius: 7px;
+}
+
+.number-box {
+  border: none;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  width: 25%;
+  font-size: 1.5em;
+  padding: 0.5em;
+  height: 2.5em;
+  margin: 0.5em 0;
+  border-radius: 7px;
+  text-align: center;
 }
 
 .select-box {
