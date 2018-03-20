@@ -16,6 +16,12 @@ class Question extends Component {
 		}
 	}
 
+	componentDidUpdate() {
+		if(this.input) {
+			this.input.focus();
+		}
+	}
+
 	render() {
 		if (this.props.inputType === '' || typeof this.props.inputType === 'undefined') {
 			console.error('Must pass an inputType to Question component!');
@@ -41,6 +47,7 @@ class Question extends Component {
 							value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
 							// required
 							autoFocus
+							ref={(input) => { this.input = input; }}
 						>
 						</input>}
 
@@ -51,6 +58,7 @@ class Question extends Component {
 							defaultValue={this.props.vars[this.props.index]}
 							onChange={this.props.handleChange}
 							className="select-box"
+							ref={(input) => { this.input = input; }}
 						// required
 						>
 							{this.props.options.map((item, index) => {
@@ -77,7 +85,7 @@ class Question extends Component {
 					{this.props.inputType === 'range' &&
 						<div className="slidecontainer">
 							<input onChange={this.props.handleRange} type="range" min="0" max="100"
-								autoFocus
+								ref={(input) => { this.input = input; }}
 								value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : 50} className="slider" id="myRange"></input>
 							<span className="range">{this.props.range}%</span>
 						</div>
