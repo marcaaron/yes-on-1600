@@ -238,10 +238,8 @@ class App extends Component {
 		this.setState({ range, vars });
 	}
 
-
 	render() {
 		const questionArray = questions[`${this.state.userType}`];
-
 		return (
 			<div className="app-container">
 				<Modal
