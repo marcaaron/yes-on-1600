@@ -9,11 +9,12 @@ class Question extends Component {
 	}
 
 	handleKeyPress(event) {
-		const keyCode = event.keyCode || event.which;
-		const keyValue = String.fromCharCode(keyCode);
-		if (/\.|\+|-/.test(keyValue)) {
-			event.preventDefault();
+		const allowed = '0123456789';
+		function contains(stringValue, charValue){
+			return stringValue.indexOf(charValue) > -1;
 		}
+		const invalidKey = event.key.length === 1 && !contains(allowed, event.key);
+		invalidKey && event.preventDefault();
 	}
 
 	componentDidUpdate() {
@@ -37,12 +38,12 @@ class Question extends Component {
 			<div className="card">
 				<form onSubmit={this.props.handleSubmit}>
 					<p className="card-text">{this.props.question}</p>
-
+					<div className="input-container">
+					{this.props.unit && <i className="fa fa-2x fa-usd"></i>}
 					{this.props.inputType === 'number' &&
 						<input onChange={this.props.handleChange}
-							className="text-box"
+							className="number-box"
 							type="number"
-							placeholder={this.props.unit || ''}
 							onKeyPress={this.handleKeyPress}
 							value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
 							// required
@@ -51,7 +52,18 @@ class Question extends Component {
 						>
 						</input>}
 
+					{this.props.inputType === 'text' &&
 
+						<input onChange={this.props.handleChange}
+							className="text-box"
+							type="text"
+							onKeyPress={this.handleKeyPress}
+							value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
+							// required
+							autoFocus
+							ref={(input) => { this.input = input; }}
+						>
+						</input>}
 
 					{this.props.inputType === 'select-box' &&
 						<select
@@ -90,6 +102,8 @@ class Question extends Component {
 							<span className="range">{this.props.range}%</span>
 						</div>
 					}
+					</div>
+					{/* End input-container */}
 					{this.props.tip &&
 						<div className="tip-box">
 							<i className="fa fa-2x fa-info-circle tip-icon"></i>
