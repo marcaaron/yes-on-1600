@@ -9,11 +9,12 @@ class Question extends Component {
 	}
 
 	handleKeyPress(event) {
-		const keyCode = event.keyCode || event.which;
-		const keyValue = String.fromCharCode(keyCode);
-		if (/\.|\+|-/.test(keyValue)) {
-			event.preventDefault();
+		const allowed = '0123456789';
+		function contains(stringValue, charValue){
+			return stringValue.indexOf(charValue) > -1;
 		}
+		const invalidKey = event.key.length === 1 && !contains(allowed, event.key);
+		invalidKey && event.preventDefault();
 	}
 
 	componentDidUpdate() {
