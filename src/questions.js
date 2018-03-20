@@ -28,7 +28,7 @@ const questions = {
 			questionText:"Your Net Long-Term Capital Gains",
 			inputType:'number',
 			unit:'$',
-			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months. For example, profits earned from the sale of stock or fine art. For the purposes of the Whole Washington health trust, the following Capital Gains income is excluded: Home Sales, Farm Income and Retirement Accounts.'
+			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months, for example, profits earned from the sale of stocks.This tax contribution will not apply to Home Sales, Farm Income or Retirement Accounts.'
 		},
 		{
 			questionText:"Additional Household Income",
