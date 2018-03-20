@@ -345,6 +345,14 @@ button:hover {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
+.input-container{
+  width: 80%;
+  margin:0,auto;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .text-box {
   border: none;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
@@ -355,11 +363,17 @@ button:hover {
   margin: 0.5em 0;
   border-radius: 7px;
 }
+.fa-usd{
+	padding:20px;
+	color:white;
+	text-shadow: 1px 1px 4px black; 
+	border-radius: 50%;
+}
 
 .number-box {
   border: none;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
-  width: 25%;
+  width: 50%;
   font-size: 1.5em;
   padding: 0.5em;
   height: 2.5em;

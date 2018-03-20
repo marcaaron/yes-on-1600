@@ -38,12 +38,12 @@ class Question extends Component {
 			<div className="card">
 				<form onSubmit={this.props.handleSubmit}>
 					<p className="card-text">{this.props.question}</p>
-
+					<div className="input-container">
+					{this.props.unit && <i className="fa fa-2x fa-usd"></i>}
 					{this.props.inputType === 'number' &&
 						<input onChange={this.props.handleChange}
 							className="number-box"
 							type="number"
-							placeholder={this.props.unit || ''}
 							onKeyPress={this.handleKeyPress}
 							value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
 							// required
@@ -53,10 +53,10 @@ class Question extends Component {
 						</input>}
 
 					{this.props.inputType === 'text' &&
+
 						<input onChange={this.props.handleChange}
 							className="text-box"
 							type="text"
-							placeholder={this.props.unit || ''}
 							onKeyPress={this.handleKeyPress}
 							value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
 							// required
@@ -102,6 +102,8 @@ class Question extends Component {
 							<span className="range">{this.props.range}%</span>
 						</div>
 					}
+					</div>
+					{/* End input-container */}
 					{this.props.tip &&
 						<div className="tip-box">
 							<i className="fa fa-2x fa-info-circle tip-icon"></i>
