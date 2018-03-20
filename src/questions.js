@@ -35,7 +35,7 @@ const questions = {
 			inputType:'number',
 			unit:'$',
 			defaultValue:0,
-			tip:`Additional household income includes any income earned from members of your household, whether taxable or not. This includes any cash jobs, dependent's earnings, capital gains and spouse's income if not included in the AGI. This number is used in conjunction with your income and capital gains to determine your household income level relative to the poverty line which is then used to determine premium costs.`
+			tip:`Additional household income includes any income earned from members of your household, whether taxable or not. This includes any cash jobs, dependent's earnings, capital gains and spouse's income if not included in the AGI.`
 		},
 		{
 			questionText:"Number of Adults over 19",
