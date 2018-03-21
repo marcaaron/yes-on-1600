@@ -1,20 +1,19 @@
 import Socials from "../components/Socials";
+import DonateButton from '../components/DonateButton'
 import React, { Component } from "react";
 
 class IndividualResults extends Component {
   render() {
+    const MONTH = 12;
     if (this.props.sizeOfHousehold < 2) {
       return (
         <div className={`results ${this.props.resultStyle}`}>
-          <div className="header-box">
-            <h1>Calculator Results:</h1>
-          </div>
           <div className="middle-box">
-            <h2>CURRENT COSTS</h2>
+            <h2>Your <strong>New</strong> Projected Cost Per Household</h2>
           </div>
           <div className="total-box">
-            <p>${this.props.currentCosts}/mo</p>
-            <p>(${parseInt(this.props.currentCosts * 12, 10)}/yr)</p>
+            <p>${Math.floor(this.props.totalPersonalContribution / MONTH)}/mo</p>
+            <p>(${this.props.totalPersonalContribution}/yr)</p>
           </div>
           <div className="middle-box">
             <h2>PROJECTED CONTRIBUTIONS</h2>
@@ -23,7 +22,7 @@ class IndividualResults extends Component {
             <div className="contributions-row">
               <p className="contributions-row-heading">Income Contribution</p>
               <p className="contributions-row-result">
-                ${Math.floor(this.props.income / 12)}/mo
+                ${Math.floor(this.props.income / MONTH)}/mo
               </p>
             </div>
             <div className="contributions-row">
@@ -31,26 +30,19 @@ class IndividualResults extends Component {
                 Investment Profit Contribution
               </p>
               <p className="contributions-row-result">
-                ${Math.floor(this.props.capitalGainsContribution / 12)}/mo
+                ${Math.floor(this.props.capitalGainsContribution / MONTH)}/mo
               </p>
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
                 Individual Premium
-				{/* <sup>*</sup> */}
               </p>
               <p className="contributions-row-result">
-                ${Math.floor(this.props.premium / 12)}/mo
+                ${Math.floor(this.props.premium / MONTH)}/mo
               </p>
             </div>
           </div>
-          <div className="middle-box">
-            <h2>TOTAL PROJECTED COSTS</h2>
-          </div>
-          <div className="total-box">
-            <p>${Math.floor(this.props.totalPersonalContribution / 12)}/mo</p>
-            <p>(${this.props.totalPersonalContribution}/yr)</p>
-          </div>
+
           {this.props.savings > 0 && [
             <div className="middle-box" key="savings-label">
               <h2>TOTAL SAVINGS</h2>
@@ -66,6 +58,9 @@ class IndividualResults extends Component {
             imageURL={this.props.imageURL}
             size="40"
           />
+
+          <DonateButton />
+
         </div>
       );
     } else {
@@ -79,7 +74,7 @@ class IndividualResults extends Component {
           </div>
           <div className="total-box">
             <p>${this.props.currentCosts}/mo</p>
-            <p>(${parseInt(this.props.currentCosts * 12, 10)}/yr)</p>
+            <p>(${parseInt(this.props.currentCosts * MONTH, 10)}/yr)</p>
           </div>
           <div className="middle-box">
             <h2>PROJECTED CONTRIBUTIONS</h2>
@@ -88,7 +83,7 @@ class IndividualResults extends Component {
             <div className="contributions-row">
               <p className="contributions-row-heading">Income Contribution</p>
               <p className="contributions-row-result">
-                ${Math.floor(this.props.income / 12)}/mo
+                ${Math.floor(this.props.income / MONTH)}/mo
               </p>
             </div>
             <div className="contributions-row">
@@ -96,16 +91,15 @@ class IndividualResults extends Component {
                 Investment Profit Contribution
               </p>
               <p className="contributions-row-result">
-                ${Math.floor(this.props.capitalGainsContribution / 12)}/mo
+                ${Math.floor(this.props.capitalGainsContribution / MONTH)}/mo
               </p>
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
                 Per Adult Premium
-				{/* <sup>*</sup> */}
               </p>
               <p className="contributions-row-result">
-                ${Math.floor(this.props.premium / 12)}/mo x{" "}
+                ${Math.floor(this.props.premium / MONTH)}/mo x{" "}
                 {this.props.numberOfAdults}
               </p>
             </div>
@@ -144,14 +138,25 @@ class IndividualResults extends Component {
               )}/yr)
             </p>
           </div>
-          {this.props.savings > 0 && [
-            <div className="middle-box">
-              <h2>TOTAL SAVINGS PER HOUSEHOLD</h2>
-            </div>,
-            <div className="total-box">
-              <p>${this.props.savings}/yr</p>
-            </div>
-          ]}
+          {
+            this.props.savings > 0 ? [
+              <div className="middle-box" key="ind-savings-title">
+                <h2>Your Benefit</h2>
+              </div>,
+              <div className="total-box" key="ind-savings-result">
+                <p>${Math.floor(this.props.savings / MONTH)}/mo</p>
+                <p>(${this.props.savings}/yr)</p>
+              </div>
+            ] : [
+              <div className="middle-box" key="ind-nosavings-title">
+                <h2>Your Result</h2>
+              </div>,
+              <div className="total-box" key="ind-nosavings-result">
+                <p>Congratulations</p>
+                <p>Due to your household's AGI.</p>
+              </div>
+            ] 
+          }
           {/* <p className="results-disclaimer"><em>* This calculator assumes that an individual or household is responsible for 100% of their premium contribution. Actual costs will be less if some or all of that contribution is covered via employee benefits.</em></p> */}
           <Socials
             killClass={this.props.killClass}
@@ -159,6 +164,8 @@ class IndividualResults extends Component {
             imageURL={this.props.imageURL}
             size="40"
           />
+
+          <DonateButton />
         </div>
       );
     }
