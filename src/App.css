@@ -645,6 +645,22 @@ button:hover {
   border-top: #686868 1px solid;
 }
 
+.donate-button {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: rgb(210, 35, 42);
+  color: #FFF;
+  margin: 50px auto 40px;
+  padding: 8px 24px 12px;
+  text-decoration: none;
+}
+
+.donate-button > .button-large-text {
+  text-transform: uppercase;
+  font-size: 1.2em;
+}
+
 /* Media Queries */
 @media screen and (min-width: 350px) {
   .card-text {
@@ -655,9 +671,6 @@ button:hover {
   }
   .slider {
     width: 315px;
-  }
-  .contributions-row-heading {
-    padding: 0.5em;
   }
   .results {
     width: 90%;
