@@ -43,15 +43,25 @@ class IndividualResults extends Component {
             </div>
           </div>
 
-          {this.props.savings > 0 && [
+          {this.props.savings > 0 ? [
             <div className="middle-box" key="savings-label">
               <h2>TOTAL SAVINGS</h2>
             </div>,
             <div className="total-box" key="savings-value">
               <p>${this.props.savings}/yr</p>
+
             </div>
-          ]}
-          {/* <p className="results-disclaimer"><em>* This calculator assumes that an individual or household is responsible for 100% of their premium contribution. Actual costs will be less if some or all of that contribution is covered via employee benefits.</em></p> */}
+			]:
+			[
+              <div className="middle-box" key="ind-nosavings-title">
+                <h2>YOUR BENEFIT</h2>
+              </div>,
+              <div className="total-box" key="ind-nosavings-result">
+                <p>Congratulations</p>
+                <p>Due to your household's AGI.</p>
+              </div>
+            ]
+		  }
           <Socials
             killClass={this.props.killClass}
             savings={this.props.savings}
@@ -66,15 +76,27 @@ class IndividualResults extends Component {
     } else {
       return (
         <div className={`results ${this.props.resultStyle}`}>
-          <div className="header-box">
-            <h1>Calculator Results:</h1>
-          </div>
           <div className="middle-box">
-            <h2>CURRENT COSTS</h2>
+            <h2>Your <strong>New</strong> Projected Cost Per Household</h2>
           </div>
-          <div className="total-box">
-            <p>${this.props.currentCosts}/mo</p>
-            <p>(${parseInt(this.props.currentCosts * MONTH, 10)}/yr)</p>
+		  <div className="total-box">
+            <p>
+              ${Math.floor(
+                (parseInt(this.props.capitalGainsContribution, 10) +
+                  parseInt(this.props.income, 10) +
+                  parseInt(this.props.premium, 10) *
+                    parseInt(this.props.numberOfAdults, 10)) /
+                  12
+              )}/mo
+            </p>
+            <p>
+              (${Math.floor(
+                parseInt(this.props.capitalGainsContribution, 10) +
+                  parseInt(this.props.income, 10) +
+                  parseInt(this.props.premium, 10) *
+                    parseInt(this.props.numberOfAdults, 10)
+              )}/yr)
+            </p>
           </div>
           <div className="middle-box">
             <h2>PROJECTED CONTRIBUTIONS</h2>
@@ -116,48 +138,25 @@ class IndividualResults extends Component {
               </div>
             )}
           </div>
-          <div className="middle-box">
-            <h2>TOTAL PROJECTED COSTS PER HOUSEHOLD</h2>
-          </div>
-          <div className="total-box">
-            <p>
-              ${Math.floor(
-                (parseInt(this.props.capitalGainsContribution, 10) +
-                  parseInt(this.props.income, 10) +
-                  parseInt(this.props.premium, 10) *
-                    parseInt(this.props.numberOfAdults, 10)) /
-                  12
-              )}/mo
-            </p>
-            <p>
-              (${Math.floor(
-                parseInt(this.props.capitalGainsContribution, 10) +
-                  parseInt(this.props.income, 10) +
-                  parseInt(this.props.premium, 10) *
-                    parseInt(this.props.numberOfAdults, 10)
-              )}/yr)
-            </p>
-          </div>
           {
             this.props.savings > 0 ? [
               <div className="middle-box" key="ind-savings-title">
-                <h2>Your Benefit</h2>
+                <h2>TOTAL SAVINGS</h2>
               </div>,
               <div className="total-box" key="ind-savings-result">
                 <p>${Math.floor(this.props.savings / MONTH)}/mo</p>
-                <p>(${this.props.savings}/yr)</p>
+                {/* <p>(${this.props.savings}/yr)</p> */}
               </div>
             ] : [
               <div className="middle-box" key="ind-nosavings-title">
-                <h2>Your Result</h2>
+                <h2>YOUR BENEFIT</h2>
               </div>,
               <div className="total-box" key="ind-nosavings-result">
                 <p>Congratulations</p>
                 <p>Due to your household's AGI.</p>
               </div>
-            ] 
+            ]
           }
-          {/* <p className="results-disclaimer"><em>* This calculator assumes that an individual or household is responsible for 100% of their premium contribution. Actual costs will be less if some or all of that contribution is covered via employee benefits.</em></p> */}
           <Socials
             killClass={this.props.killClass}
             savings={this.props.savings}
