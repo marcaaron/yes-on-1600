@@ -28,7 +28,7 @@ const questions = {
 			questionText:"Your Net Long-Term Capital Gains",
 			inputType:'text',
 			unit:'$',
-			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months, for example, profits earned from the sale of stocks.This tax contribution will not apply to Home Sales, Farm Income or Retirement Accounts.'
+			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months, for example, profits earned from the sale of stocks.This tax contribution will not apply to Home Sales, Farm Income or Retirement Accounts.<br/><br/>If you file Schedule D, look for line item 15.'
 		},
 		{
 			questionText:"Additional Household Income",
