@@ -11,7 +11,7 @@ const questions = {
 				val: 20,
 				error:'Please enter a household size between 1-20.'
 			},
-			tip:'The size of your household includes your spouse, if you have one, and any individuals that qualify as dependents.',
+			tip:'The size of your household includes yourself, your spouse (if you have one), and any individuals that qualify as dependents.',
 			indexToHide:[3],
 			condition:1
 		},
@@ -28,7 +28,7 @@ const questions = {
 			questionText:"Your Net Long-Term Capital Gains",
 			inputType:'text',
 			unit:'$',
-			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months, for example, profits earned from the sale of stocks.This tax contribution will not apply to Home Sales, Farm Income or Retirement Accounts.'
+			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months, for example, profits earned from the sale of stocks.This tax contribution will not apply to Home Sales, Farm Income or Retirement Accounts.<br/><br/>If you file Schedule D, look for line item 15.'
 		},
 		{
 			questionText:"Additional Household Income",
