@@ -8,6 +8,7 @@ import IndividualRender from './IndividualRender';
 import React, { Component } from 'react';
 import {businessCalc} from '../helpers/business-calc';
 import {individualCalc} from '../helpers/individual-calc';
+import { removeCommas } from '../helpers/helper-functions';
 
 class Results extends Component {
 	constructor(props) {
@@ -53,7 +54,7 @@ class Results extends Component {
 
 	render() {
 		if (this.props.userType === 'business') {
-			const colorBarGreen = { width: `${parseInt((this.state.futureCost / this.props.vars[1]) * 100, 10) + 10}%` };
+			const colorBarGreen = { width: `${parseInt((this.state.futureCost / removeCommas(this.props.vars[1])) * 100, 10) + 10}%` };
 			let rangeStyle = {
 				fontSize: `${1 + this.props.range / 100}em`,
 				width: `${1}em`,

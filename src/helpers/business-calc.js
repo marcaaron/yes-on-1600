@@ -1,3 +1,5 @@
+import { removeCommas } from './helper-functions';
+
 export const businessCalc = (a,b)=>{
 	let newPercentage = 0;
 	switch (a) {
@@ -19,6 +21,6 @@ export const businessCalc = (a,b)=>{
 	default:
 		newPercentage = 0;
 	}
-	const futureCost = parseInt((b * newPercentage), 10);
+	const futureCost = parseInt(parseInt(removeCommas(b),10) * newPercentage, 10);
 	return futureCost;
 };
