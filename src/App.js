@@ -5,7 +5,7 @@ import ProgressBar from './components/ProgressBar';
 import Results from './components/Results';
 import questions from './questions';
 import Modal from 'react-modal';
-
+import { removeCommas, addCommas } from './helpers/helper-functions';
 import './App.css';
 
 const customStyles = {
@@ -224,7 +224,7 @@ class App extends Component {
 	handleChange(e) {
 		e.preventDefault();
 		let vars = [...this.state.vars];
-		vars[this.state.index] = e.target.value;
+		vars[this.state.index] = addCommas(removeCommas(e.target.value));
 		if (vars[this.state.index] < 0) {
 			vars[this.state.index] = 0
 		}

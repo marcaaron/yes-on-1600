@@ -1,3 +1,5 @@
+import { removeCommas } from './helper-functions';
+
 export const individualCalc = (a,b,c,d,e,f)=>{
 	const
 		prem = 134,
@@ -12,17 +14,18 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 			38060,
 			42380
 		];
+
 	let
 		premium = 0,
 		income = 0,
 		capitalGainsContribution = 0,
 		householdPremium = 0,
 		sizeOfHousehold = parseInt(a,10),
-		adjustedGrossIncome = parseInt(b,10),
-		capitalGains = parseInt(c,10),
-		addHouseholdIncome = parseInt(d,10),
+		adjustedGrossIncome = parseInt(removeCommas(b),10),
+		capitalGains = parseInt(removeCommas(c),10),
+		addHouseholdIncome = parseInt(removeCommas(d),10),
 		numberOfAdults = parseInt(e, 10),
-		currentCosts = parseInt(f,10);
+		currentCosts = parseInt(removeCommas(f),10);
 
 	function fpl(size) {
 		if (size > 8) {
