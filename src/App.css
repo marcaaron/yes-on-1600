@@ -107,6 +107,16 @@ button::-moz-focus-inner {
   padding: 0;
 }
 
+/* Start Button Text */
+.button-sub-text{
+	width:100%;
+	padding:0.75em;
+	background-color: #f7f7f7;
+	text-align: center;
+	font-size: 0.95em;
+	line-height: 1.5em;
+}
+
 /* Tip Section */
 .tip-box {
   background-color: white;
@@ -691,7 +701,7 @@ button:hover {
     width: 90%;
     padding: 20px;
   }
-  button {
+  button, .button-sub-text {
     width: 90%;
   }
   .slider {
@@ -721,7 +731,7 @@ button:hover {
     width: 402px;
   }
 
-  button {
+  button, .button-sub-text {
     width: 446.39px;
   }
 }
