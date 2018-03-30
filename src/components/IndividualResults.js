@@ -51,16 +51,18 @@ class IndividualResults extends Component {
             <div className="total-box" key="savings-value">
                 <p>${addCommas(Math.floor(this.props.savings / MONTH))}/mo</p>
                 <p>(${this.props.savings}/yr)</p>
-            </div>
+            </div>,
+			<div className="message-box" key="ind-nosavings-result">
+				<p>Universal Healthcare means the freedom to pursue dreams, the security of zero to minimal out-of-pocket costs, your choice of provider, and high quality, comprehensive benefits (dental and vision) for every Washingon resident.</p>
+			</div>
 			]:
 			[
-              <div className="middle-box" key="ind-nosavings-title">
-                <h2>YOUR BENEFIT</h2>
-              </div>,
-              <div className="total-box" key="ind-nosavings-result">
-                <p>Congratulations</p>
-                <p>Due to your household's AGI.</p>
-              </div>
+		       <div className="middle-box" key="ind-nosavings-title">
+				 <h2>YOUR BENEFIT</h2>
+			   </div>,
+			   <div className="message-box" key="ind-nosavings-result">
+				   <p>Universal Healthcare means the freedom to pursue dreams, the security of zero to minimal out-of-pocket costs, your choice of provider, and high quality, comprehensive benefits (dental and vision) for every Washingon resident.</p>
+			   </div>
             ]
 		  }
           <Socials
@@ -148,14 +150,16 @@ class IndividualResults extends Component {
               <div className="total-box" key="ind-savings-result">
                 <p>${addCommas(Math.floor(this.props.savings / MONTH))}/mo</p>
                 <p>(${this.props.savings}/yr)</p>
-              </div>
+			</div>,
+			<div className="message-box" key="ind-nosavings-result">
+				<p>Universal Healthcare means the freedom to pursue dreams, the security of zero to minimal out-of-pocket costs, your choice of provider, and high quality, comprehensive benefits (dental and vision) for every Washingon resident.</p>
+			</div>
             ] : [
               <div className="middle-box" key="ind-nosavings-title">
                 <h2>YOUR BENEFIT</h2>
               </div>,
-              <div className="total-box" key="ind-nosavings-result">
-                <p>Congratulations</p>
-                <p>Due to your household's AGI.</p>
+              <div className="message-box" key="ind-nosavings-result">
+				  <p>Universal Healthcare means the freedom to pursue dreams, the security of zero to minimal out-of-pocket costs, your choice of provider, and high quality, comprehensive benefits (dental and vision) for every Washingon resident.</p>
               </div>
             ]
           }
