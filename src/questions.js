@@ -20,6 +20,7 @@ const questions = {
 			inputType:'text',
 			unit:'$',
 			tip: `<p>Adjusted gross income (AGI) is an individual or joint couple's total gross income minus specific deductions. It's <strong>VERY IMPORTANT</strong> to enter your AGI and NOT gross income. To find your AGI, refer to your last year's tax return or use the AGI Calculator provided below.</p><table class="agi-table"><tr><th><strong>If you filed...</strong></th><th><strong>Look for line...</strong></th></tr><tr><td>Form 1040</td><td>37</td></tr><tr><td>Form 1040A</td><td>21</td></tr><tr><td>Form 1040EZ</td><td>4</td></tr></table>`,
+			tipSize:'0.8em',
 			link:['http://money.cnn.com/tmp/networth2.html','Take me to the AGI Calculator first...'],
 			confirm: false,
 			confirmText: '🤖 Danger, Will Robinson! 🤖 \n\n If you enter your Gross Income and not your AGI, you will not receive the correct calculation! Proceed anyway?'
