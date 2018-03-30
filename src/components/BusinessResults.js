@@ -7,13 +7,10 @@ class BusinessResults extends Component {
 	const annualCost = parseInt(removeCommas(this.props.vars[1]),10);
     return (
       <div className={`results ${this.props.resultStyle}`}>
-        <div className="header-box">
-          <h1>Calculator Results:</h1>
-        </div>
         {annualCost - this.props.futureCost > 0 && [
           <div className="cost-bars-container" key="bars-cont">
             <div className="middle-box">
-              <h2>Current Annual Healthcare Costs:</h2>
+              <h2>Current Annual Healthcare Costs</h2>
             </div>
             <div className="color-bar-box">
               <div className="color-bar red">
@@ -21,7 +18,7 @@ class BusinessResults extends Component {
               </div>
             </div>
             <div className="middle-box">
-              <h2>Projected Annual Healthcare Costs:</h2>
+              <h2>Projected Annual Healthcare Costs</h2>
             </div>
             <div className="color-bar-box">
               <div style={this.props.colorBarGreen} className="color-bar green">
@@ -56,7 +53,7 @@ class BusinessResults extends Component {
         </div>
         {annualCost - this.props.futureCost > 0 ? (
           <div className="col white">
-            <h2 className="results-heading">Total Projected Savings:</h2>
+            <h2 className="results-heading">Total Projected Savings</h2>
             <span className="results-sub-heading">
               (While Covering All Employees)
             </span>
@@ -81,7 +78,7 @@ class BusinessResults extends Component {
           </div>
         ) : (
           <div className="col white">
-            <h2 className="results-heading">Total Contribution:</h2>
+            <h2 className="results-heading">Total Contribution</h2>
             <span className="results-sub-heading">
               (To Cover All Employees)
             </span>
