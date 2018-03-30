@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Question from './components/Question';
 import ProgressBar from './components/ProgressBar';
 import Results from './components/Results';
+import StartCard from './components/StartCard';
 import questions from './questions';
 import Modal from 'react-modal';
 import { removeCommas, addCommas } from './helpers/helper-functions';
@@ -262,21 +263,8 @@ class App extends Component {
 				<div className='header-gap'></div>
 
 				{this.state.userType === '' &&
-					<div className="card">
-						<button
-							onClick={this.handleUserType}
-							type="submit"
-							value="business">
-							I'm a Business Owner
-					</button>
-
-						<button
-							onClick={this.handleUserType}
-							type="submit"
-							value="individual">
-							I'm an Individual
-					</button>
-					</div>}
+				<StartCard handleUserType={this.handleUserType}/>
+				}
 
 				{this.state.index > -1 &&
 					this.state.index < questionArray.length && !this.state.hiddenIndexes.includes(this.state.index) &&
