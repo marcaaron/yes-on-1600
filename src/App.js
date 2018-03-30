@@ -282,6 +282,7 @@ class App extends Component {
 						tip={questionArray[this.state.index].tip || ''}
 						link={questionArray[this.state.index].link || ''}
 						handleSelectBtn={this.handleSelectBtn}
+						tipSize={questionArray[this.state.index].tipSize || ''}
 					/>
 				}
 				{this.state.index > -1 && this.state.index !== questionArray.length &&

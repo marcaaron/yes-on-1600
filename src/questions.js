@@ -45,7 +45,8 @@ const questions = {
 				error:'Number of Adults over 19 cannot exceed total household size!'
 			},
 			defaultValue:1,
-			tip: 'Click <strong>Next</strong> and we’ll review what you get to eliminate from your current expenses.'
+			tip: 'Click <strong>Next</strong> and we’ll review what you get to eliminate from your current expenses.',
+			tipSize: '1.3em'
 		},
 		{
 			questionText:"Your Current Monthly Healthcare Costs",
