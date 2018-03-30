@@ -49,8 +49,8 @@ class IndividualResults extends Component {
               <h2>TOTAL SAVINGS</h2>
             </div>,
             <div className="total-box" key="savings-value">
-              <p>${addCommas(this.props.savings)}/yr</p>
-
+                <p>${addCommas(Math.floor(this.props.savings / MONTH))}/mo</p>
+                <p>(${this.props.savings}/yr)</p>
             </div>
 			]:
 			[
@@ -131,13 +131,14 @@ class IndividualResults extends Component {
             )}
 			<div className="contributions-row">
               <p className="contributions-row-heading">
-                Per Adult Premium
+                Per Adult Premium <sup>*</sup>
               </p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.premium / MONTH))}/mo x{" "}
                 {this.props.numberOfAdults}
               </p>
             </div>
+			<p className="premium-disclaimer">* If your Modified Adjusted Gross Income is different than Adjusted Gross Income, the Premium may not be accurate. Additionally, Employers may choose to pay the Premium as part of their benefits.</p>
           </div>
           {
             this.props.savings > 0 ? [
@@ -146,7 +147,7 @@ class IndividualResults extends Component {
               </div>,
               <div className="total-box" key="ind-savings-result">
                 <p>${addCommas(Math.floor(this.props.savings / MONTH))}/mo</p>
-                {/* <p>(${this.props.savings}/yr)</p> */}
+                <p>(${this.props.savings}/yr)</p>
               </div>
             ] : [
               <div className="middle-box" key="ind-nosavings-title">
