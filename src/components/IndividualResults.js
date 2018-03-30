@@ -117,7 +117,19 @@ class IndividualResults extends Component {
                 ${addCommas(Math.floor(this.props.capitalGainsContribution / MONTH))}/mo
               </p>
             </div>
-            <div className="contributions-row">
+            {parseInt(this.props.sizeOfHousehold, 10) -
+              parseInt(this.props.numberOfAdults, 10) >
+              0 && (
+              <div className="contributions-row">
+                <p className="contributions-row-heading">Per Child Premium</p>
+                <p className="contributions-row-result">
+                  FREE x{" "}
+                  {parseInt(this.props.sizeOfHousehold, 10) -
+                    parseInt(this.props.numberOfAdults, 10)}
+                </p>
+              </div>
+            )}
+			<div className="contributions-row">
               <p className="contributions-row-heading">
                 Per Adult Premium
               </p>
@@ -126,18 +138,6 @@ class IndividualResults extends Component {
                 {this.props.numberOfAdults}
               </p>
             </div>
-            {parseInt(this.props.sizeOfHousehold, 10) -
-              parseInt(this.props.numberOfAdults, 10) >
-              0 && (
-              <div className="contributions-row">
-                <p className="contributions-row-heading">Per Child Premium</p>
-                <p className="contributions-row-result">
-                  $0/mo x{" "}
-                  {parseInt(this.props.sizeOfHousehold, 10) -
-                    parseInt(this.props.numberOfAdults, 10)}
-                </p>
-              </div>
-            )}
           </div>
           {
             this.props.savings > 0 ? [
