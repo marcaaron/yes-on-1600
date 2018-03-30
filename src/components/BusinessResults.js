@@ -1,19 +1,17 @@
 import Socials from "../components/Socials";
 import React, { Component } from "react";
 import { addCommas, removeCommas } from '../helpers/helper-functions';
+import DonateButton from '../components/DonateButton';
 
 class BusinessResults extends Component {
   render() {
 	const annualCost = parseInt(removeCommas(this.props.vars[1]),10);
     return (
       <div className={`results ${this.props.resultStyle}`}>
-        <div className="header-box">
-          <h1>Calculator Results:</h1>
-        </div>
-        {annualCost - this.props.futureCost > 0 && [
+        {annualCost - this.props.futureCost > 0 ? [
           <div className="cost-bars-container" key="bars-cont">
             <div className="middle-box">
-              <h2>Current Annual Healthcare Costs:</h2>
+              <h2>Current Annual Healthcare Costs</h2>
             </div>
             <div className="color-bar-box">
               <div className="color-bar red">
@@ -21,7 +19,7 @@ class BusinessResults extends Component {
               </div>
             </div>
             <div className="middle-box">
-              <h2>Projected Annual Healthcare Costs:</h2>
+              <h2>Projected Annual Healthcare Costs</h2>
             </div>
             <div className="color-bar-box">
               <div style={this.props.colorBarGreen} className="color-bar green">
@@ -29,7 +27,15 @@ class BusinessResults extends Component {
               </div>
             </div>
           </div>
-        ]}
+	  ] :[
+          <div className="header-box">
+			  <h1>Your Benefit</h1>
+		  </div>,
+		  <div className="message-box">
+			<p>Universal Healthcare means high quality, comprehensive coverage (including vision and dental) for every employee, regardless of number of hours worked. A healthy work force is a more productive work force.</p>
+		  </div>
+	  ]
+  		}
 
         <div className="percentages">
           <div className="row">
@@ -56,7 +62,7 @@ class BusinessResults extends Component {
         </div>
         {annualCost - this.props.futureCost > 0 ? (
           <div className="col white">
-            <h2 className="results-heading">Total Projected Savings:</h2>
+            <h2 className="results-heading">Total Projected Savings</h2>
             <span className="results-sub-heading">
               (While Covering All Employees)
             </span>
@@ -66,22 +72,15 @@ class BusinessResults extends Component {
             <span className="results-total-year" />
             <div className="results-disclaimer">
               <span>
-                <em>Results estimated based on company size.</em>
-              </span>
-              <span>
                 <em>
-                  Please{" "}
-                  <a href="mailto:Erin@wholewashington.org?Subject=I-1600%20Healthcare%20Costs%20For%20Businesses&Body=Hi%2C%20I%27d%20like%20some%20help%20calculating%20what%20my%20projected%20costs%20will%20be%20under%20I-1600.">
-                    contact us
-                  </a>{" "}
-                  for a detailed assessment!
+                  <sup>*</sup> Results vary based on company size and individual differences in Gross Pay. We're working on an enhanced tool that takes those variables into account and displays an even more accurate result. Stay tuned.
                 </em>
               </span>
             </div>
           </div>
         ) : (
           <div className="col white">
-            <h2 className="results-heading">Total Contribution:</h2>
+            <h2 className="results-heading">Total Contribution</h2>
             <span className="results-sub-heading">
               (To Cover All Employees)
             </span>
@@ -93,15 +92,8 @@ class BusinessResults extends Component {
             </span>
             <div className="results-disclaimer">
               <span>
-                <em>Results estimated based on company size.</em>
-              </span>
-              <span>
                 <em>
-                  Please{" "}
-                  <a href="mailto:Erin@wholewashington.org?Subject=I-1600%20Healthcare%20Costs%20For%20Businesses&Body=Hi%2C%20I%27d%20like%20some%20help%20calculating%20what%20my%20projected%20costs%20will%20be%20under%20I-1600.">
-                    contact us
-                  </a>{" "}
-                  for a detailed assessment!
+                  <sup>*</sup> Results vary based on company size and individual differences in Gross Pay. We're working on an enhanced tool that takes those variables into account and displays an even more accurate result. Stay tuned.
                 </em>
               </span>
             </div>
@@ -112,6 +104,7 @@ class BusinessResults extends Component {
           size="40"
           killClass={this.props.killClass}
         />
+        <DonateButton />
       </div>
     );
   }

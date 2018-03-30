@@ -366,7 +366,7 @@ button:hover {
 .fa-usd{
 	padding:20px;
 	color:white;
-	text-shadow: 1px 1px 4px black; 
+	text-shadow: 1px 1px 4px black;
 	border-radius: 50%;
 }
 
@@ -516,6 +516,7 @@ button:hover {
 }
 .color-bar-text {
   color: white;
+  font-size:1.2em;
 }
 .result-percentage {
   font-size: 2em;
@@ -578,6 +579,14 @@ button:hover {
   font-size: 0.9em;
   margin-bottom: 0.5em;
   text-align: center;
+}
+
+.message-box {
+  font-size: 1.2em;
+  margin: 1em;
+  padding-bottom: 1em;
+  text-align: center;
+  border-bottom: 0.5px solid #686868;
 }
 
 .results-total {
