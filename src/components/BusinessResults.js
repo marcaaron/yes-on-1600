@@ -1,13 +1,14 @@
 import Socials from "../components/Socials";
 import React, { Component } from "react";
 import { addCommas, removeCommas } from '../helpers/helper-functions';
+import DonateButton from '../components/DonateButton';
 
 class BusinessResults extends Component {
   render() {
 	const annualCost = parseInt(removeCommas(this.props.vars[1]),10);
     return (
       <div className={`results ${this.props.resultStyle}`}>
-        {annualCost - this.props.futureCost > 0 && [
+        {annualCost - this.props.futureCost > 0 ? [
           <div className="cost-bars-container" key="bars-cont">
             <div className="middle-box">
               <h2>Current Annual Healthcare Costs</h2>
@@ -26,7 +27,15 @@ class BusinessResults extends Component {
               </div>
             </div>
           </div>
-        ]}
+	  ] :[
+          <div className="header-box">
+			  <h1>Your Benefit</h1>
+		  </div>,
+		  <div className="message-box">
+			<p>Universal Healthcare means high quality, comprehensive coverage (including vision and dental) for every employee, regardless of number of hours worked. A healthy work force is a more productive work force.</p>
+		  </div>
+	  ]
+  		}
 
         <div className="percentages">
           <div className="row">
@@ -95,6 +104,7 @@ class BusinessResults extends Component {
           size="40"
           killClass={this.props.killClass}
         />
+        <DonateButton />
       </div>
     );
   }

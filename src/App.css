@@ -581,6 +581,14 @@ button:hover {
   text-align: center;
 }
 
+.message-box {
+  font-size: 1.2em;
+  margin: 1em;
+  padding-bottom: 1em;
+  text-align: center;
+  border-bottom: 0.5px solid #686868;
+}
+
 .results-total {
   font-size: 2em;
 }
