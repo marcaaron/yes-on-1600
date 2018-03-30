@@ -498,6 +498,12 @@ button:hover {
   align-items: center;
   justify-content: center;
 }
+.premium-disclaimer {
+  text-align: center;
+  padding: 0.7em 1.5em;
+  /* margin-bottom: 0.5em; */
+  font-size: 0.8em;
+}
 .cost-bars-container {
   width: 100%;
   border-bottom: 1px solid #686868;
