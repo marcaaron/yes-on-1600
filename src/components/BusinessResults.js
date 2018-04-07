@@ -63,7 +63,7 @@ class BusinessResults extends Component {
           <div className="col white">
             <h2 className="results-heading">Total Projected Savings</h2>
             <span className="results-sub-heading">
-              (While Covering All Employees)
+              While Covering All Employees
             </span>
             <span className="results-total">
               ${addCommas(annualCost - this.props.futureCost)}/year <sup>*</sup>
@@ -72,7 +72,7 @@ class BusinessResults extends Component {
             <div className="results-disclaimer">
               <span>
                 <em>
-                  <sup>*</sup> Results vary based on company size and individual differences in Gross Pay. We're working on an enhanced tool that takes those variables into account and displays an even more accurate result. Stay tuned.
+                  <sup>*</sup> Results vary based on company size and individual differences in Gross&nbsp;Pay
                 </em>
               </span>
             </div>
