@@ -31,13 +31,13 @@ const questions = {
 			unit:'$',
 			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months, for example, profits earned from the sale of stocks. This tax contribution will not apply to Home Sales, Farm Income or Retirement Accounts.<br/><br/>If you file Schedule D, look for line item 15.'
 		},
-		{
-			questionText:"Additional Household Income",
-			inputType:'text',
-			unit:'$',
-			defaultValue:0,
-			tip:`Additional household income includes any income earned from members of your household, whether taxable or not. This includes any cash jobs, dependent's earnings, capital gains and spouse's income if not included in the AGI.`
-		},
+		// {
+		// 	questionText:"Additional Household Income",
+		// 	inputType:'text',
+		// 	unit:'$',
+		// 	defaultValue:0,
+		// 	tip:`Additional household income includes any income earned from members of your household, whether taxable or not. This includes any cash jobs, dependent's earnings, capital gains and spouse's income if not included in the AGI.`
+		// },
 		{
 			questionText:"Number of Adults over 19",
 			inputType:'number',

@@ -23,9 +23,8 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 		sizeOfHousehold = parseInt(a,10),
 		adjustedGrossIncome = parseInt(removeCommas(b),10),
 		capitalGains = parseInt(removeCommas(c),10),
-		addHouseholdIncome = parseInt(removeCommas(d),10),
-		numberOfAdults = parseInt(e, 10),
-		currentCosts = parseInt(removeCommas(f),10);
+		numberOfAdults = parseInt(d, 10),
+		currentCosts = parseInt(removeCommas(e),10);
 
 	function fpl(size) {
 		if (size > 8) {
@@ -38,7 +37,7 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 	}
 
 	const fplCheck = fpl(sizeOfHousehold);
-	const houseHoldIncome = adjustedGrossIncome + capitalGains + addHouseholdIncome;
+	const houseHoldIncome = adjustedGrossIncome + capitalGains;
 	if(fplCheck*2 <= houseHoldIncome && fplCheck*2.33 >= houseHoldIncome){
 		premium = ((prem*.25)*12);
 		householdPremium = ((prem*.25*numberOfAdults)*12);

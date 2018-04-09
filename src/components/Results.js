@@ -50,7 +50,7 @@ class Results extends Component {
 			this.setState({ futureCost });
 		}
 		 else {
-			const state = individualCalc(this.props.vars[0], this.props.vars[1], this.props.vars[2], this.props.vars[3], this.props.vars[4], this.props.vars[5], this.props.vars[6]);
+			const state = individualCalc(this.props.vars[0], this.props.vars[1], this.props.vars[2], this.props.vars[3], this.props.vars[4], this.props.vars[5]);
 			this.setState(state);
 		}
 	}
