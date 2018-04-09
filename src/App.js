@@ -35,7 +35,8 @@ class App extends Component {
 			confirm: false,
 			hiddenIndexes: [],
 			modalIsOpen: false,
-			error: ''
+			error: '',
+			contentStyle:{}
 		}
 		this.handleUserType = this.handleUserType.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -78,6 +79,17 @@ class App extends Component {
 		this.subtitle.style.color = '#f00';
 	}
 
+	componentDidMount(){
+		// Potentially remove & replace with fixed height during final version but this will keep our content below our fixed header while we make edits.
+		if(document.querySelector('header')){
+			const contentStyle = {...this.state.contentStyle};
+			// Get header height
+			const headerHeight = document.querySelector('header').getBoundingClientRect().height;
+			// Programmatically set content marginTop
+			contentStyle.marginTop =`${headerHeight}px`;
+			this.setState({contentStyle})
+		}
+	}
 
 	skipIndex() {
 		const questionArray = questions[`${this.state.userType}`];
@@ -260,7 +272,7 @@ class App extends Component {
 					index={this.state.index}
 					questionArray={questionArray}
 				/>
-				<div className='header-gap'></div>
+				<div style={this.state.contentStyle} className='card-content'>
 
 				{this.state.userType === '' &&
 				<StartCard handleUserType={this.handleUserType}/>
@@ -298,6 +310,7 @@ class App extends Component {
 						vars={this.state.vars}
 						range={this.state.range} />
 				}
+				</div>
 			</div>
 		);
 	}
