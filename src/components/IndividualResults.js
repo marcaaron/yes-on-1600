@@ -42,12 +42,14 @@ class IndividualResults extends Component {
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
-                Individual Premium
+                Individual Premium<sup>*</sup>
               </p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.premium / MONTH))}/mo
               </p>
             </div>
+						<p className="premium-disclaimer"><sup>*</sup> See <a href="https://i1600-wholewashington.nationbuilder.com/monthly_premium">Monthly Premium</a> for more info. Employers may choose to pay the Premium as part of their benefits.</p>
+
           </div>
 
           {this.props.savings > 0 ? [
@@ -131,16 +133,16 @@ class IndividualResults extends Component {
               </div>
             )}
 			<div className="contributions-row">
-              <p className="contributions-row-heading">
-                Per Adult Premium <sup>*</sup>
-              </p>
-              <p className="contributions-row-result">
+        <p className="contributions-row-heading">
+          Per Adult Premium <sup>*</sup>
+        </p>
+        <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.premium / MONTH))}/mo x{" "}
                 {this.props.numberOfAdults}
-              </p>
-            </div>
-			<p className="premium-disclaimer">* If your Modified Adjusted Gross Income is different than Adjusted Gross Income, the Premium may not be accurate. Additionally, Employers may choose to pay the Premium as part of their benefits.</p>
-          </div>
+        </p>
+      </div>
+				<p className="premium-disclaimer"><sup>*</sup> See <a href="https://i1600-wholewashington.nationbuilder.com/monthly_premium">Monthly Premium</a> for more info. Employers may choose to pay the Premium as part of their benefits.</p>
+      </div>
           {
             this.props.savings > 0 ? [
               <div className="middle-box" key="ind-savings-title">
