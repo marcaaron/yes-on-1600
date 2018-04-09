@@ -1,4 +1,3 @@
-import Socials from "../components/Socials";
 import React, { Component } from "react";
 import { addCommas, removeCommas } from '../helpers/helper-functions';
 import DonateButton from '../components/DonateButton';
@@ -99,11 +98,7 @@ class BusinessResults extends Component {
             </div>
           </div>
         )}
-        <Socials
-          imageURL={this.props.imageURL}
-          size="40"
-          killClass={this.props.killClass}
-        />
+
         <DonateButton />
       </div>
     );
