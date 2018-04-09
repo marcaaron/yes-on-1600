@@ -33,7 +33,6 @@ class App extends Component {
 			vars: [],
 			range: 50,
 			confirm: false,
-			hiddenIndexes: [],
 			modalIsOpen: false,
 			error: '',
 			contentStyle:{}
@@ -45,24 +44,17 @@ class App extends Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleFwdBtn = this.handleFwdBtn.bind(this);
 		this.handleSelectBtn = this.handleSelectBtn.bind(this);
-		this.skipIndex = this.skipIndex.bind(this);
 		this.openModal = this.openModal.bind(this);
 		this.afterOpenModal = this.afterOpenModal.bind(this);
 		this.closeModal = this.closeModal.bind(this);
 	}
 
 	handleSelectBtn(e) {
-		const questionArray = questions[`${this.state.userType}`];
-		const question = questionArray[this.state.index];
 		let vars = [...this.state.vars];
 		let index = this.state.index + 1;
 		let input = e.target.value;
-		let hiddenIndexes = [...this.state.hiddenIndexes];
-		if (input === question.condition) {
-			hiddenIndexes = [...question.indexToHide];
-		}
 		vars[this.state.index] = input;
-		this.setState({ vars, index, hiddenIndexes });
+		this.setState({ vars, index });
 	}
 
 	// Modal Functions //
@@ -91,41 +83,20 @@ class App extends Component {
 		}
 	}
 
-	skipIndex() {
-		const questionArray = questions[`${this.state.userType}`];
-		const question = questionArray[this.state.index];
-		let index = this.state.index + 1;
-		let vars = [...this.state.vars];
-		vars.push(question.defaultValue);
-		this.setState({ index, vars });
-	}
+
 
 	handleBackBtn() {
 		let index = this.state.index;
 		let userType = this.state.userType;
 		let vars = [...this.state.vars];
-		let hiddenIndexes = [...this.state.hiddenIndexes];
-		// Prevent the app from repeatedly calling skipIndex() when we're at the index immediately AFTER any indices we want to skip. We check if the hiddenIndexes blocklist includes the previous index and if it does decrement index by 2 instead of 1.
-		if (this.state.hiddenIndexes.includes(index - 1)) {
-			index -= 2;
-		} else {
-			if (index >= 0) {
-				index--;
+		if (index >= 0) {
+			index--;
 				if (index === -1) {
 					userType = '';
 					vars = [];
-					hiddenIndexes = [];
 				}
 			}
-		}
-		this.setState({ index, userType, vars, hiddenIndexes });
-	}
-
-	componentDidUpdate() {
-		if (this.state.hiddenIndexes.includes(this.state.index)) {
-			// console.log('skip this one');
-			this.skipIndex();
-		}
+		this.setState({ index, userType, vars });
 	}
 
 	handleFwdBtn() {
@@ -138,13 +109,6 @@ class App extends Component {
 					const confirm = true;
 					this.setState({ index, confirm });
 				}
-			} else {
-				if (this.state.hiddenIndexes.includes(index + 1)) {
-					index += 2;
-				} else {
-					index++;
-				}
-				this.setState({ index });
 			}
 		}
 	}
@@ -220,15 +184,7 @@ class App extends Component {
 					vars.push(input);
 				}
 				const index = this.state.index + 1;
-				let hiddenIndexes = [...this.state.hiddenIndexes];
-				// console.log(input,question.condition);
-				if (parseInt(input, 10) === question.condition) {
-					// console.log('setting indexes to skip');
-					hiddenIndexes = [...question.indexToHide];
-				} else if (question.condition && parseInt(input, 10 !== question.condition)) {
-					hiddenIndexes = [];
-				}
-				this.setState({ index, vars, hiddenIndexes });
+				this.setState({ index, vars });
 				e.target.reset();
 			}
 		}
@@ -279,7 +235,7 @@ class App extends Component {
 				}
 
 				{this.state.index > -1 &&
-					this.state.index < questionArray.length && !this.state.hiddenIndexes.includes(this.state.index) &&
+					this.state.index < questionArray.length &&
 					<Question
 						vars={this.state.vars}
 						index={this.state.index}
