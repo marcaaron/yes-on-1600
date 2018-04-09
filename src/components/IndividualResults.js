@@ -8,6 +8,13 @@ class IndividualResults extends Component {
     if (this.props.sizeOfHousehold < 2) {
       return (
         <div className={`results ${this.props.resultStyle}`}>
+					<div className="middle-box">
+            <h2>Your <strong>Current</strong> Cost Per Household</h2>
+          </div>
+					<div className="total-box">
+            <p>${addCommas(Math.floor(this.props.currentCosts))}/mo</p>
+            <p>(${addCommas(this.props.currentCosts*12)}/yr)</p>
+          </div>
           <div className="middle-box">
             <h2>Your <strong>New</strong> Projected Cost Per Household</h2>
           </div>

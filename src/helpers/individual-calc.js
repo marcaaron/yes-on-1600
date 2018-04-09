@@ -24,7 +24,8 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 		adjustedGrossIncome = parseInt(removeCommas(b),10),
 		capitalGains = parseInt(removeCommas(c),10),
 		numberOfAdults = parseInt(d, 10),
-		currentCosts = parseInt(removeCommas(e),10);
+		currentPremiums = parseInt(removeCommas(e),10),
+		currentAdditionalMedical = parseInt(removeCommas(f),10);
 
 	function fpl(size) {
 		if (size > 8) {
@@ -36,6 +37,7 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 		}
 	}
 
+	const currentCosts = currentPremiums + (Math.round(currentAdditionalMedical/12));
 	const fplCheck = fpl(sizeOfHousehold);
 	const houseHoldIncome = adjustedGrossIncome + capitalGains;
 	if(fplCheck*2 <= houseHoldIncome && fplCheck*2.33 >= houseHoldIncome){
@@ -82,5 +84,5 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 	}else{
 		savings = parseInt(currentCosts*12,10) - ((parseInt(premium,10) * parseInt(numberOfAdults,10)) + parseInt(capitalGainsContribution,10) + (parseInt(income,10)));
 	}
-	return { fpl, income, numberOfAdults, sizeOfHousehold, savings, capitalGainsContribution, householdPremium, premium, totalPersonalContribution, currentCosts };
+	return { fpl, income, numberOfAdults, sizeOfHousehold, savings, capitalGainsContribution, householdPremium, premium, totalPersonalContribution, currentCosts, currentAdditionalMedical, currentPremiums };
 };

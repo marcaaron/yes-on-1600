@@ -101,6 +101,8 @@ class Results extends Component {
 						savings={this.state.savings}
 						sizeOfHousehold={this.state.sizeOfHousehold}
 						numberOfAdults={this.state.numberOfAdults}
+						currentPremiums={this.state.currentPremiums}
+						currentAdditionalMedical={this.state.currentAdditionalMedical}
 					/>
 				</div>
 				{/* Hidden Render >> html2canvas >> base64 image string */}

@@ -31,13 +31,6 @@ const questions = {
 			unit:'$',
 			tip:'Net Long-Term Capital Gains are the profits made from investments held for longer than 12 months, for example, profits earned from the sale of stocks. This tax contribution will not apply to Home Sales, Farm Income or Retirement Accounts.<br/><br/>If you file Schedule D, look for line item 15.'
 		},
-		// {
-		// 	questionText:"Additional Household Income",
-		// 	inputType:'text',
-		// 	unit:'$',
-		// 	defaultValue:0,
-		// 	tip:`Additional household income includes any income earned from members of your household, whether taxable or not. This includes any cash jobs, dependent's earnings, capital gains and spouse's income if not included in the AGI.`
-		// },
 		{
 			questionText:"Number of Adults over 19",
 			inputType:'number',
@@ -50,10 +43,16 @@ const questions = {
 			tipSize: '1.3em'
 		},
 		{
-			questionText:"Your Current Monthly Healthcare Costs",
+			questionText:"Your Current Monthly Healthcare Premiums",
 			inputType:'text',
 			unit:'$',
 			tip:'<p>Include Monthly Premiums for Medical, Dental (if applicable) and Vision (if applicable).</p> <p>Remember to include costs for each member of household.</p>'
+		},
+		{
+			questionText:"Your Current Yearly Additional Medical Costs",
+			inputType:'text',
+			unit:'$',
+			tip:`<p>Include costs incurred over the course of the year for every member of your household, such as:<ul><li>Co-Pays</li><li>Prescriptions<sup>*</sup></li><li>Medical Bills not covered/denied by Insurance</li><li>Emergency Room or Clinic Visits</li><li>Deductibles</li></ul><br><p><sup>*</sup>Note: the most you'll pay for prescriptions with I-1600 Universal Healthcare is $250 per adult per year.</p>`
 		}
 	],
 	business:[
