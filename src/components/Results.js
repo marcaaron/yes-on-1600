@@ -1,9 +1,11 @@
-import html2canvas from 'html2canvas';
+// HTML2CANVAS - temporarily disabled until social features restored
+// import html2canvas from 'html2canvas';
+// import BusinessRender from './BusinessRender';
+// import IndividualRender from './IndividualRender';
+
 import BusinessResults from './BusinessResults';
-import BusinessRender from './BusinessRender';
 
 import IndividualResults from './IndividualResults';
-import IndividualRender from './IndividualRender';
 
 import React, { Component } from 'react';
 import {businessCalc} from '../helpers/business-calc';
@@ -30,15 +32,16 @@ class Results extends Component {
 		this.getResult();
 	}
 	componentDidMount(){
-		html2canvas(document.querySelector('.social-render'),{
-			width:'630',
-			height:'630',
-		})
-		.then((canvas)=>{
-			document.querySelector('.social-render').remove();
-			const imageURL = (canvas).toDataURL('image/png');
-			this.setState({imageURL});
-		});
+		// HTML2CANVAS - temporarily disabled until social features restored
+		// html2canvas(document.querySelector('.social-render'),{
+		// 	width:'630',
+		// 	height:'630',
+		// })
+		// .then((canvas)=>{
+		// 	document.querySelector('.social-render').remove();
+		// 	const imageURL = (canvas).toDataURL('image/png');
+		// 	this.setState({imageURL});
+		// });
 	}
 
 	getResult() {
@@ -74,12 +77,13 @@ class Results extends Component {
 						/>
 					</div>
 					{/* Hidden Render >> html2canvas >> base64 image string */}
-					<div className="social-render">
+					{/* Temporarily disabled until social features restored */}
+					{/* <div className="social-render">
 						<BusinessRender
 							vars={this.props.vars}
 							futureCost={this.state.futureCost}
 						/>
-					</div>
+					</div> */}
 				</div>
 			);
 		} else {
@@ -100,12 +104,13 @@ class Results extends Component {
 					/>
 				</div>
 				{/* Hidden Render >> html2canvas >> base64 image string */}
-				<div className="social-render">
+				{/* Temporarily disabled until social features restored */}
+				{/* <div className="social-render">
 					<IndividualRender
 						totalPersonalContribution={this.state.totalPersonalContribution}
 						savings={this.state.savings}
 					/>
-				</div>
+				</div> */}
 				<a
 					className="feedback" href="https://docs.google.com/forms/d/e/1FAIpQLSeyFQ25YNFZdl2gLziNH8c5iQRBycnS4WuXFciTESLgMoDRig/viewform"
 					target="_blank"
