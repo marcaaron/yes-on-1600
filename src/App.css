@@ -525,7 +525,7 @@ button:hover {
 }
 .red {
   width: 100%;
-  background: #e04c2a;
+  background: rgb(210, 35, 42);
 }
 .green {
   background: #5eb54e;

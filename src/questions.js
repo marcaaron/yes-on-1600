@@ -46,14 +46,14 @@ const questions = {
 				error:'Number of Adults over 19 cannot exceed total household size!'
 			},
 			defaultValue:1,
-			tip: 'Click <strong>Next</strong> and we’ll review what you get to eliminate from your current expenses.',
+			tip: "Now we'll review what you get to <strong>eliminate</strong> from your current expenses.",
 			tipSize: '1.3em'
 		},
 		{
 			questionText:"Your Current Monthly Healthcare Costs",
 			inputType:'text',
 			unit:'$',
-			tip:'<strong>REMEMBER TO INCLUDE:</strong> <br/><br/> Monthly Cost <ul><li>Premiums</li></ul> Common Costs <ul> <li>Co-Pays</li> <li>Prescriptions</li> <li>Medical Bills not covered/denied by Insurance</li> <li>Emergency Room or Clinic Visits</li> <li>Deductible</li> <li>Dental</li> <li>Vision</li> </ul> <p>Remember to include costs for each member of household.</p>'
+			tip:'<p>Include Monthly Premiums for Medical, Dental (if applicable) and Vision (if applicable).</p> <p>Remember to include costs for each member of household.</p>'
 		}
 	],
 	business:[
