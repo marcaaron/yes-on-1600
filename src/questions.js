@@ -50,7 +50,7 @@ const questions = {
 			questionText:"Your Current Yearly Additional Medical Costs",
 			inputType:'text',
 			unit:'$',
-			tip:`<p>Include costs incurred over the course of the year for every member of your household, such as:<ul><li>Co-Pays</li><li>Prescriptions<sup>*</sup></li><li>Medical Bills not covered/denied by Insurance</li><li>Emergency Room or Clinic Visits</li><li>Deductibles</li></ul><br><p><sup>*</sup>Note: the most you'll pay for prescriptions with I-1600 Universal Healthcare is $250 per adult per year.</p>`
+			tip:`<p>Include costs incurred over the course of the year for every member of your household, such as:<ul><li>Co-Pays</li><li>Prescriptions<sup>*</sup></li><li>Medical Bills not covered/denied by Insurance</li><li>Emergency Room or Clinic Visits</li><li>Deductibles</li></ul><p><sup>*</sup>Note: the most you'll pay for prescriptions with I-1600 Universal Healthcare is $250 per adult per year.</p>`
 		}
 	],
 	business:[
