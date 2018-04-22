@@ -237,6 +237,7 @@ class App extends Component {
 				{this.state.index > -1 &&
 					this.state.index < questionArray.length &&
 					<Question
+            showIcon={questionArray[this.state.index].showIcon || ''}
 						vars={this.state.vars}
 						index={this.state.index}
 						handleSubmit={this.handleSubmit}

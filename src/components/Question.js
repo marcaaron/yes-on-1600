@@ -106,7 +106,11 @@ class Question extends Component {
 					{/* End input-container */}
 					{this.props.tip &&
 						<div className="tip-box" style={{fontSize:this.props.tipSize}}>
-							<i className="fa fa-2x fa-info-circle tip-icon"></i>
+							{this.props.showIcon ?
+                <i className="fa fa-2x fa-info-circle tip-icon"></i>
+                :
+                <div style={{height:'30px'}}>&nbsp;</div>
+              }
 							<div className="tip">
 								{Parser(this.props.tip)}
 							</div>
