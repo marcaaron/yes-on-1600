@@ -153,7 +153,7 @@ body {
   padding: 0;
   font-family: Arial, sans-serif;
   background-color: rgb(32, 159, 218);
-  background-image: url("https://www.transparenttextures.com/patterns/diagmonds-light.png");
+  background-image: url("/diagmonds-light.png");
   height: 100%;
   color: #232323;
 }
@@ -707,7 +707,7 @@ button:hover {
     width: 90%;
     padding: 20px;
   }
-  button, .button-sub-text {
+  button, .start-disclaimer, .button-sub-text {
     width: 90%;
   }
   .slider {
@@ -737,7 +737,7 @@ button:hover {
     width: 402px;
   }
 
-  button, .button-sub-text {
+  button, .start-disclaimer, .button-sub-text {
     width: 446.39px;
   }
 }
@@ -750,4 +750,13 @@ button:hover {
 .total-new-cost{
   background:#282828;
     color:white;
+}
+
+.start-disclaimer{
+  background:white;
+  padding:10px;
+  font-size:0.9em;
+  border: solid 1px rgb(32, 159, 218);
+  line-height: 1.3em;
+  margin-top: 10px;
 }

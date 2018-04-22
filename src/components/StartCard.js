@@ -20,6 +20,10 @@ class StartCard extends Component {
 			  </button>
 			  <p className="button-sub-text">
 				  <strong>Business Owners:</strong><em> Using your current payroll and healthcare costs, we'll provide a high-level estimate of projected healthcare costs.</em></p>
+
+        <div className="start-disclaimer">
+          This calculator provides an <em><strong>estimate</strong></em> of how I-1600 would impact your bottom line. If you have significant partnership or capital income (e.g. more than $15,000 a year), you may want to consult a tax professional for a more complete assessment.
+        </div>
 			</div>
 	  );
 	}
