@@ -61,7 +61,7 @@ class IndividualResults extends Component {
                 <p>(${this.props.savings}/yr)</p>
             </div>,
 			<div className="message-box" key="ind-nosavings-result">
-				<p>Universal Healthcare means the freedom to pursue dreams, the security of zero to minimal out-of-pocket costs, your choice of provider, and high quality, comprehensive benefits (dental and vision) for every Washingon resident.</p>
+				<p><a href="https://d3n8a8pro7vhmx.cloudfront.net/wholewashington/pages/144/attachments/original/1522975117/Yes1600Credo.pdf?1522975117">Universal Healthcare</a> means high quality, comprehensive care (including dental and vision) for every Washington resident. It means fair and dedicated taxes are used to fund our healthcare, instead of escalating insurance costs with unpredictable out-of-pocket expenses. It means we can focus on our health and have the freedom to pursue our dreams.</p>
 			</div>
 			]:
 			[
@@ -69,7 +69,7 @@ class IndividualResults extends Component {
 				 <h2>YOUR BENEFIT</h2>
 			   </div>,
 			   <div className="message-box" key="ind-nosavings-result">
-				   <p>Universal Healthcare means the freedom to pursue dreams, the security of zero to minimal out-of-pocket costs, your choice of provider, and high quality, comprehensive benefits (dental and vision) for every Washingon resident.</p>
+				   <p><a href="https://d3n8a8pro7vhmx.cloudfront.net/wholewashington/pages/144/attachments/original/1522975117/Yes1600Credo.pdf?1522975117">Universal Healthcare</a> means high quality, comprehensive care (including dental and vision) for every Washington resident. It means fair and dedicated taxes are used to fund our healthcare, instead of escalating insurance costs with unpredictable out-of-pocket expenses. It means we can focus on our health and have the freedom to pursue our dreams.</p>
 			   </div>
             ]
 		  }
