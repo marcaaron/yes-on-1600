@@ -741,3 +741,13 @@ button:hover {
     width: 446.39px;
   }
 }
+
+.new-cost{
+  background:#282828;
+  color:white;
+}
+
+.total-new-cost{
+  background:#282828;
+    color:white;
+}

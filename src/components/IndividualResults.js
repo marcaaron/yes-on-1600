@@ -15,10 +15,10 @@ class IndividualResults extends Component {
             <p>${addCommas(Math.floor(this.props.currentCosts))}/mo</p>
             <p>(${addCommas(this.props.currentCosts*12)}/yr)</p>
           </div>
-          <div className="middle-box">
-            <h2>Your <strong>New</strong> Projected Cost Per Household</h2>
+          <div className="middle-box new-cost">
+            <h2 >Your <strong>New</strong> Projected Cost Per Household</h2>
           </div>
-          <div className="total-box">
+          <div className="total-box total-new-cost">
             <p>${addCommas(Math.floor(this.props.totalPersonalContribution / MONTH))}/mo</p>
             <p>(${addCommas(this.props.totalPersonalContribution)}/yr)</p>
           </div>
@@ -53,10 +53,10 @@ class IndividualResults extends Component {
           </div>
 
           {this.props.savings > 0 ? [
-            <div className="middle-box" key="savings-label">
-              <h2>TOTAL SAVINGS</h2>
+            <div className="middle-box new-cost" key="savings-label">
+              <h2 >TOTAL SAVINGS</h2>
             </div>,
-            <div className="total-box" key="savings-value">
+            <div className="total-box total-new-cost" key="savings-value">
                 <p>${addCommas(Math.floor(this.props.savings / MONTH))}/mo</p>
                 <p>(${this.props.savings}/yr)</p>
             </div>,
@@ -87,10 +87,10 @@ class IndividualResults extends Component {
             <p>${addCommas(Math.floor(this.props.currentCosts))}/mo</p>
             <p>(${addCommas(this.props.currentCosts*12)}/yr)</p>
           </div>
-          <div className="middle-box">
-            <h2>Your <strong>New</strong> Projected Cost Per Household</h2>
+          <div className="middle-box new-cost">
+            <h2 >Your <strong>New</strong> Projected Cost Per Household</h2>
           </div>
-		  <div className="total-box">
+		  <div className="total-box total-new-cost">
             <p>
               ${addCommas(
 				Math.floor(
@@ -152,10 +152,10 @@ class IndividualResults extends Component {
       </div>
           {
             this.props.savings > 0 ? [
-              <div className="middle-box" key="ind-savings-title">
+              <div className="middle-box new-cost" key="ind-savings-title">
                 <h2>TOTAL SAVINGS</h2>
               </div>,
-              <div className="total-box" key="ind-savings-result">
+              <div className="total-box total-new-cost" key="ind-savings-result">
                 <p>${addCommas(Math.floor(this.props.savings / MONTH))}/mo</p>
                 <p>(${this.props.savings}/yr)</p>
 			</div>,
