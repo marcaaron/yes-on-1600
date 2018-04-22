@@ -27,14 +27,14 @@ class IndividualResults extends Component {
           </div>
           <div className="contributions-box">
             <div className="contributions-row">
-              <p className="contributions-row-heading">Income Contribution</p>
+              <p className="contributions-row-heading"><a href="https://i1600-wholewashington.nationbuilder.com/income_tax_contribution">Income Tax Contribution</a></p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.income / MONTH))}/mo
               </p>
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
-                Investment Profit Contribution
+                <a href="https://i1600-wholewashington.nationbuilder.com/investment_profit_contribution">Investment Profit Contribution</a>
               </p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.capitalGainsContribution / MONTH))}/mo
@@ -42,13 +42,13 @@ class IndividualResults extends Component {
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
-                Individual Premium<sup>*</sup>
+                <a href="https://i1600-wholewashington.nationbuilder.com/monthly_premium">Per Adult Monthly Premium</a><sup>*</sup>
               </p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.premium / MONTH))}/mo
               </p>
             </div>
-						<p className="premium-disclaimer"><sup>*</sup> See <a href="https://i1600-wholewashington.nationbuilder.com/monthly_premium">Monthly Premium</a> for more info. Employers may choose to pay the Premium as part of their benefits.</p>
+						<p className="premium-disclaimer"><sup>*</sup> Employers may choose to pay the Monthly Premium as part of their benefits.</p>
 
           </div>
 
@@ -114,14 +114,14 @@ class IndividualResults extends Component {
           </div>
           <div className="contributions-box">
             <div className="contributions-row">
-              <p className="contributions-row-heading">Income Contribution</p>
+              <p className="contributions-row-heading"><a href="https://i1600-wholewashington.nationbuilder.com/income_tax_contribution">Income Tax Contribution</a></p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.income / MONTH))}/mo
               </p>
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
-                Investment Profit Contribution
+                <a href="https://i1600-wholewashington.nationbuilder.com/investment_profit_contribution">Investment Profit Contribution</a>
               </p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.capitalGainsContribution / MONTH))}/mo
@@ -131,7 +131,7 @@ class IndividualResults extends Component {
               parseInt(this.props.numberOfAdults, 10) >
               0 && (
               <div className="contributions-row">
-                <p className="contributions-row-heading">Per Child Premium</p>
+                <p className="contributions-row-heading">Per Child Monthly Premium</p>
                 <p className="contributions-row-result">
                   FREE x{" "}
                   {parseInt(this.props.sizeOfHousehold, 10) -
@@ -141,14 +141,14 @@ class IndividualResults extends Component {
             )}
 			<div className="contributions-row">
         <p className="contributions-row-heading">
-          Per Adult Premium <sup>*</sup>
+          <a href="https://i1600-wholewashington.nationbuilder.com/monthly_premium">Per Adult Monthly Premium</a><sup>*</sup>
         </p>
         <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.premium / MONTH))}/mo x{" "}
                 {this.props.numberOfAdults}
         </p>
       </div>
-				<p className="premium-disclaimer"><sup>*</sup> See <a href="https://i1600-wholewashington.nationbuilder.com/monthly_premium">Monthly Premium</a> for more info. Employers may choose to pay the Premium as part of their benefits.</p>
+				<p className="premium-disclaimer"><sup>*</sup> Employers may choose to pay the Monthly Premium as part of their benefits.</p>
       </div>
           {
             this.props.savings > 0 ? [
