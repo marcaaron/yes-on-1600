@@ -282,6 +282,7 @@ p {
 
 .card {
   background-color: rgba(201, 238, 255, 0.3);
+  background-image: url("./images/diagmonds-light.png");
   width: 100%;
   display: flex;
   flex-direction: column;
