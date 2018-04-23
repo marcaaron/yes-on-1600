@@ -102,17 +102,10 @@ class App extends Component {
 	handleFwdBtn() {
 		let index = this.state.index;
 		if (index > -1 && this.state.vars[this.state.index]) {
-			const questionArray = questions[`${this.state.userType}`];
-			if (questionArray[this.state.index].confirm && !this.state.confirm) {
-				if (window.confirm(questionArray[this.state.index].confirmText)) {
 					index++;
-					const confirm = true;
-					this.setState({ index, confirm });
-				}
-			}
+					this.setState({index});
 		}
 	}
-
 	handleUserType(e) {
 		e.preventDefault();
 		let index = this.state.index + 1;
@@ -121,74 +114,58 @@ class App extends Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		// console.log(e.target);
 		const questionArray = questions[`${this.state.userType}`];
-
-		if (questionArray[this.state.index].confirm && !this.state.confirm) {
-			if (window.confirm(questionArray[this.state.index].confirmText)) {
-				let vars = [...this.state.vars];
-				let input = e.nativeEvent.target[0].value || e.target.value;
-				if (!input) {
-					const error = 'This field is required!';
-					this.setState({ error });
-					this.openModal();
-				} else {
-					if (typeof this.state.vars[this.state.index] === 'undefined') {
-						vars.push(input);
-					}
-					const confirm = true;
-					const index = this.state.index + 1;
-					this.setState({ index, vars, confirm });
-					e.target.reset();
-				}
-			}
-		} else {
-			const question = questionArray[this.state.index];
-			let vars = [...this.state.vars];
-			let input = e.nativeEvent.target[0].value;
-			function findMax(element) {
-				return element.questionText === question.max.val;
-			}
-			// console.log(question.max && typeof question.max.val);
-			// console.log(question.max && this.state.vars[questionArray.findIndex(findMax)]);
-			// console.log(question.max && parseInt(input,10));
-			// If it's empty
-			if (!input) {
-				const error = 'This field is required!';
-				this.setState({ error });
-				this.openModal();
-			}
-			// else if it has a 'min' option
-			else if (question.min && parseInt(input, 10) < question.min.val) {
-				const error = question.min.error;
-				this.setState({ error });
-				this.openModal();
-			}
-			// else if it has a 'max' option and max references the value returned by a preceding question - flagged by questionText and found with the above function findMax()/
-			else if (question.max && typeof question.max.val === 'string' &&
-				parseInt(input, 10) > this.state.vars[questionArray.findIndex(findMax)]
-			) {
-				const error = question.max.error;
-				this.setState({ error });
-				this.openModal();
-			}
-			else if (question.max && (typeof question.max.val === 'number') &&
-				parseInt(input, 10) > question.max.val
-			) {
-				const error = question.max.error;
-				this.setState({ error });
-				this.openModal();
-			}
-			else {
-				if (typeof this.state.vars[this.state.index] === 'undefined') {
-					vars.push(input);
-				}
-				const index = this.state.index + 1;
-				this.setState({ index, vars });
-				e.target.reset();
-			}
+		const question = questionArray[this.state.index];
+		let vars = [...this.state.vars];
+		let input = e.nativeEvent.target[0].value;
+		function findMax(element) {
+			return element.questionText === question.max.val;
 		}
-	}
+
+		// If it's empty
+		if (!input) {
+			const error = 'This field is required!';
+			this.setState({ error });
+			this.openModal();
+		}
+		// else if it has a 'min' option
+		else if (question.min && parseInt(input, 10) < question.min.val) {
+			const error = question.min.error;
+			this.setState({ error });
+			this.openModal();
+		}
+		// else if it has a 'max' option and max references the value returned by a preceding question - flagged by questionText and found with the above function findMax()/
+
+    //Removed due to findIndex not being compatible with IE 11... and since we don't need this functionality and can hard code the correct index for now...
+
+    // else if (question.max && typeof question.max.val === 'string' &&
+		// 	parseInt(input, 10) > this.state.vars[questionArray.findIndex(findMax)]
+		// )
+
+    else if (question.max && typeof question.max.val === 'string' &&
+			parseInt(input, 10) > this.state.vars[0]
+		)
+    {
+			const error = question.max.error;
+			this.setState({ error });
+			this.openModal();
+		}
+		else if (question.max && (typeof question.max.val === 'number') &&
+			parseInt(input, 10) > question.max.val
+		) {
+			const error = question.max.error;
+			this.setState({ error });
+			this.openModal();
+		}
+		else {
+			if (typeof this.state.vars[this.state.index] === 'undefined') {
+				vars.push(input);
+			}
+			const index = this.state.index + 1;
+			this.setState({ index, vars });
+			e.target.reset();
+		}
+	};
 
 	handleChange(e) {
 		e.preventDefault();
