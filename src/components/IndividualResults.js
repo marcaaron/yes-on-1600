@@ -27,14 +27,14 @@ class IndividualResults extends Component {
           </div>
           <div className="contributions-box">
             <div className="contributions-row">
-              <p className="contributions-row-heading"><a href="https://i1600-wholewashington.nationbuilder.com/income_tax_contribution">Income Tax Contribution</a></p>
+              <p className="contributions-row-heading"><a href="https://i1600-wholewashington.nationbuilder.com/income_tax_contribution" target="_blank" rel="noopener noreferrer">Income Tax Contribution</a></p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.income / MONTH))}/mo
               </p>
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
-                <a href="https://i1600-wholewashington.nationbuilder.com/investment_profit_contribution">Investment Profit Contribution</a>
+                <a href="https://i1600-wholewashington.nationbuilder.com/investment_profit_contribution" target="_blank" rel="noopener noreferrer">Investment Profit Contribution</a>
               </p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.capitalGainsContribution / MONTH))}/mo
@@ -42,7 +42,7 @@ class IndividualResults extends Component {
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
-                <a href="https://i1600-wholewashington.nationbuilder.com/monthly_premium">Per Adult Monthly Premium</a><sup>*</sup>
+                <a href="https://i1600-wholewashington.nationbuilder.com/monthly_premium" target="_blank" rel="noopener noreferrer">Per Adult Monthly Premium</a><sup>*</sup>
               </p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.premium / MONTH))}/mo
@@ -61,7 +61,7 @@ class IndividualResults extends Component {
                 <p>(${this.props.savings}/yr)</p>
             </div>,
 			<div className="message-box" key="ind-nosavings-result">
-				<p><a href="https://d3n8a8pro7vhmx.cloudfront.net/wholewashington/pages/144/attachments/original/1522975117/Yes1600Credo.pdf?1522975117">Universal Healthcare</a> means high quality, comprehensive care (including dental and vision) for every Washington resident. It means fair and dedicated taxes are used to fund our healthcare, instead of escalating insurance costs with unpredictable out-of-pocket expenses. It means we can focus on our health and have the freedom to pursue our dreams.</p>
+				<p><a href="https://d3n8a8pro7vhmx.cloudfront.net/wholewashington/pages/144/attachments/original/1522975117/Yes1600Credo.pdf?1522975117" rel="noopener noreferrer" target="_blank">Universal Healthcare</a> means high quality, comprehensive care (including dental and vision) for every Washington resident. It means fair and dedicated taxes are used to fund our healthcare, instead of escalating insurance costs with unpredictable out-of-pocket expenses. It means we can focus on our health and have the freedom to pursue our dreams.</p>
 			</div>
 			]:
 			[
@@ -69,7 +69,7 @@ class IndividualResults extends Component {
 				 <h2>YOUR BENEFIT</h2>
 			   </div>,
 			   <div className="message-box" key="ind-nosavings-result">
-				   <p><a href="https://d3n8a8pro7vhmx.cloudfront.net/wholewashington/pages/144/attachments/original/1522975117/Yes1600Credo.pdf?1522975117">Universal Healthcare</a> means high quality, comprehensive care (including dental and vision) for every Washington resident. It means fair and dedicated taxes are used to fund our healthcare, instead of escalating insurance costs with unpredictable out-of-pocket expenses. It means we can focus on our health and have the freedom to pursue our dreams.</p>
+				   <p><a href="https://d3n8a8pro7vhmx.cloudfront.net/wholewashington/pages/144/attachments/original/1522975117/Yes1600Credo.pdf?1522975117" rel="noopener noreferrer" target="_blank">Universal Healthcare</a> means high quality, comprehensive care (including dental and vision) for every Washington resident. It means fair and dedicated taxes are used to fund our healthcare, instead of escalating insurance costs with unpredictable out-of-pocket expenses. It means we can focus on our health and have the freedom to pursue our dreams.</p>
 			   </div>
             ]
 		  }
@@ -114,14 +114,14 @@ class IndividualResults extends Component {
           </div>
           <div className="contributions-box">
             <div className="contributions-row">
-              <p className="contributions-row-heading"><a href="https://i1600-wholewashington.nationbuilder.com/income_tax_contribution">Income Tax Contribution</a></p>
+              <p className="contributions-row-heading"><a href="https://i1600-wholewashington.nationbuilder.com/income_tax_contribution" target="_blank" rel="noopener noreferrer">Income Tax Contribution</a></p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.income / MONTH))}/mo
               </p>
             </div>
             <div className="contributions-row">
               <p className="contributions-row-heading">
-                <a href="https://i1600-wholewashington.nationbuilder.com/investment_profit_contribution">Investment Profit Contribution</a>
+                <a href="https://i1600-wholewashington.nationbuilder.com/investment_profit_contribution" target="_blank" rel="noopener noreferrer">Investment Profit Contribution</a>
               </p>
               <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.capitalGainsContribution / MONTH))}/mo
@@ -141,7 +141,7 @@ class IndividualResults extends Component {
             )}
 			<div className="contributions-row">
         <p className="contributions-row-heading">
-          <a href="https://i1600-wholewashington.nationbuilder.com/monthly_premium">Per Adult Monthly Premium</a><sup>*</sup>
+          <a href="https://i1600-wholewashington.nationbuilder.com/monthly_premium" target="_blank" rel="noopener noreferrer">Per Adult Monthly Premium</a><sup>*</sup>
         </p>
         <p className="contributions-row-result">
                 ${addCommas(Math.floor(this.props.premium / MONTH))}/mo x{" "}
@@ -160,14 +160,14 @@ class IndividualResults extends Component {
                 <p>(${this.props.savings}/yr)</p>
 			</div>,
 			<div className="message-box" key="ind-nosavings-result">
-				<p><a href="https://d3n8a8pro7vhmx.cloudfront.net/wholewashington/pages/144/attachments/original/1522975117/Yes1600Credo.pdf?1522975117">Universal Healthcare</a> means high quality, comprehensive care (including dental and vision) for every Washington resident. It means fair and dedicated taxes are used to fund our healthcare, instead of escalating insurance costs with unpredictable out-of-pocket expenses. It means we can focus on our health and have the freedom to pursue our dreams.</p>
+				<p><a href="https://d3n8a8pro7vhmx.cloudfront.net/wholewashington/pages/144/attachments/original/1522975117/Yes1600Credo.pdf?1522975117" target="_blank" rel="noopener noreferrer">Universal Healthcare</a> means high quality, comprehensive care (including dental and vision) for every Washington resident. It means fair and dedicated taxes are used to fund our healthcare, instead of escalating insurance costs with unpredictable out-of-pocket expenses. It means we can focus on our health and have the freedom to pursue our dreams.</p>
 			</div>
             ] : [
               <div className="middle-box" key="ind-nosavings-title">
                 <h2>YOUR BENEFIT</h2>
               </div>,
               <div className="message-box" key="ind-nosavings-result">
-				  <p><a href="https://d3n8a8pro7vhmx.cloudfront.net/wholewashington/pages/144/attachments/original/1522975117/Yes1600Credo.pdf?1522975117">Universal Healthcare</a> means high quality, comprehensive care (including dental and vision) for every Washington resident. It means fair and dedicated taxes are used to fund our healthcare, instead of escalating insurance costs with unpredictable out-of-pocket expenses. It means we can focus on our health and have the freedom to pursue our dreams.</p>
+				  <p><a href="https://d3n8a8pro7vhmx.cloudfront.net/wholewashington/pages/144/attachments/original/1522975117/Yes1600Credo.pdf?1522975117" target="_blank" rel="noopener noreferrer">Universal Healthcare</a> means high quality, comprehensive care (including dental and vision) for every Washington resident. It means fair and dedicated taxes are used to fund our healthcare, instead of escalating insurance costs with unpredictable out-of-pocket expenses. It means we can focus on our health and have the freedom to pursue our dreams.</p>
               </div>
             ]
           }
