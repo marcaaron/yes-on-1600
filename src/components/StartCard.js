@@ -11,7 +11,7 @@ class StartCard extends Component {
 				  I'm an Individual
 			  </button>
 			  <p className="button-sub-text">
-				  <strong>Individuals:</strong><em> To get the most accurate results, grab last year's tax return, a pay stub or statement showing your monthly premium amount (if applicable,) and an estimate of your out-of-pocket healthcare costs.</em></p>
+				  <strong>Individuals:</strong><em> To get the most accurate results, grab last year's tax return, a pay stub or statement showing your monthly premium amount (if applicable), and an estimate of your out-of-pocket healthcare costs.</em></p>
 					<button
 				  onClick={this.props.handleUserType}
 				  type="submit"
