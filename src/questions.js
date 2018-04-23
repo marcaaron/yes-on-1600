@@ -39,7 +39,7 @@ const questions = {
 				val: 'Size of Your Household',
 				error:'Number of Adults over 19 cannot exceed total household size!'
 			},
-			// defaultValue:1,
+			defaultValue:1,
 			tip: "Now we'll review what you get to <strong>eliminate</strong> from your current expenses.",
 			tipSize: '1.3em',
       showIcon:false
