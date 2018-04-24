@@ -16,10 +16,12 @@ class Header extends Component {
 				<div className='header-content'>
 
 				<i style={lBtnVisibile} onClick={this.props.handleBackBtn} className="fa fa-3x fa-chevron-left"></i>
-				<div>
+				<div className="header-container">
 					<img src={logo1} alt="Yes on 1600 Logo" width="400"/><br/>
-					<span className="header-text">HEALTHCARE</span><br/>
-					<span className="header-sub-text">SAVINGS ESTIMATOR</span>
+          <div className="header-text-container">
+  					<span className="header-text">SAVINGS</span>
+  					<span className="header-sub-text">ESTIMATOR</span>
+          </div>
 				</div>
 				<i style={rBtnVisibile} onClick={this.props.handleFwdBtn} className="fa fa-3x fa-chevron-right"></i>
 				</div>

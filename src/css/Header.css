@@ -4,7 +4,7 @@ a {
 }
 header {
   background: rgb(210, 35, 42);
-  height: 10em;
+  height: 6em;
   width: 100%;
   position: fixed;
   top: 0;
@@ -18,11 +18,18 @@ header > div {
   text-align: center;
 }
 img{
-	width:140px;
+  height:70px;
+  width:70px;
+  display:block;
+}
+
+.header-container{
+  display:flex;
 }
 
 .header-content {
   width: 100%;
+  height:100%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -51,7 +58,15 @@ img{
 .fa-chevron-right:hover {
   cursor: pointer;
   color: #a0dfff;
-  box-shadow: inset 0px 0px 0px 4px #a0dfff;
+}
+
+.header-text-container{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: 20px;
 }
 
 .header-text {
@@ -61,22 +76,35 @@ img{
   font-size: 1.3em;
   color: white;
   user-select: none;
+  line-height: 1em;
 }
 .header-sub-text {
   font-family: "Lato", sans-serif;
   font-weight: 900;
-  font-size: 0.9em;
+  font-size: 1.1em;
   color: white;
   letter-spacing: 0.04em;
   user-select: none;
 }
 
+@media screen and (min-width: 380px){
+   .fa-chevron-left:hover,
+   .fa-chevron-right:hover {
+     box-shadow: inset 0px 0px 0px 4px #a0dfff;
+   }
+}
+
 @media screen and (min-width: 450px) {
   .header-text {
-    font-size: 1.6em;
+    font-size: 1.9em;
   }
   .header-sub-text {
-    font-size: 1.1em;
+    font-size: 1.5em;
+  }
+  img{
+    height:90px;
+    width:90px;
+    display:block;
   }
 }
 

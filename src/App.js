@@ -118,9 +118,6 @@ class App extends Component {
 		const question = questionArray[this.state.index];
 		let vars = [...this.state.vars];
 		let input = e.nativeEvent.target[0].value;
-		function findMax(element) {
-			return element.questionText === question.max.val;
-		}
 
 		// If it's empty
 		if (!input) {

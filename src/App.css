@@ -154,6 +154,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: rgb(32, 159, 218);
   background-image: url("./images/diagmonds-light.png");
+  background-attachment: fixed;
   height: 100%;
   color: #232323;
 }
@@ -374,7 +375,8 @@ button:hover {
   border-radius: 7px;
 }
 .fa-usd{
-	padding:20px;
+	padding:10px;
+  margin-left: -30px;
 	color:white;
 	text-shadow: 1px 1px 4px black;
 	border-radius: 50%;
@@ -676,7 +678,7 @@ button:hover {
   border-radius: 10px;
   background: rgb(210, 35, 42);
   color: #FFF;
-  margin: 50px auto 40px;
+  margin: 50px 10px 40px;
   padding: 8px 24px 12px;
   text-decoration: none;
 }
