@@ -2,6 +2,13 @@ import DonateButton from '../components/DonateButton'
 import React, { Component } from "react";
 import { addCommas } from '../helpers/helper-functions';
 
+const CalculationDocs = () => {
+  return(
+    <a style={{fontSize:'0.9em', margin:'1.5em auto'}} href="https://wholewashington.nationbuilder.com/savings_estimator_individual_calculations" rel="noopener noreferrer" target="_blank">Calculation Documentation</a>
+  );
+};
+
+
 class IndividualResults extends Component {
   render() {
     const MONTH = 12;
@@ -74,6 +81,7 @@ class IndividualResults extends Component {
             ]
 		  }
           <DonateButton />
+          <CalculationDocs/>
 
         </div>
       );
@@ -172,6 +180,7 @@ class IndividualResults extends Component {
             ]
           }
           <DonateButton />
+          <CalculationDocs/>
         </div>
       );
     }

@@ -650,6 +650,7 @@ button:hover {
   font-size: 1.3em;
 }
 .contributions-box {
+  margin-top:10px;
   background: white;
   width: 100%;
 }
@@ -678,7 +679,7 @@ button:hover {
   border-radius: 10px;
   background: rgb(210, 35, 42);
   color: #FFF;
-  margin: 20px auto 40px;
+  margin: 10px auto 10px;
   padding: 8px 24px 12px;
   text-decoration: none;
 }

@@ -2,6 +2,12 @@ import React, { Component } from "react";
 import { addCommas, removeCommas } from '../helpers/helper-functions';
 import DonateButton from '../components/DonateButton';
 
+const CalculationDocs = () => {
+  return(
+    <a style={{fontSize:'0.9em', margin:'1.5em auto'}} href="https://wholewashington.nationbuilder.com/savings_estimator_business_calculations" rel="noopener noreferrer" target="_blank">Calculation Documentation</a>
+  );
+};
+
 class BusinessResults extends Component {
   render() {
 	const annualCost = parseInt(removeCommas(this.props.vars[1]),10);
@@ -100,6 +106,7 @@ class BusinessResults extends Component {
         )}
 
         <DonateButton />
+        <CalculationDocs/>
       </div>
     );
   }
