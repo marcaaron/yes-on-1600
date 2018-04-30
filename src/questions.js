@@ -55,7 +55,7 @@ const questions = {
 			questionText:"Your Current Yearly Out-of-Pocket Costs",
 			inputType:'text',
 			unit:'$',
-			tip:`<p>Include costs incurred over the course of the year for every member of your household, such as:<ul><li>Co-Pays</li><li>Prescriptions<sup>*</sup></li><li>Medical Bills not covered/denied by Insurance</li><ul><li>e.g. Dental, Vision, and Audiology</li></ul><li>Emergency Room or Clinic Visits</li><li>Deductibles</li></ul><p><sup>*</sup>Note: the most you'll pay for prescriptions with I-1600 Universal Healthcare is $250 per adult per year.</p>`,
+			tip:`<p>Include costs incurred over the course of the year for every member of your household, such as:<ul><li>Co-Pays</li><li>Prescriptions<sup>*</sup></li><li>Medical bills not covered or denied by insurance, such as:</li><ul><li>Dental, Vision, and Audiology</li></ul><li>Emergency Room or Clinic Visits</li><li>Deductibles</li></ul><p><sup>*</sup>Note: the most you'll pay for prescriptions with I-1600 Universal Healthcare is $250 per adult per year.</p>`,
       showIcon:true
 		}
 	],
