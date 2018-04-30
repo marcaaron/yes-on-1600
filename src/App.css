@@ -678,7 +678,7 @@ button:hover {
   border-radius: 10px;
   background: rgb(210, 35, 42);
   color: #FFF;
-  margin: 50px 10px 40px;
+  margin: 20px auto 40px;
   padding: 8px 24px 12px;
   text-decoration: none;
 }
