@@ -45,12 +45,27 @@ class Results extends Component {
 	}
 
 	getResult() {
+    function rmDecAndRound(input){
+      if(!input.match(/>|<|-/)){
+        return input = parseInt(removeCommas(input),10);
+      }else{
+        return input;
+      }
+    };
+
 		if (this.props.userType === 'business') {
-			let futureCost = businessCalc(this.props.vars[2], this.props.vars[0]);
+			let futureCost = businessCalc(rmDecAndRound(this.props.vars[2]), rmDecAndRound(this.props.vars[0]));
 			this.setState({ futureCost });
 		}
 		 else {
-			const state = individualCalc(this.props.vars[0], this.props.vars[1], this.props.vars[2], this.props.vars[3], this.props.vars[4], this.props.vars[5]);
+			const state = individualCalc(
+        rmDecAndRound(this.props.vars[0]),
+        rmDecAndRound(this.props.vars[1]),
+        rmDecAndRound(this.props.vars[2]),
+        rmDecAndRound(this.props.vars[3]),
+        rmDecAndRound(this.props.vars[4]),
+        rmDecAndRound(this.props.vars[5])
+      );
 			this.setState(state);
 		}
 	}

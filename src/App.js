@@ -118,7 +118,7 @@ class App extends Component {
 		const question = questionArray[this.state.index];
 		let vars = [...this.state.vars];
 		let input = e.nativeEvent.target[0].value;
-
+    
 		// If it's empty
 		if (!input) {
 			const error = 'This field is required!';
