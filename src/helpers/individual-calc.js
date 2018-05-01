@@ -58,7 +58,7 @@ export const individualCalc = (a,b,c,d,e,f)=>{
 	if(adjustedGrossIncome < 15000){
 		income = 0;
 	}else if(adjustedGrossIncome >= 15000){
-		income = ((adjustedGrossIncome-15000)*0.01);
+		income = parseInt(((adjustedGrossIncome-15000)*0.01),10);
 	}
 
 	if(capitalGains < 15000){
