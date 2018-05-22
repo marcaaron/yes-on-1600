@@ -4,6 +4,7 @@ import IndividualResults from './IndividualResults';
 import {businessCalc} from '../helpers/business-calc';
 import {individualCalc} from '../helpers/individual-calc';
 import { removeCommas, rmDecAndRound } from '../helpers/helper-functions';
+import {connect} from 'react-redux';
 
 class Results extends Component {
 	constructor(props) {
@@ -97,4 +98,12 @@ class Results extends Component {
 	}
 };
 
-export default Results;
+function mapStateToProps(state){
+  return{
+    userType: state.userType,
+    vars: state.vars,
+    range: state.range    
+  }
+}
+
+export default connect(mapStateToProps)(Results);

@@ -1,5 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { connect } from 'react-redux';
+import {closeModal} from '../actions';
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -18,19 +20,26 @@ const customStyles = {
 	}
 };
 
-const ModalContainer = ({modalIsOpen, closeModal, error}) => {
+const ModalContainer = (props) => {
   return(
     <Modal
-      isOpen={modalIsOpen}
-      onRequestClose={closeModal}
+      isOpen={props.modalIsOpen}
+      onRequestClose={()=>props.closeModal()}
       style={customStyles}
       contentLabel="Example Modal"
     >
       <h2 className="modal-header">Alert:</h2>
-      <div className="modal-text">{error}</div>
-      <button className="modal-btn" onClick={closeModal}>Close</button>
+      <div className="modal-text">{props.error}</div>
+      <button className="modal-btn" onClick={()=>props.closeModal()}>Close</button>
     </Modal>
   )
 }
 
-export default ModalContainer;
+function mapStateToProps(state){
+  return{
+    error: state.error,
+    modalIsOpen: state.modalIsOpen
+  }
+}
+
+export default connect(mapStateToProps, {closeModal})(ModalContainer);

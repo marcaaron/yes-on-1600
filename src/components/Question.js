@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import Parser from 'html-react-parser';
+import { connect } from 'react-redux';
+import { removeCommas, addCommas } from '../helpers/helper-functions';
+import { updateVar, incIndex, setError, openModal, updateRange } from '../actions';
+import { validateInput } from '../helpers/validate-input';
 
 class Question extends Component {
+	componentDidUpdate() {
+		if(this.input) {
+			this.input.focus();
+		}
+	}
+
 	handleKeyPress = (event) => {
 		const allowed = '0123456789';
 		function contains(stringValue, charValue){
@@ -11,35 +21,46 @@ class Question extends Component {
 		invalidKey && event.preventDefault();
 	}
 
-	componentDidUpdate() {
-		if(this.input) {
-			this.input.focus();
-		}
+  handleChange = (e) => {
+		e.preventDefault();
+		let variable = addCommas(removeCommas(e.target.value));
+    const index = this.props.index;
+    this.props.updateVar(variable, index);
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		let input = e.nativeEvent.target[0].value;
+    const {error, status} = validateInput(this.props.question, this.props.vars, input);
+    if(status && !error){
+			this.props.incIndex();
+      this.props.updateVar(input, this.props.index);
+    }else{
+      this.props.setError(error);
+      this.props.openModal();
+    }
+	};
+
+  handleRange = (e) => {
+		const range = e.target.value;
+    this.props.updateRange(range);
+    this.props.updateVar(range, this.props.index);
 	}
 
 	render() {
-    const {questionArray: { id, showIcon, questionText, unit, inputType, options, tip, link, tipSize}, handleSubmit, handleChange, vars, index, handleSelectBtn, handleRange, range} = this.props;
+    const {question: { id, showIcon, questionText, unit, inputType, options, tip, link, tipSize}, vars, index, range} = this.props;
 
-		if (inputType === '' || typeof inputType === 'undefined') {
-			console.error('Must pass an inputType to Question component!');
-		}
-
-		if (inputType === 'select-box' && options === '') {
-			console.error('Must pass options to Question with inputType "select-box"');
-		}
-		if (inputType === 'button' && options === '') {
-			console.error('Must pass options to Question with inputType "button"');
-		}
 		return (
 			<div className="card">
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={this.handleSubmit}>
 					<p className="card-text">{questionText}</p>
 					<div className="input-container">
 					{unit && <i className="fa fa-2x fa-usd"></i>}
+
 					{inputType === 'number' &&
 						<input
               key={id}
-              onChange={handleChange}
+              onChange={this.handleChange}
 							className="number-box"
 							type="number"
 							onKeyPress={this.handleKeyPress}
@@ -53,7 +74,7 @@ class Question extends Component {
 
 						<input
               key={id}
-              onChange={handleChange}
+              onChange={this.handleChange}
 							className="text-box"
 							type="text"
 							onKeyPress={this.handleKeyPress}
@@ -66,7 +87,7 @@ class Question extends Component {
 					{inputType === 'select-box' &&
 						<select
 							defaultValue={vars[index]}
-							onChange={handleChange}
+							onChange={this.handleChange}
 							className="select-box"
 							ref={(input) => { this.input = input; }}
 						>
@@ -76,24 +97,9 @@ class Question extends Component {
 						</select>
 					}
 
-					{inputType === 'button' &&
-						options.map((item, index) => {
-							return (
-								<button
-									type="button"
-									onClick={handleSelectBtn}
-									key={index}
-									value={item}
-								>
-									{item}
-								</button>
-							);
-						})
-					}
-
 					{inputType === 'range' &&
 						<div className="slidecontainer">
-							<input onChange={handleRange} type="range" min="0" max="100"
+							<input onChange={this.handleRange} type="range" min="0" max="100"
 								ref={(input) => { this.input = input; }}
 								value={vars[index] ? vars[index] : 50} className="slider" id="myRange"></input>
 							<span className="range">{range}%</span>
@@ -123,4 +129,12 @@ class Question extends Component {
 	}
 };
 
-export default Question;
+function mapStateToProps(state){
+  return{
+    vars: state.vars,
+    index: state.index,
+    range: state.range
+  }
+}
+
+export default connect(mapStateToProps, {updateVar, incIndex, setError, openModal, updateRange})(Question);

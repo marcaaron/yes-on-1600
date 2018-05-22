@@ -1,20 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import questions from '../questions';
 
-class ProgressBar extends Component {
-	render() {
-		return (
-			<div className="progress-bar">
-				{this.props.questionArray && this.props.questionArray.map((el, index) => {
-					if (index <= this.props.index) {
-						return <div key={index} className="progress-point-active"></div>
-					} else {
-						return <div key={index} className="progress-point"></div>
-					}
-				})}
-				{/* <div className="progress-line"></div> */}
-			</div>
-		);
-	}
+const ProgressBar = ({index, questionArray}) => {
+	return (
+		<div className="progress-bar">
+			{questionArray && questionArray.map((el, i) => {
+				if (i <= index) {
+					return <div key={i} className="progress-point-active"></div>
+				} else {
+					return <div key={i} className="progress-point"></div>
+				}
+			})}
+		</div>
+	);
 };
 
-export default ProgressBar;
+function mapStateToProps(state){
+  return{
+    index: state.index,
+    questionArray: questions[state.userType]
+  }
+}
+
+export default connect(mapStateToProps)(ProgressBar);
