@@ -1,16 +1,9 @@
-// HTML2CANVAS - temporarily disabled until social features restored
-// import html2canvas from 'html2canvas';
-// import BusinessRender from './BusinessRender';
-// import IndividualRender from './IndividualRender';
-
-import BusinessResults from './BusinessResults';
-
-import IndividualResults from './IndividualResults';
-
 import React, { Component } from 'react';
+import BusinessResults from './BusinessResults';
+import IndividualResults from './IndividualResults';
 import {businessCalc} from '../helpers/business-calc';
 import {individualCalc} from '../helpers/individual-calc';
-import { removeCommas } from '../helpers/helper-functions';
+import { removeCommas, rmDecAndRound } from '../helpers/helper-functions';
 
 class Results extends Component {
 	constructor(props) {
@@ -22,43 +15,20 @@ class Results extends Component {
 			premium: 0,
 			savings: 0,
 			totalPersonalContribution: 0,
-			currentCosts:0,
-			imageURL:'',
-			imageb64:''
+			currentCosts:0
 		}
-		this.getResult = this.getResult.bind(this);
 	}
 	componentWillMount() {
 		this.getResult();
 	}
-	componentDidMount(){
-		// HTML2CANVAS - temporarily disabled until social features restored
-		// html2canvas(document.querySelector('.social-render'),{
-		// 	width:'630',
-		// 	height:'630',
-		// })
-		// .then((canvas)=>{
-		// 	document.querySelector('.social-render').remove();
-		// 	const imageURL = (canvas).toDataURL('image/png');
-		// 	this.setState({imageURL});
-		// });
-	}
 
-	getResult() {
-    function rmDecAndRound(input){
-      if(!input.match(/>|<|-/)){
-        return input = parseInt(removeCommas(input),10);
-      }else{
-        return input;
-      }
-    };
-
+	getResult = () => {
 		if (this.props.userType === 'business') {
 			let futureCost = businessCalc(rmDecAndRound(this.props.vars[2]), rmDecAndRound(this.props.vars[0]));
 			this.setState({ futureCost });
 		}
 		 else {
-			const state = individualCalc(
+			  const state = individualCalc(
         rmDecAndRound(this.props.vars[0]),
         rmDecAndRound(this.props.vars[1]),
         rmDecAndRound(this.props.vars[2]),
@@ -71,10 +41,13 @@ class Results extends Component {
 	}
 
 	render() {
-		if (this.props.userType === 'business') {
-			const colorBarGreen = { width: `${parseInt((this.state.futureCost / removeCommas(this.props.vars[1])) * 100, 10) + 10}%` };
+    const { userType, vars, range } = this.props;
+    const { futureCost, income, capitalGainsContribution, premium, totalPersonalContribution, currentCosts, savings, sizeOfHousehold, numberOfAdults, currentPremiums, currentAdditionalMedical } = this.state;
+
+		if (userType === 'business') {
+			const colorBarGreen = { width: `${parseInt((futureCost / removeCommas(vars[1])) * 100, 10) + 10}%` };
 			let rangeStyle = {
-				fontSize: `${1 + this.props.range / 100}em`,
+				fontSize: `${1 + range / 100}em`,
 				width: `${1}em`,
 				height: `${1}em`
 			};
@@ -85,20 +58,11 @@ class Results extends Component {
 						<BusinessResults
 							colorBarGreen={colorBarGreen}
 							rangeStyle={rangeStyle}
-							vars={this.props.vars}
-							futureCost={this.state.futureCost}
-							range={this.props.range}
-							imageURL={this.state.imageURL}
+							vars={vars}
+							futureCost={futureCost}
+							range={range}
 						/>
 					</div>
-					{/* Hidden Render >> html2canvas >> base64 image string */}
-					{/* Temporarily disabled until social features restored */}
-					{/* <div className="social-render">
-						<BusinessRender
-							vars={this.props.vars}
-							futureCost={this.state.futureCost}
-						/>
-					</div> */}
 				</div>
 			);
 		} else {
@@ -107,27 +71,18 @@ class Results extends Component {
 			<div>
 				<div className='card'>
 					<IndividualResults
-						income={this.state.income}
-						capitalGainsContribution={this.state.capitalGainsContribution}
-						premium={this.state.premium}
-						totalPersonalContribution={this.state.totalPersonalContribution}
-						currentCosts={this.state.currentCosts}
-						imageURL={this.state.imageURL}
-						savings={this.state.savings}
-						sizeOfHousehold={this.state.sizeOfHousehold}
-						numberOfAdults={this.state.numberOfAdults}
-						currentPremiums={this.state.currentPremiums}
-						currentAdditionalMedical={this.state.currentAdditionalMedical}
+						income={income}
+						capitalGainsContribution={capitalGainsContribution}
+						premium={premium}
+						totalPersonalContribution={totalPersonalContribution}
+						currentCosts={currentCosts}
+						savings={savings}
+						sizeOfHousehold={sizeOfHousehold}
+						numberOfAdults={numberOfAdults}
+						currentPremiums={currentPremiums}
+						currentAdditionalMedical={currentAdditionalMedical}
 					/>
 				</div>
-				{/* Hidden Render >> html2canvas >> base64 image string */}
-				{/* Temporarily disabled until social features restored */}
-				{/* <div className="social-render">
-					<IndividualRender
-						totalPersonalContribution={this.state.totalPersonalContribution}
-						savings={this.state.savings}
-					/>
-				</div> */}
 				<a
 					className="feedback" href="https://docs.google.com/forms/d/e/1FAIpQLSeyFQ25YNFZdl2gLziNH8c5iQRBycnS4WuXFciTESLgMoDRig/viewform"
 					target="_blank"

@@ -6,9 +6,7 @@
   "dependencies": {
     "gh-pages": "^1.1.0",
     "html-react-parser": "^0.4.1",
-    "html2canvas": "^1.0.0-alpha.9",
     "react": "^16.2.0",
-    "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.2.0",
     "react-modal": "^3.2.1",
     "react-scripts": "1.1.0",
@@ -21,5 +19,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "uuidv1": "^1.5.20"
   }
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../css/Header.css';
+
 const logo1 = `http://d3n8a8pro7vhmx.cloudfront.net/themes/5a7e8848ed0e4671c4000000/attachments/original/1525051109/yeson1600.f74b0a9c.svg`;
+
 class Header extends Component {
 	render() {
 			let lBtnVisibile, rBtnVisibile={};

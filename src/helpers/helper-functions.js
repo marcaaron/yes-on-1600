@@ -5,3 +5,11 @@ export const addCommas = (x) => {
 export const removeCommas = (x) => {
 	return x.toString().replace(/,/g, '');
 };
+
+export const rmDecAndRound = (input) => {
+  if(!input.match(/>|<|-/)){
+    return input = parseInt(removeCommas(input),10);
+  }else{
+    return input;
+  }
+};
