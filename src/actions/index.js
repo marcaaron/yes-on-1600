@@ -1,5 +1,8 @@
 import { SET_USER_TYPE } from './types';
-import { INCREMENT_INDEX, DECREMENT_INDEX, SET_VARS, UPDATE_VAR, SET_ERROR, OPEN_MODAL, CLOSE_MODAL, UPDATE_RANGE } from './types';
+import { INCREMENT_INDEX, DECREMENT_INDEX, SET_VARS, UPDATE_VAR, SET_ERROR, OPEN_MODAL, CLOSE_MODAL, UPDATE_RANGE, BUSINESS_RESULTS, INDIVIDUAL_RESULTS } from './types';
+
+import { businessCalc } from '../helpers/business-calc';
+import { individualCalc } from '../helpers/individual-calc';
 
 export function setUserType(userType){
   return {
@@ -59,5 +62,22 @@ export function closeModal(){
   return {
     type: CLOSE_MODAL,
     payload: false
+  }
+}
+
+export function getBusinessResults(...data){
+  const results = businessCalc(...data);
+  console.log(results);
+  return {
+    type: BUSINESS_RESULTS,
+    payload: results
+  }
+}
+
+export function getIndividualResults(...data){
+  const results = individualCalc(...data);
+  return {
+    type: INDIVIDUAL_RESULTS,
+    payload: results
   }
 }

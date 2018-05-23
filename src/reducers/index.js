@@ -5,6 +5,7 @@ import VarsReducer from './reducer_vars';
 import ErrorReducer from './reducer_error';
 import ModalReducer from './reducer_modal';
 import RangeReducer from './reducer_range';
+import ResultsReducer from './reducer_results';
 
 const rootReducer = combineReducers({
   userType: UserTypeReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   vars: VarsReducer,
   error: ErrorReducer,
   modalIsOpen: ModalReducer,
-  range: RangeReducer
+  range: RangeReducer,
+  results: ResultsReducer
 });
 
 export default rootReducer;

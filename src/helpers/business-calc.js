@@ -1,6 +1,7 @@
 import { removeCommas } from './helper-functions';
 
 export const businessCalc = (a,b)=>{
+  console.log(a,b);
 	let newPercentage = 0;
 	switch (a) {
 	case '<10':
@@ -22,5 +23,6 @@ export const businessCalc = (a,b)=>{
 		newPercentage = 0;
 	}
 	const futureCost = parseInt(parseInt(removeCommas(b),10) * newPercentage, 10);
-	return futureCost;
+  console.log(futureCost);
+	return { futureCost };
 };

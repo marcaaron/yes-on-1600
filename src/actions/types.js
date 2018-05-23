@@ -7,3 +7,5 @@ export const SET_ERROR = 'SET_ERROR';
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const UPDATE_RANGE = 'UPDATE_RANGE';
+export const BUSINESS_RESULTS = 'BUSINESS_RESULTS';
+export const INDIVIDUAL_RESULTS = 'INDIVIDUAL_RESULTS';

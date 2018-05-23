@@ -13,7 +13,7 @@ const CalculationDocs = () => {
 class IndividualResults extends Component {
   render() {
     const MONTH = 12;
-    const { sizeOfHousehold, currentCosts, totalPersonalContribution, income, capitalGainsContribution, premium, savings, numberOfAdults } = this.props;
+    const { results: { sizeOfHousehold, currentCosts, totalPersonalContribution, income, capitalGainsContribution, premium, savings, numberOfAdults } } = this.props;
     return(
       <div className="results">
 

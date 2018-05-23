@@ -1,52 +1,41 @@
 import React, { Component } from 'react';
 import BusinessResults from './BusinessResults';
 import IndividualResults from './IndividualResults';
-import {businessCalc} from '../helpers/business-calc';
-import {individualCalc} from '../helpers/individual-calc';
 import { removeCommas, rmDecAndRound } from '../helpers/helper-functions';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { getIndividualResults, getBusinessResults } from '../actions';
 
 class Results extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			futureCost: 0,
-			income: 0,
-			capitalGainsContribution: 0,
-			premium: 0,
-			savings: 0,
-			totalPersonalContribution: 0,
-			currentCosts:0
-		}
-	}
 	componentWillMount() {
 		this.getResult();
 	}
 
 	getResult = () => {
-		if (this.props.userType === 'business') {
-			let futureCost = businessCalc(rmDecAndRound(this.props.vars[2]), rmDecAndRound(this.props.vars[0]));
-			this.setState({ futureCost });
-		}
-		 else {
-			  const state = individualCalc(
-        rmDecAndRound(this.props.vars[0]),
-        rmDecAndRound(this.props.vars[1]),
-        rmDecAndRound(this.props.vars[2]),
-        rmDecAndRound(this.props.vars[3]),
-        rmDecAndRound(this.props.vars[4]),
-        rmDecAndRound(this.props.vars[5])
+    const { vars, userType } = this.props;
+		if (userType === 'business') {
+			this.props.getBusinessResults(
+        rmDecAndRound(vars[2]),
+        rmDecAndRound(vars[0])
       );
-			this.setState(state);
+		}
+		else {
+		  this.props.getIndividualResults(
+        rmDecAndRound(vars[0]),
+        rmDecAndRound(vars[1]),
+        rmDecAndRound(vars[2]),
+        rmDecAndRound(vars[3]),
+        rmDecAndRound(vars[4]),
+        rmDecAndRound(vars[5])
+      );
 		}
 	}
 
 	render() {
-    const { userType, vars, range } = this.props;
-    const { futureCost, income, capitalGainsContribution, premium, totalPersonalContribution, currentCosts, savings, sizeOfHousehold, numberOfAdults, currentPremiums, currentAdditionalMedical } = this.state;
+    const { results, userType, vars, range } = this.props;
 
 		if (userType === 'business') {
-			const colorBarGreen = { width: `${parseInt((futureCost / removeCommas(vars[1])) * 100, 10) + 10}%` };
+      if(!results.futureCost) return null;
+			const colorBarGreen = { width: `${parseInt((results.futureCost / removeCommas(vars[1])) * 100, 10) + 10}%` };
 			let rangeStyle = {
 				fontSize: `${1 + range / 100}em`,
 				width: `${1}em`,
@@ -60,7 +49,7 @@ class Results extends Component {
 							colorBarGreen={colorBarGreen}
 							rangeStyle={rangeStyle}
 							vars={vars}
-							futureCost={futureCost}
+							results={results}
 							range={range}
 						/>
 					</div>
@@ -72,16 +61,7 @@ class Results extends Component {
 			<div>
 				<div className='card'>
 					<IndividualResults
-						income={income}
-						capitalGainsContribution={capitalGainsContribution}
-						premium={premium}
-						totalPersonalContribution={totalPersonalContribution}
-						currentCosts={currentCosts}
-						savings={savings}
-						sizeOfHousehold={sizeOfHousehold}
-						numberOfAdults={numberOfAdults}
-						currentPremiums={currentPremiums}
-						currentAdditionalMedical={currentAdditionalMedical}
+						results={results}
 					/>
 				</div>
 				<a
@@ -102,8 +82,9 @@ function mapStateToProps(state){
   return{
     userType: state.userType,
     vars: state.vars,
-    range: state.range    
+    range: state.range,
+    results: state.results
   }
 }
 
-export default connect(mapStateToProps)(Results);
+export default connect(mapStateToProps, {getBusinessResults, getIndividualResults})(Results);

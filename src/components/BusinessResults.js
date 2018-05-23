@@ -10,10 +10,11 @@ const CalculationDocs = () => {
 
 class BusinessResults extends Component {
   render() {
-	const annualCost = parseInt(removeCommas(this.props.vars[1]),10);
+    const { results: { futureCost }, vars, colorBarGreen, rangeStyle, range} = this.props;
+	  const annualCost = parseInt(removeCommas(vars[1]),10);
     return (
       <div className={`results ${this.props.resultStyle}`}>
-        {annualCost - this.props.futureCost > 0 ? [
+        {annualCost - futureCost > 0 ? [
           <div className="cost-bars-container" key="bars-cont">
             <div className="middle-box">
               <h2>Current Annual Healthcare Costs</h2>
@@ -27,8 +28,8 @@ class BusinessResults extends Component {
               <h2>Projected Annual Healthcare Costs</h2>
             </div>
             <div className="color-bar-box">
-              <div style={this.props.colorBarGreen} className="color-bar green">
-                <span className="color-bar-text">${addCommas(this.props.futureCost)}</span>
+              <div style={colorBarGreen} className="color-bar green">
+                <span className="color-bar-text">${addCommas(futureCost)}</span>
               </div>
             </div>
           </div>
@@ -54,10 +55,10 @@ class BusinessResults extends Component {
           <div className="row">
             <div className="col">
               <span
-                style={this.props.rangeStyle}
+                style={rangeStyle}
                 className="percentage result-percentage"
               >
-                {this.props.range}%
+                {range}%
               </span>
             </div>
             <div className="col">
@@ -65,14 +66,14 @@ class BusinessResults extends Component {
             </div>
           </div>
         </div>
-        {annualCost - this.props.futureCost > 0 ? (
+        {annualCost - futureCost > 0 ? (
           <div className="col white">
             <h2 className="results-heading">Total Projected Savings</h2>
             <span className="results-sub-heading">
               While Covering All Employees
             </span>
             <span className="results-total">
-              ${addCommas(annualCost - this.props.futureCost)}/year <sup>*</sup>
+              ${addCommas(annualCost - futureCost)}/year <sup>*</sup>
             </span>
             <span className="results-total-year" />
             <div className="results-disclaimer">
@@ -90,10 +91,10 @@ class BusinessResults extends Component {
               (To Cover All Employees)
             </span>
             <span className="results-total">
-              ${addCommas(parseInt(this.props.futureCost / 12, 10))}/month <sup>*</sup>
+              ${addCommas(parseInt(futureCost / 12, 10))}/month <sup>*</sup>
             </span>
             <span className="results-total-year">
-              (${addCommas(this.props.futureCost)}/year)
+              (${addCommas(futureCost)}/year)
             </span>
             <div className="results-disclaimer">
               <span>
