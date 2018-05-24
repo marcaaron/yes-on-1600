@@ -1,123 +1,128 @@
 import React, { Component } from 'react';
-import '../css/Question.css';
 import Parser from 'html-react-parser';
+import { connect } from 'react-redux';
+import { removeCommas, addCommas } from '../helpers/helper-functions';
+import { updateVar, incIndex, setError, openModal, updateRange } from '../actions';
+import { validateInput } from '../helpers/validate-input';
 
 class Question extends Component {
-	constructor(props) {
-		super(props);
-		this.handleKeyPress = this.handleKeyPress.bind(this);
-	}
 
-	handleKeyPress(event) {
-		const allowed = '0123456789';
-		function contains(stringValue, charValue){
-			return stringValue.indexOf(charValue) > -1;
-		}
-		const invalidKey = event.key.length === 1 && !contains(allowed, event.key);
-		invalidKey && event.preventDefault();
-	}
-
+  // Always maintain focus on input
 	componentDidUpdate() {
 		if(this.input) {
 			this.input.focus();
 		}
 	}
 
-	render() {
-		if (this.props.inputType === '' || typeof this.props.inputType === 'undefined') {
-			console.error('Must pass an inputType to Question component!');
+  // Disallow invalid characters from all input fields
+	handleKeyPress = (e) => {
+		const allowed = '0123456789';
+		function contains(stringValue, charValue){
+			return stringValue.indexOf(charValue) > -1;
 		}
+		const invalidKey = e.key.length === 1 && !contains(allowed, e.key);
+		invalidKey && e.preventDefault();
+	}
 
-		if (this.props.inputType === 'select-box' && this.props.options === '') {
-			console.error('Must pass options to Question with inputType "select-box"');
-		}
-		if (this.props.inputType === 'button' && this.props.options === '') {
-			console.error('Must pass options to Question with inputType "button"');
-		}
+  handleChange = (e) => {
+		e.preventDefault();
+		let variable = addCommas(removeCommas(e.target.value));
+    const index = this.props.index;
+    this.props.updateVar(variable, index);
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		let input = e.nativeEvent.target[0].value;
+    const {error, status} = validateInput(this.props.question, this.props.vars, input);
+    if(status && !error){
+			this.props.incIndex();
+      this.props.updateVar(input, this.props.index);
+    }else{
+      this.props.setError(error);
+      this.props.openModal();
+    }
+	};
+
+  handleRange = (e) => {
+		const range = e.target.value;
+    this.props.updateRange(range);
+    this.props.updateVar(range, this.props.index);
+	}
+
+	render() {
+    const {question: { id, showIcon, questionText, unit, inputType, options, tip, link, tipSize}, vars, index, range} = this.props;
+
 		return (
 			<div className="card">
-				<form onSubmit={this.props.handleSubmit}>
-					<p className="card-text">{this.props.question}</p>
+				<form onSubmit={this.handleSubmit}>
+					<p className="card-text">{questionText}</p>
 					<div className="input-container">
-					{this.props.unit && <i className="fa fa-2x fa-usd"></i>}
-					{this.props.inputType === 'number' &&
-						<input onChange={this.props.handleChange}
+					{unit && <i className="fa fa-2x fa-usd"></i>}
+
+					{inputType === 'number' &&
+						<input
+              key={id}
+              onChange={this.handleChange}
 							className="number-box"
 							type="number"
 							onKeyPress={this.handleKeyPress}
-							value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
-							// required
+							value={vars[index] ? vars[index] : ''}
 							autoFocus
 							ref={(input) => { this.input = input; }}
 						>
 						</input>}
 
-					{this.props.inputType === 'text' &&
+					{inputType === 'text' &&
 
-						<input onChange={this.props.handleChange}
+						<input
+              key={id}
+              onChange={this.handleChange}
 							className="text-box"
 							type="text"
 							onKeyPress={this.handleKeyPress}
-							value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : ''}
-							// required
+							value={vars[index] ? vars[index] : ''}
 							autoFocus
 							ref={(input) => { this.input = input; }}
 						>
 						</input>}
 
-					{this.props.inputType === 'select-box' &&
+					{inputType === 'select-box' &&
 						<select
-							defaultValue={this.props.vars[this.props.index]}
-							onChange={this.props.handleChange}
+							defaultValue={vars[index]}
+							onChange={this.handleChange}
 							className="select-box"
 							ref={(input) => { this.input = input; }}
-						// required
 						>
-							{this.props.options.map((item, index) => {
+							{options.map((item, index) => {
 								return <option key={index} value={item}>{item}</option>
 							})}
 						</select>
 					}
 
-					{this.props.inputType === 'button' &&
-						this.props.options.map((item, index) => {
-							return (
-								<button
-									type="button"
-									onClick={this.props.handleSelectBtn}
-									key={index}
-									value={item}
-								>
-									{item}
-								</button>
-							);
-						})
-					}
-
-					{this.props.inputType === 'range' &&
+					{inputType === 'range' &&
 						<div className="slidecontainer">
-							<input onChange={this.props.handleRange} type="range" min="0" max="100"
+							<input onChange={this.handleRange} type="range" min="0" max="100"
 								ref={(input) => { this.input = input; }}
-								value={this.props.vars[this.props.index] ? this.props.vars[this.props.index] : 50} className="slider" id="myRange"></input>
-							<span className="range">{this.props.range}%</span>
+								value={vars[index] ? vars[index] : 50} className="slider" id="myRange"></input>
+							<span className="range">{range}%</span>
 						</div>
 					}
 					</div>
-					{/* End input-container */}
-					{this.props.tip &&
-						<div className="tip-box" style={{fontSize:this.props.tipSize}}>
-							{this.props.showIcon ?
+					{tip &&
+						<div className="tip-box" style={{fontSize:tipSize}}>
+							{showIcon ?
                 <i className="fa fa-2x fa-info-circle tip-icon"></i>
                 :
                 <div style={{height:'30px'}}>&nbsp;</div>
               }
 							<div className="tip">
-								{Parser(this.props.tip)}
+								{Parser(tip)}
 							</div>
-							<a className="tip-link" href={this.props.link[0]} target="_blank">{this.props.link[1]}</a>
+							<a className="tip-link" href={link && link[0]} target="_blank">{link && link[1]}</a>
 						</div>
 					}
-					{this.props.inputType !== 'button' &&
+					{inputType !== 'button' &&
 						<button type="submit">Next</button>
 					}
 				</form>
@@ -126,4 +131,12 @@ class Question extends Component {
 	}
 };
 
-export default Question;
+function mapStateToProps(state){
+  return{
+    vars: state.vars,
+    index: state.index,
+    range: state.range
+  }
+}
+
+export default connect(mapStateToProps, {updateVar, incIndex, setError, openModal, updateRange})(Question);

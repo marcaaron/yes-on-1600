@@ -1,0 +1,11 @@
+export const SET_USER_TYPE = 'SET_USER_TYPE';
+export const INCREMENT_INDEX = 'INCREMENT_INDEX';
+export const DECREMENT_INDEX = 'DECREMENT_INDEX';
+export const SET_VARS = 'SET_VARS';
+export const UPDATE_VAR = 'UPDATE_VAR';
+export const SET_ERROR = 'SET_ERROR';
+export const OPEN_MODAL = 'OPEN_MODAL';
+export const CLOSE_MODAL = 'CLOSE_MODAL';
+export const UPDATE_RANGE = 'UPDATE_RANGE';
+export const BUSINESS_RESULTS = 'BUSINESS_RESULTS';
+export const INDIVIDUAL_RESULTS = 'INDIVIDUAL_RESULTS';
