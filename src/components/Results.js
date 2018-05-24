@@ -6,12 +6,16 @@ import { connect } from 'react-redux';
 import { getIndividualResults, getBusinessResults } from '../actions';
 
 class Results extends Component {
+
+  // call getResult function before component mounts to hydrate state with results
 	componentWillMount() {
 		this.getResult();
 	}
 
 	getResult = () => {
     const { vars, userType } = this.props;
+    // conditionally get either business or individual results returned to our results object
+    // use helper func to prepare data by stripping any decimals and round
 		if (userType === 'business') {
 			this.props.getBusinessResults(
         rmDecAndRound(vars[2]),
@@ -32,16 +36,22 @@ class Results extends Component {
 
 	render() {
     const { results, userType, vars, range } = this.props;
+    const feedbackLink = 'https://docs.google.com/forms/d/e/1FAIpQLSeyFQ25YNFZdl2gLziNH8c5iQRBycnS4WuXFciTESLgMoDRig/viewform';
 
 		if (userType === 'business') {
       if(!results.futureCost) return null;
-			const colorBarGreen = { width: `${parseInt((results.futureCost / removeCommas(vars[1])) * 100, 10) + 10}%` };
-			let rangeStyle = {
+
+      const colorBarGreen = {
+        width: `${parseInt((results.futureCost / removeCommas(vars[1])) * 100, 10) + 10}%`
+      };
+
+      let rangeStyle = {
 				fontSize: `${1 + range / 100}em`,
 				width: `${1}em`,
 				height: `${1}em`
 			};
-			return (
+
+      return (
 				// Business Results
 				<div>
 					<div className="card">
@@ -64,13 +74,9 @@ class Results extends Component {
 						results={results}
 					/>
 				</div>
-				<a
-					className="feedback" href="https://docs.google.com/forms/d/e/1FAIpQLSeyFQ25YNFZdl2gLziNH8c5iQRBycnS4WuXFciTESLgMoDRig/viewform"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-						<span>We'd love some feedback.</span>
-						<span>Click here to let us know your thoughts on Universal Healthcare.</span>
+				<a className="feedback" href={feedbackLink} target="_blank" rel="noopener noreferrer">
+					<span>We'd love some feedback.</span>
+					<span>Click here to let us know your thoughts on Universal Healthcare.</span>
 				</a>
 			</div>
 			);

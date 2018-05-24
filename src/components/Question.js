@@ -6,19 +6,22 @@ import { updateVar, incIndex, setError, openModal, updateRange } from '../action
 import { validateInput } from '../helpers/validate-input';
 
 class Question extends Component {
+
+  // Always maintain focus on input
 	componentDidUpdate() {
 		if(this.input) {
 			this.input.focus();
 		}
 	}
 
-	handleKeyPress = (event) => {
+  // Disallow invalid characters from all input fields
+	handleKeyPress = (e) => {
 		const allowed = '0123456789';
 		function contains(stringValue, charValue){
 			return stringValue.indexOf(charValue) > -1;
 		}
-		const invalidKey = event.key.length === 1 && !contains(allowed, event.key);
-		invalidKey && event.preventDefault();
+		const invalidKey = e.key.length === 1 && !contains(allowed, e.key);
+		invalidKey && e.preventDefault();
 	}
 
   handleChange = (e) => {
@@ -106,7 +109,6 @@ class Question extends Component {
 						</div>
 					}
 					</div>
-					{/* End input-container */}
 					{tip &&
 						<div className="tip-box" style={{fontSize:tipSize}}>
 							{showIcon ?
