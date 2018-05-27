@@ -1,3 +1,7 @@
+*{
+  font-family: 'Lato', sans-serif;
+};
+
 .wwse-app-container {
 	width: 100%;
 	margin-bottom: 8%;
@@ -177,4 +181,342 @@
 	background-color: #fff;
 	margin: 8px;
 	display: inline-block;
+}
+
+/*--------- Results Styles --------*/
+.wwse-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.wwse-results-box {
+  width:100%;
+}
+.wwse-results-box-new{
+  color:white;
+  background: rgb(211,31,65);
+  background: linear-gradient(180deg, rgba(173,2,35,1) 0%, rgba(237,7,50,1) 39%, rgba(255,78,78,1) 67%, rgba(211,31,65,1) 100%);
+}
+
+.wwse-results-total-box{
+  width:100%;
+}
+
+.wwse-results-header {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  background: rgb(211,31,65);
+  background: linear-gradient(180deg, rgba(173,2,35,1) 0%, rgba(237,7,50,1) 39%, rgba(255,78,78,1) 67%, rgba(211,31,65,1) 100%);
+  color:white;
+}
+
+.wwse-results-header > h3 {
+  padding:0.5em;
+  margin:0;
+}
+
+.wwse-results-header-new{
+  background:transparent;
+}
+
+.wwse-results-header-contributions{
+  background:lightgrey;
+  color:black;
+}
+
+.wwse-results-total {
+  width: 100%;
+  text-align: center;
+  padding:0 0 1em 0;
+  background:transparent;
+}
+.wwse-results-total-new{
+  background:transparent;
+}
+
+.wwse-results-total-top{
+  font-size:2.5em;
+  margin:0;
+}
+
+.wwse-results-total-bottom{
+  padding:0;
+  margin:0;
+}
+
+.wwse-results-total-current{
+  margin-top:0.5em;
+}
+
+.wwse-results-total-projected{
+  font-weight: 300;
+}
+.wwse-results-total-total{
+  font-weight: 900;
+}
+
+.wwse-results-contributions-container {
+  background: white;
+  width: 100%;
+}
+.wwse-contributions-row {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  justify-content: space-between;
+}
+
+.wwse-contributions-row-heading>a{
+  text-decoration: underline;
+  color:rgba(211,31,65, 1);
+}
+
+.wwse-contributions-row-heading>a:hover{
+  color:rgb(168, 23, 50);
+}
+
+.wwse-contributions-row-heading {
+  padding:0.5em 0;
+  text-align: left;
+  margin:0;
+  margin-left: 10px;
+}
+.wwse-contributions-row-result {
+  margin:0;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.wwse-premium-disclaimer {
+  text-align: center;
+  padding: 0.7em 1.5em;
+  /* margin-bottom: 0.5em; */
+  font-size: 0.8em;
+}
+
+.wwse-message-box {
+  font-size: 0.9em;
+  margin: 1em;
+  padding-bottom: 1em;
+  text-align: center;
+  border-bottom: 0.5px solid #686868;
+}
+
+/* Business Question Input Styles */
+
+.wwse-select-input {
+  background: white;
+  font-size: 1.5em;
+  text-align: center;
+  width: 80%;
+  margin: 1em auto;
+  padding: 0.5em;
+  border: none;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.4);
+  text-align-last: center;
+}
+
+/* Slide Container Styles */
+
+.wwse-slidecontainer {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The slider itself */
+.wwse-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 20px; /* Specified height */
+  background: white;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.3s;
+  border-radius: 25px;
+  box-shadow: inset 0px 0px 3px black;
+  margin: 2.5em 0;
+}
+
+/* Mouse-over effects */
+.wwse-slider:hover {
+  opacity: 1;
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.wwse-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  background: black;
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 50%;
+}
+
+.wwse-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: black;
+  cursor: pointer; /* Cursor on hover */
+}
+
+.wwse-range {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 3em;
+  font-size: 1.5em;
+  height: 3em;
+  border-radius: 50%;
+  background-color: #3d3d3d;
+  margin: 1em;
+  margin-bottom: 0;
+  order: -1;
+  user-select: none;
+}
+
+/* Business Results */
+
+.wwse-results-box-business{
+  text-align: center;
+}
+.wwse-cost-bars-container {
+  width: 100%;
+  border-bottom: 1px solid #686868;
+}
+
+.wwse-color-bar {
+  display: flex;
+  height: 2em;
+  align-items: center;
+  justify-content: center;
+  max-width: 90%;
+  align-self: center;
+}
+.wwse-color-bar-box {
+  align-self: center;
+  width: 100%;
+  padding: 0.5em;
+  background: #d6d6d6;
+  box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.2);
+}
+.wwse-color-bar-current {
+  width: 100%;
+  background: #8aa768;
+}
+.wwse-color-bar-projected {
+  background: #9aea4c;
+}
+.wwse-color-bar-text {
+  color: white;
+  font-size:1.2em;
+}
+
+.wwse-color-bar-text-projected {
+  font-weight: 600;
+  font-size:1.5em;
+}
+.wwse-result-percentage {
+  font-size: 2em;
+  width: 1em;
+  height: 1em;
+  margin-bottom: 0 !important;
+}
+.wwse-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0 0.5em 0.5em 0.5em;
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
+}
+
+.wwse-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.wwse-results-business-heading{
+  font-size: 2em;
+  font-weight: 500;
+  margin:0.2em 0;
+}
+.wwse-results-business-sub-heading{
+  font-size: 0.8em;
+}
+
+.wwse-col-savings{
+  background: linear-gradient(180deg, rgba(173,2,35,1) 0%, rgba(237,7,50,1) 39%, rgba(255,78,78,1) 67%, rgba(211,31,65,1) 100%);
+  color:white;
+}
+
+.wwse-col-savings>a{
+  text-decoration: underline;
+  color:white;
+}
+
+.wwse-results-business-total{
+  font-size: 3em;
+  font-weight: 700;
+}
+
+.wwse-results-disclaimer{
+  font-size: 0.8em;
+  font-weight: 300;
+  margin:0.5em 0;
+  text-align: center;
+}
+
+.wwse-message-box-business{
+  box-sizing: border-box;
+  margin:0;
+  font-size: 1em;
+  padding:0 2em;
+  padding-bottom:1.5em;
+}
+
+.wwse-message-box-business>p{
+  margin:0;
+}
+
+.wwse-percentages{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #686868;
+  width: 100%;
+  height: 10.5em;
+}
+
+.wwse-percentage {
+  font-weight: 300;
+  color: white;
+  padding: 1.3em;
+  background: radial-gradient(circle, rgba(255,74,60,1) 0%, rgba(222,36,72,1) 98%, rgba(222,36,72,1) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5em;
+}
+
+.wwse-percentage-i1600{
+  font-weight: 900;
 }

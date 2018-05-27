@@ -4,8 +4,8 @@ import { addCommas } from '../helpers/helper-functions';
 const MONTH = 12;
 const ContributionsRow = ({link, title, contribution}) => {
   return(
-    <div className="contributions-row">
-      <p className="contributions-row-heading">
+    <div className="wwse-contributions-row">
+      <p className="wwse-contributions-row-heading">
         <a
         href={link}
         target="_blank"
@@ -14,7 +14,7 @@ const ContributionsRow = ({link, title, contribution}) => {
           {title}
         </a>
       </p>
-      <p className="contributions-row-result">
+      <p className="wwse-contributions-row-result">
         ${addCommas(Math.floor(contribution / MONTH))}/mo
       </p>
     </div>

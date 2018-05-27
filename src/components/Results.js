@@ -36,7 +36,6 @@ class Results extends Component {
 
 	render() {
     const { results, userType, vars, range } = this.props;
-    const feedbackLink = 'https://docs.google.com/forms/d/e/1FAIpQLSeyFQ25YNFZdl2gLziNH8c5iQRBycnS4WuXFciTESLgMoDRig/viewform';
 
 		if (userType === 'business') {
       if(!results.futureCost) return null;
@@ -53,32 +52,20 @@ class Results extends Component {
 
       return (
 				// Business Results
-				<div>
-					<div className="card">
-						<BusinessResults
-							colorBarGreen={colorBarGreen}
-							rangeStyle={rangeStyle}
-							vars={vars}
-							results={results}
-							range={range}
-						/>
-					</div>
-				</div>
+					<BusinessResults
+						colorBarGreen={colorBarGreen}
+						rangeStyle={rangeStyle}
+						vars={vars}
+						results={results}
+						range={range}
+					/>
 			);
 		} else {
 			return (
 			// Individual Results
-			<div>
-				<div className='card'>
-					<IndividualResults
-						results={results}
-					/>
-				</div>
-				<a className="feedback" href={feedbackLink} target="_blank" rel="noopener noreferrer">
-					<span>We'd love some feedback.</span>
-					<span>Click here to let us know your thoughts on Universal Healthcare.</span>
-				</a>
-			</div>
+				<IndividualResults
+					results={results}
+				/>
 			);
 		}
 	}

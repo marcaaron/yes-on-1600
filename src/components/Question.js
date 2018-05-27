@@ -117,7 +117,7 @@ class Question extends Component {
 					<select
 						defaultValue={vars[index]}
 						onChange={this.handleChange}
-						className="select-box"
+						className="wwse-select-input"
 						ref={(input) => { this.input = input; }}
 					>
 						{options.map((item, index) => {
@@ -127,11 +127,11 @@ class Question extends Component {
 				}
 
 				{inputType === 'range' &&
-					<div className="slidecontainer">
+					<div className="wwse-slidecontainer">
 						<input onChange={this.handleRange} type="range" min="0" max="100"
 							ref={(input) => { this.input = input; }}
-							value={vars[index] ? vars[index] : 50} className="slider" id="myRange"></input>
-						<span className="range">{range}%</span>
+							value={vars[index] ? vars[index] : 50} className="wwse-slider" id="myRange"></input>
+						<span className="wwse-range">{range}%</span>
 					</div>
 				}
 				</div>
