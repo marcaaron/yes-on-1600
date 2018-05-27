@@ -4,7 +4,7 @@ import questions from '../questions';
 
 const ProgressBar = ({index, questionArray}) => {
 	return (
-		<div className="progress-bar">
+		<div className="wwse-progress-bar">
 			{questionArray && questionArray.map((el, i) => {
 				if (i <= index) {
 					return <div key={i} className="progress-point-active"></div>

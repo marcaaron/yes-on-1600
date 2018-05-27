@@ -2,7 +2,7 @@
   "name": "form-faction",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yeson1600.org/",
+  "homepage": "https://marcaaron.github.io/yes-on-1600",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "html-react-parser": "^0.4.1",

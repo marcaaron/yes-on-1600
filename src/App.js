@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 
 // Import Components
 
-import Header from './components/Header';
 import Question from './components/Question';
 import ProgressBar from './components/ProgressBar';
 import Results from './components/Results';
 import StartCard from './components/StartCard';
 import questions from './questions';
-import ModalContainer from './components/ModalContainer';
-import './App.css';
+import ErrorContainer from './components/ErrorContainer';
+import './wwse.css';
 
 // Import Redux Stuff
 import { connect } from 'react-redux';
@@ -39,11 +38,8 @@ class App extends Component {
     }
 
 		return (
-			<div className="app-container">
-        <ModalContainer/>
-				<Header/>
-				<div className='card-content'>
-
+			<div className="wwse-app-container">
+        <ErrorContainer/>
   				{
             app_position.start &&
             <StartCard/>
@@ -60,7 +56,7 @@ class App extends Component {
             app_position.end &&
   					<Results />
   				}
-				</div>
+
 			</div>
 		);
 	}

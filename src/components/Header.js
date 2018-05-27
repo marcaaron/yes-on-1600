@@ -38,11 +38,7 @@ class Header extends Component {
 
 				<i style={lBtnVisibile} onClick={this.handleBackBtn} className="fa fa-3x fa-chevron-left"></i>
 				<div className="header-container">
-					<img src={logo1} alt="Yes on 1600 Logo" width="400"/><br/>
-          <div className="header-text-container">
-  					<span className="header-text">SAVINGS</span>
-  					<span className="header-sub-text">ESTIMATOR</span>
-          </div>
+          {this.props.children}
 				</div>
 				<i style={rBtnVisibile} onClick={this.handleFwdBtn} className="fa fa-3x fa-chevron-right"></i>
 				</div>

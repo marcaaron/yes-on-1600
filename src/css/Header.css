@@ -6,7 +6,7 @@ header {
   background: rgb(210, 35, 42);
   height: 6em;
   width: 100%;
-  position: fixed;
+  /* position: fixed; */
   top: 0;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.8);
   display: flex;

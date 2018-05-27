@@ -1,5 +1,5 @@
 import { SET_USER_TYPE } from './types';
-import { INCREMENT_INDEX, DECREMENT_INDEX, SET_VARS, UPDATE_VAR, SET_ERROR, OPEN_MODAL, CLOSE_MODAL, UPDATE_RANGE, BUSINESS_RESULTS, INDIVIDUAL_RESULTS } from './types';
+import { INCREMENT_INDEX, DECREMENT_INDEX, SET_VARS, UPDATE_VAR, SET_ERROR, UPDATE_RANGE, BUSINESS_RESULTS, INDIVIDUAL_RESULTS } from './types';
 
 import { businessCalc } from '../helpers/business-calc';
 import { individualCalc } from '../helpers/individual-calc';
@@ -48,20 +48,6 @@ export function setError(message){
   return {
     type: SET_ERROR,
     payload: message
-  }
-}
-
-export function openModal(){
-  return {
-    type: OPEN_MODAL,
-    payload: true
-  }
-}
-
-export function closeModal(){
-  return {
-    type: CLOSE_MODAL,
-    payload: false
   }
 }
 

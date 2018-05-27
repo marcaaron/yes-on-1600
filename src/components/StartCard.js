@@ -11,30 +11,45 @@ class StartCard extends Component {
   }
 
 	render() {
-		return (
-		  <div className="card">
-			  <button
-				  onClick={this.handleUserType}
-				  type="submit"
-				  value="individual">
-				  I'm an Individual
-			  </button>
-			  <p className="button-sub-text">
-				  <strong>Individuals:</strong><em> To get the most accurate results, grab last year's tax return, a pay stub or statement showing your monthly premium amount (if applicable), and an estimate of your out-of-pocket healthcare costs.</em></p>
-					<button
-				    onClick={this.handleUserType}
-				    type="submit"
-				    value="business">
-				    I'm a Business Owner
-			  </button>
-			  <p className="button-sub-text">
-				  <strong>Business Owners:</strong><em> Using your current payroll and healthcare costs, we'll provide a high-level estimate of projected healthcare costs.</em></p>
+		return [
+		  <button
+        key="wwse-button-individual"
+        className="wwse-select-button"
+			  onClick={this.handleUserType}
+			  type="submit"
+			  value="individual">
+			  I'm an Individual
+		  </button>,
 
-        <div className="start-disclaimer">
-          This calculator provides an <em><strong>estimate</strong></em> of how I-1600 would impact your bottom line. If you have significant partnership or capital income (e.g. more than $15,000 a year), you may want to consult a tax professional for a more complete assessment.
-        </div>
-			</div>
-	  );
+		  <div className="wwse-select-box" key="wwse-box-individual">
+		    <div className="wwse-info-icon"><i className="fa fa-2x fa-info-circle"></i></div>
+        <p>
+			  <span className="h4">Individuals:</span> To get the most accurate results, grab last year's tax return, a pay stub or statement showing your monthly premium amount (if applicable), and an estimate of your out-of-pocket healthcare costs.
+        </p>
+      </div>,
+
+      <button
+        key="wwse-button-business"
+        className="wwse-select-button"
+		    onClick={this.handleUserType}
+		    type="submit"
+		    value="business">
+		    I'm a Business Owner
+	    </button>,
+
+      <div className="wwse-select-box" key="wwse-box-business">
+		    <div className="wwse-info-icon"><i className="fa fa-2x fa-info-circle"></i></div>
+        <p>
+			  <span className="h4">Business Owners:</span> Using your current payroll and healthcare costs, we'll provide a high-level estimate of projected healthcare costs.
+        </p>
+      </div>,
+
+      <div className="wwse-disclaimer" key="wwse-disclaimer">
+        <p>
+          This calculator provides an <strong>estimate</strong> of how I-1600 would impact your bottom line. If you have significant partnership or capital income (e.g. more than $15,000 a year), you may want to consult a tax professional for a more complete assessment.
+        </p>
+      </div>
+	  ];
 	}
 };
 
