@@ -2,15 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const ErrorContainer = ({ error }) => {
-  if(error){
-    return(
-  		<div className="wwse-error-container">
-        <p className="wwse-error">{error}</p>
-  		</div>
-    )
-  }else{
-    return null;
-  }
+  return(
+		<div className="wwse-error-container">
+      {error && <p className="wwse-error">{error}</p>}
+		</div>
+  )
 }
 
 function mapStateToProps(state){

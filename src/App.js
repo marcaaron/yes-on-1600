@@ -38,25 +38,24 @@ class App extends Component {
     }
 
 		return (
-			<div className="wwse-app-container">
+			<div className={!app_position.end ? "wwse-app-container" : "wwse-results-container"}>
         <ErrorContainer/>
-  				{
-            app_position.start &&
-            <StartCard/>
-  				}
-  				{
-            app_position.question &&
-  					<Question question={questionArray[index]} />
-  				}
-  				{
-            app_position.progress &&
-  					<ProgressBar />
-  				}
-  				{
-            app_position.end &&
-  					<Results />
-  				}
-
+				{
+          app_position.start &&
+          <StartCard/>
+				}
+				{
+          app_position.question &&
+					<Question question={questionArray[index]} />
+				}
+				{
+          app_position.progress &&
+					<ProgressBar />
+				}
+				{
+          app_position.end &&
+					<Results />
+				}
 			</div>
 		);
 	}

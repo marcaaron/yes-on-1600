@@ -17,16 +17,25 @@ class Question extends Component {
 	}
 
   handleBackBtn = () => {
-    const {index, decIndex} = this.props;
+    const {index, decIndex, setError} = this.props;
     if(index >= 0){
+      setError(null);
       decIndex();
     }
   }
 
-  handleFwdBtn = () => {
-    const { vars, index, incIndex } = this.props;
-    if (index > -1 && vars[index]){
-      incIndex();
+  handleFwdBtn = (e) => {
+    const { vars, index, incIndex, setError, updateVar } = this.props;
+    const input = vars[index] || '';
+    const {error, status} = validateInput(this.props.question, this.props.vars, input);
+    if (index > -1){
+      if(status && !error){
+  			incIndex();
+        setError(null);
+        updateVar(input, this.props.index);
+      }else{
+        setError(error);
+      }
     }
   }
 
