@@ -64,13 +64,33 @@ const questions = {
 		}
 	],
 	business:[
-		{questionText:'Annual Total Payroll Costs', inputType:'text',unit:'$'},
-		{questionText:'Current Annual Healthcare Costs', inputType:'text',unit:'$'},
-		{questionText:'Total Number of Employees',
+		{
+      questionText:'Annual Total Payroll Costs',
+      inputType:'text',
+      unit:'$',
+      tip:' ',
+      showIcon: false
+    },
+		{
+      questionText:'Current Annual Healthcare Costs',
+      inputType:'text',
+      unit:'$',
+      tip:' ',
+      showIcon: false
+    },
+		{
+      questionText:'Total Number of Employees',
+      tip:' ',
 			inputType:'select-box',
-			options: ['<10',"10-24","25-99","100-999",">1000"]
+			options: ['<10',"10-24","25-99","100-999",">1000"],
+      showIcon: false
 		},
-		{questionText:'Percentage of Employees Covered', inputType:'range'}
+		{
+      questionText:'Percentage of Employees Covered',
+      inputType:'range',
+      tip:' ',
+      showIcon: false
+    }
 	]
 };
 
