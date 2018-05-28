@@ -11,8 +11,8 @@ class Question extends Component {
 
   // Always maintain focus on input
 	componentDidUpdate() {
-		if(this.input) {
-			this.input.focus();
+		if(this.refs.input) {
+			this.refs.input.focus();
 		}
 	}
 
@@ -26,7 +26,7 @@ class Question extends Component {
 
   handleFwdBtn = (e) => {
     const { vars, index, incIndex, setError, updateVar } = this.props;
-    const input = vars[index] || '';
+    const input = vars[index] || this.refs.input.value;
     const {error, status} = validateInput(this.props.question, this.props.vars, input);
     if (index > -1){
       if(status && !error){
@@ -104,7 +104,7 @@ class Question extends Component {
 						onKeyPress={this.handleKeyPress}
 						value={vars[index] ? vars[index] : ''}
 						autoFocus
-						ref={(input) => { this.input = input; }}
+						ref="input"
 					>
 					</input>}
 
@@ -118,7 +118,7 @@ class Question extends Component {
 						onKeyPress={this.handleKeyPress}
 						value={vars[index] ? vars[index] : ''}
 						autoFocus
-						ref={(input) => { this.input = input; }}
+						ref="input"
 					>
 					</input>}
 
@@ -127,7 +127,7 @@ class Question extends Component {
 						defaultValue={vars[index]}
 						onChange={this.handleChange}
 						className="wwse-select-input"
-						ref={(input) => { this.input = input; }}
+						ref="input"
 					>
 						{options.map((item, index) => {
 							return <option key={index} value={item}>{item}</option>
@@ -138,7 +138,7 @@ class Question extends Component {
 				{inputType === 'range' &&
 					<div className="wwse-slidecontainer">
 						<input onChange={this.handleRange} type="range" min="0" max="100"
-							ref={(input) => { this.input = input; }}
+							ref="input"
 							value={vars[index] ? vars[index] : 50} className="wwse-slider" id="myRange"></input>
 						<span className="wwse-range">{range}%</span>
 					</div>
